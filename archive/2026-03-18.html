@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .news-card h2 {
+            display: flex;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年3月18日</div>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a> <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">1</span>美联储维持利率不变，鲍威尔警告"能源冲击"，美股大跌</h2>
+        <p>美联储在3月议息会议上决定维持利率不变。美联储主席杰罗姆·鲍威尔（Jerome Powell）在会后声明中表示，美国经济正在经历"相当规模和持续时间的能源冲击"，并警告油价飙升"可能给通胀带来麻烦"。美联储同时上调了2026年通胀预期。</p>
+        <p style="margin-top:10px;">受此影响，美股三大指数全线大跌。道琼斯工业平均指数下跌769点（跌幅1.6%），跌至2026年新低；纳斯达克综合指数下跌1.46%至22,152点；标普500指数同样录得显著跌幅。穆迪分析公司（Moody's Analytics）表示，其模型预测美国未来12个月陷入衰退的概率已升至49%，为近年来最高水平。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">2</span>伊朗反击海湾能源设施，国际油价飙升至近110美元</h2>
+        <p>伊朗对卡塔尔、沙特阿拉伯等海湾国家的能源基础设施发动了无人机和导弹攻击，导致多处设施起火。受此影响，布伦特原油价格飙升超过5%，逼近每桶110美元，创下本轮冲突以来的新高。</p>
+        <p style="margin-top:10px;">伊朗议会议长穆罕默德·巴盖尔·加利巴夫在社交媒体上警告称，霍尔木兹海峡"不会回到战前状态"。该海峡承载着全球约20%的石油运输量。美国国内汽油价格持续攀升，全国均价已达每加仑3.84美元，自战争爆发以来累计上涨29%。联合国警告称，因食品价格飙升，全球约4,500万人面临严重饥饿风险。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">3</span>美以对伊朗军事行动持续升级，以色列暗杀伊朗情报部长</h2>
+        <p>以色列宣布在对德黑兰的夜间空袭中击杀了伊朗情报部长伊斯梅尔·哈提卜（Esmail Khatib），这是以色列对伊朗高层的最新一次"定点清除"行动。此前一天，以色列已在空袭中击杀了伊朗安全委员会负责人阿里·拉里贾尼和巴斯基民兵指挥官戈拉姆雷扎·苏莱马尼。</p>
+        <p style="margin-top:10px;">伊朗随即发誓报复，并向以色列发射导弹，造成特拉维夫附近2人死亡。与此同时，美国国家反恐中心主任乔·肯特宣布辞职以抗议对伊战争。自2月28日以来，伊朗卫生部报告已有至少1,444人死亡、近19,000人受伤。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-diplomacy">外交</span>
+        <h2><span class="num-badge">4</span>特朗普因伊朗战事推迟访华计划</h2>
+        <p>美国总统特朗普宣布推迟原定于3月31日至4月2日的北京访问计划，理由是需要专注于伊朗战事。特朗普表示计划将访问推迟约五到六周。白宫随后确认中方已同意推迟，双方正在协商新的访问日期。</p>
+        <p style="margin-top:10px;">这是自2017年以来美国总统首次计划访华，原本旨在重振中美关系并延长贸易休战协议。中国外交部发言人林剑在例行记者会上表示，中美将继续就此事保持沟通。此外，中国拒绝了美国关于协助重新开放霍尔木兹海峡的请求。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">5</span>以色列空袭黎巴嫩贝鲁特市中心，中东人道危机加剧</h2>
+        <p>以色列对黎巴嫩首都贝鲁特市中心发动空袭，摧毁了一栋住宅高层建筑，以军称该建筑为真主党使用的设施。与此同时，以色列军队在黎巴嫩南部开展地面行动，下令多个村庄居民撤离。</p>
+        <p style="margin-top:10px;">据黎巴嫩公共卫生部统计，以色列对黎巴嫩的军事行动已造成至少912人死亡（其中包括111名儿童）、2,221人受伤。挪威难民委员会表示，约100万人（占黎巴嫩总人口的六分之一）已被迫流离失所。联合国人权事务高级专员办事处对以色列在人口密集城区摧毁整栋住宅楼的行为表示严重关切。</p>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>~$110/桶</td>
+                    <td class="up">+5.6%</td>
+                    <td>受海湾能源设施遇袭影响</td>
+                </tr>
+                <tr>
+                    <td><strong>美国汽油均价</strong></td>
+                    <td>$3.84/加仑</td>
+                    <td class="up">+$0.05/日</td>
+                    <td>战争爆发以来累计上涨29%</td>
+                </tr>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>46,225.15</td>
+                    <td class="down">-1.63% (-769点)</td>
+                    <td>创2026年新低</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>22,152.42</td>
+                    <td class="down">-1.46%</td>
+                    <td>受美联储通胀警告影响</td>
+                </tr>
+                <tr>
+                    <td><strong>美国衰退概率</strong></td>
+                    <td>49%</td>
+                    <td class="up">显著上升</td>
+                    <td>穆迪分析公司预测模型</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, PBS, Fortune, WSJ, BBC, VOA等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
