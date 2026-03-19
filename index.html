@@ -100,11 +100,49 @@
             margin-bottom: 12px;
             color: #fff;
             line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
         .news-card p {
             color: var(--text-muted);
             font-size: 0.95em;
             line-height: 1.9;
+        }
+        /* 深度点评样式 */
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
         }
         .market-section {
             background: var(--card-bg);
@@ -159,14 +197,11 @@
             margin-right: 8px;
             flex-shrink: 0;
         }
-        .news-card h2 {
-            display: flex;
-            align-items: center;
-        }
         @media (max-width: 600px) {
             .header h1 { font-size: 1.5em; }
             .news-card { padding: 20px; }
             .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
         }
     </style>
 </head>
@@ -186,6 +221,11 @@
         <h2><span class="num-badge">1</span>美联储维持利率不变，通胀担忧引发美股大跌</h2>
         <p>美联储在3月议息会议上决定维持利率不变，符合市场预期。美联储主席杰罗姆·鲍威尔（Jerome Powell）在会后声明中强调，在通胀明确回落之前不会考虑降息，并暗示今年可能仅有一次降息。当日公布的生产者价格指数（PPI）数据高于预期，进一步加剧了市场对通胀顽固的担忧。</p>
         <p style="margin-top:10px;">受此影响，美股三大指数全线大跌。道琼斯工业平均指数下跌1.63%（769点），跌至46,225.16点；纳斯达克综合指数下跌1.46%至22,152.42点；标普500指数下跌1.36%至6,624.70点。分析师警告称，持续的能源冲突可能给美国经济增长带来更广泛的风险。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>美联储的鹰派立场主要源于两方面压力：一是近期PPI等通胀数据意外反弹，表明通胀粘性超出预期；二是中东地缘冲突导致国际油价飙升，输入性通胀风险急剧上升。在"双重通胀压力"下，美联储不得不维持紧缩立场。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>高利率环境的延长将持续压制企业盈利预期和股市估值，特别是对资金成本敏感的科技股和中小盘股。同时，"高通胀+高利率"的组合可能增加美国经济软着陆的难度，市场波动性在短期内将显著加剧。投资者应关注后续CPI数据和中东局势的演变。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -193,6 +233,11 @@
         <h2><span class="num-badge">2</span>伊朗扩大对海湾能源设施攻击，国际油价飙升至112美元</h2>
         <p>随着中东冲突持续升级，伊朗对海湾地区的能源基础设施发动了广泛的报复性打击。伊朗导弹和无人机袭击了卡塔尔、沙特阿拉伯和阿联酋的多个关键能源设施。卡塔尔确认其拉斯拉凡工业城（全球最大的液化天然气设施）遭到"广泛破坏"，而阿联酋则被迫暂停了哈布尚天然气设施的运营。</p>
         <p style="margin-top:10px;">受能源供应中断威胁影响，国际油价大幅飙升。布伦特原油价格上涨4.27%，突破每桶112美元；WTI原油也上涨2.73%至近99美元。美国国内汽油价格随之攀升，全国均价达到每加仑3.84美元，创下2023年9月以来的最高水平。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>伊朗此举是对以色列持续空袭其本土及代理人武装的战略报复。通过打击海湾盟国的能源设施，伊朗意在将冲突成本扩大化，迫使国际社会（特别是美国）向以色列施压以达成停火。这是一种"以经济痛苦换取政治筹码"的博弈策略。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>全球能源供应链面临实质性中断风险。油价突破112美元不仅将直接推高全球通胀，还可能引发新一轮能源危机。欧洲和亚洲的能源进口国将首当其冲，而高昂的能源成本将进一步拖累全球经济复苏步伐。若冲突持续，油价突破120美元并非不可能。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -200,6 +245,11 @@
         <h2><span class="num-badge">3</span>以色列打击伊朗关键能源设施并击杀情报部长</h2>
         <p>以色列国防军（IDF）对伊朗发动了重大空袭，目标直指伊朗最重要的能源基础设施。据报道，以色列打击了南帕尔斯天然气田和阿萨卢耶处理中心，损毁了伊朗约五分之一的天然气处理能力。由于伊朗90%以上的电力依赖天然气发电，此次打击预计将严重影响伊朗的国内电力供应，并导致其对伊拉克的天然气出口完全中断。</p>
         <p style="margin-top:10px;">在同日的另一项重大行动中，以色列在空袭中击杀了伊朗情报部长伊斯梅尔·哈提卜（Esmail Khatib）。这是继击杀伊朗安全委员会负责人拉里贾尼和巴斯基民兵指挥官苏莱马尼之后，以色列对伊朗高层的又一次"定点清除"。据报道，这一系列斩首行动已导致伊朗安全部队士气严重低落。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>以色列的战略目标已从单纯的防御转向系统性削弱伊朗的战争潜力和政权稳定性。打击能源设施旨在瘫痪伊朗经济和民生，而持续的"斩首行动"则意在瓦解伊朗的指挥中枢和情报网络，从根本上削弱其战争指挥能力。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>伊朗国内可能面临严重的电力短缺和经济动荡，这可能引发内部社会危机。然而，这种极限施压也可能迫使伊朗采取更极端的反击措施（如封锁霍尔木兹海峡），导致中东全面战争的风险达到临界点。国际社会的外交斡旋窗口正在急速缩小。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -207,6 +257,11 @@
         <h2><span class="num-badge">4</span>三星宣布创纪录的730亿美元AI芯片投资计划</h2>
         <p>韩国科技巨头三星电子宣布，计划在2026年投资超过110万亿韩元（约合733亿美元），以扩大芯片产能和加强研发。这一创纪录的投资额比2025年增加了22%，标志着三星在人工智能芯片领域的全面发力。韩国政府同日宣布了230亿美元的芯片支持计划，以应对美国关税不确定性。</p>
         <p style="margin-top:10px;">三星的战略目标是从竞争对手SK海力士手中夺回AI内存芯片的领导地位。为此，三星已与AMD扩大了战略合作，共同开发下一代AI内存和计算技术。此外，据韩国媒体报道，三星计划在今年下半年向OpenAI供应多达8亿千兆比特的12层HBM4芯片，进一步巩固其在AI供应链中的地位。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在生成式AI爆发的背景下，高带宽内存（HBM）成为核心瓶颈。三星此前在HBM领域落后于SK海力士，此次巨额投资是其为了保住半导体霸主地位的"背水一战"。同时，韩国政府230亿美元的配套支持也为其提供了政策底气。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>全球AI芯片供应链的竞争将进入白热化阶段。三星的入局有望缓解目前HBM芯片供不应求的局面，降低AI算力成本。长远来看，这可能加速AI大模型的迭代速度，并重塑全球半导体产业的竞争格局。SK海力士和美光科技将面临更大的竞争压力。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -214,6 +269,11 @@
         <h2><span class="num-badge">5</span>英伟达GTC大会：网络业务崛起，描绘AI代理未来</h2>
         <p>在圣何塞举行的GTC 2026大会上，英伟达CEO黄仁勋不仅展示了其核心的AI加速器芯片，还重点突出了公司迅速崛起的网络业务。据透露，英伟达的网络业务在上个季度已创造了110亿美元的惊人收入，正悄然成为一个足以媲美其芯片业务的数十亿美元巨头。</p>
         <p style="margin-top:10px;">黄仁勋在主题演讲中描绘了"代理式AI"（Agentic AI）的未来愿景，并发布了Nvidia Agent Toolkit开放平台和BlueField-4 STX存储系统。他预计，凭借领先的AI基础设施，英伟达有望在2027年底前实现1万亿美元的收入目标。特斯拉和SpaceX CEO马斯克也证实将继续大规模订购英伟达芯片。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>随着AI模型规模的指数级增长，数据中心内部的数据传输瓶颈日益凸显。英伟达通过InfiniBand等网络技术，成功将单点算力优势扩展为系统级优势，构建了极高的生态壁垒。网络业务的爆发是AI基础设施需求从"单卡"向"集群"演进的必然结果。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>"代理式AI"的提出标志着AI应用正从"辅助工具"向"自主执行者"演进。英伟达不仅在卖"铲子"（芯片），更在制定"挖矿规则"（网络与平台）。其软硬一体的垄断地位短期内难以撼动，将继续引领全球AI产业的发展方向，但也可能引发反垄断层面的关注。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -221,6 +281,11 @@
         <h2><span class="num-badge">6</span>Cloudflare与Coinbase探讨稳定币合作，股价大涨6%</h2>
         <p>网络基础设施公司Cloudflare的股价在周三飙升超过6%，收于225.48美元。这一涨幅源于市场传言称，加密货币交易所Coinbase和数字资产平台Zerohash正在竞争一项重要合作，计划为Cloudflare发行专用的稳定币"NET Dollar"。</p>
         <p style="margin-top:10px;">据报道，这一合作旨在为新兴的AI代理交易提供支付基础设施。随着AI代理在互联网上自主执行任务和交易的需求增加，稳定、低延迟的加密支付系统变得至关重要。这一举措标志着Cloudflare正积极布局AI时代的金融基础设施。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>传统金融支付系统（如信用卡）的延迟和高昂手续费无法满足AI代理之间高频、微额的机器对机器（M2M）交易需求。Cloudflare利用其庞大的边缘计算网络，试图填补这一基础设施空白，抢占AI经济的支付入口。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果合作落地，将打通AI代理自主交易的"最后一公里"，催生全新的"机器经济"（Machine Economy）模式。这不仅将为Cloudflare开辟巨大的新增长曲线，也可能推动加密货币在实体经济中的真正大规模应用，成为Web3与AI融合的标志性事件。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -228,6 +293,11 @@
         <h2><span class="num-badge">7</span>美国参议院否决限制特朗普伊朗战争权力的决议</h2>
         <p>美国参议院以53票对47票的表决结果，否决了一项旨在限制总统唐纳德·特朗普在伊朗战争中权力的决议。共和党参议员成功阻止了这项由民主党人提出的战争权力决议，确保了政府在当前冲突中保持行动自由。</p>
         <p style="margin-top:10px;">同日，包括国家情报总监图尔西·加巴德（Tulsi Gabbard）在内的多位高级情报官员在参议院听证会上作证。加巴德向议员们报告称，经过数周的持续打击，伊朗的常规军事投射能力已"基本被摧毁"。然而，民主党人誓言将继续推动相关立法，以加强国会对战争的监督。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>此次投票结果反映了美国国内政治的极度极化。共和党倾向于赋予行政部门在国家安全危机中最大的灵活性，而民主党则担忧不受约束的总统权力可能将美国拖入另一场旷日持久的中东泥潭，重蹈伊拉克和阿富汗战争的覆辙。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>决议的否决意味着美国政府在短期内可以继续对伊朗保持高压军事态势，无需担心国会的掣肘。这可能进一步鼓励以色列采取更激进的军事行动，但也增加了美国直接卷入全面战争的风险。2026年中期选举临近，战争议题将成为两党博弈的核心焦点。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -235,6 +305,11 @@
         <h2><span class="num-badge">8</span>伊朗向以色列发射集束弹药导弹，造成平民伤亡</h2>
         <p>在24小时内，伊朗向以色列发射了至少10轮导弹弹幕，作为对以色列空袭的报复。以色列中部、耶路撒冷和北部地区防空警报频传。据以色列急救服务机构报告，在拉马特甘地区，一枚伊朗集束弹药导弹击中居民区，导致一对70多岁的夫妇不幸丧生。</p>
         <p style="margin-top:10px;">伊朗伊斯兰革命卫队声称，他们在袭击中使用了包括霍拉姆沙赫尔-4、盖德尔和海巴尔谢坎在内的多种弹道导弹，其中部分配备了集束弹药弹头。特拉维夫的萨维多尔中央火车站也在袭击中受损。自冲突爆发以来，伊朗的导弹袭击已对以色列平民生活造成严重影响。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>面对以色列的持续打击，伊朗必须通过实质性的军事反击来安抚国内强硬派并维持其在"抵抗轴心"中的领导地位。使用集束弹药等更具破坏性的武器，显示出伊朗的报复烈度正在逐步升级，双方已陷入"以牙还牙"的危险螺旋。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>平民伤亡的增加将进一步激化双方的仇恨，使得任何外交斡旋的努力变得更加困难。以色列极有可能以此为由，对伊朗的核设施或核心军事目标发动更具毁灭性的打击，导致冲突陷入"以暴制暴"的恶性循环。国际社会对集束弹药的谴责也将加大伊朗的外交孤立。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -242,6 +317,11 @@
         <h2><span class="num-badge">9</span>真主党发动"海巴尔1号行动"，黎以边境冲突加剧</h2>
         <p>黎巴嫩真主党宣布启动"海巴尔1号行动"（Operation Khyber 1），在24小时内声称对以色列北部和黎巴嫩南部的以色列军队发动了57次袭击。真主党表示，他们向以色列海军特种部队"第13舰队"总部和海法海军基地发射了"高质量导弹"。</p>
         <p style="margin-top:10px;">作为回应，以色列国防军继续在黎巴嫩南部进行空袭和地面行动。以军摧毁了利塔尼河上的两座桥梁以切断真主党补给线，并在贝鲁特的空袭中击杀了伊朗伊玛目侯赛因师的新任指挥官。以军还打击了真主党的金融和社会服务网络，包括"圣善贷款"机构和多家加油站。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>真主党的行动是对以色列在黎巴嫩南部地面推进的直接回应，同时也是伊朗"抵抗轴心"战略的重要组成部分——通过多线牵制消耗以色列军事资源。以色列则试图通过摧毁基础设施和金融网络，彻底根除真主党的战争潜力和社会根基。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>黎以边境已演变为事实上的全面战争。基础设施的广泛破坏将导致黎巴嫩面临严重的人道主义灾难和经济崩溃。同时，北部战线的牵制将消耗以色列大量军事资源，增加其多线作战的战略风险。黎巴嫩的政治稳定和战后重建将成为中东地区长期挑战。</p>
+        </div>
     </div>
 
     <div class="news-card">
@@ -249,6 +329,11 @@
         <h2><span class="num-badge">10</span>委内瑞拉代理总统进行重大内阁改组，更换国防部长</h2>
         <p>委内瑞拉代理总统德尔西·罗德里格斯（Delcy Rodriguez）宣布了一项重大的内阁改组，任命古斯塔沃·冈萨雷斯·洛佩斯（Gustavo Gonzalez Lopez）将军为新任国防部长，取代长期担任该职务的弗拉基米尔·帕德里诺（Vladimir Padrino）将军。</p>
         <p style="margin-top:10px;">帕德里诺曾是前总统尼古拉斯·马杜罗（Nicolas Maduro）的核心盟友和权力支柱，在委内瑞拉军方中拥有举足轻重的影响力。分析人士认为，这是马杜罗被罢免后，新政府巩固权力、重塑军方领导层的关键一步，也标志着委内瑞拉政治转型进入新阶段。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在马杜罗政权倒台后，新政府急需清除前政权在军方中的残余势力。更换掌握军权的国防部长，是代理总统罗德里格斯确立自身权威、防止军方政变或内部反叛的必要政治举措。这也是拉美国家政权更迭后的典型权力整合路径。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一人事变动标志着委内瑞拉政治过渡进入深水区。如果新防长能够成功稳住军队，委内瑞拉有望迎来相对平稳的政治重建期；但如果引发军方内部的强烈反弹，该国可能再次陷入动荡。此外，委内瑞拉作为OPEC成员国，其政局变化也将间接影响全球原油市场的供应预期。</p>
+        </div>
     </div>
 
     <div class="market-section">
