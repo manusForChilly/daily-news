@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报 - 2026年3月19日</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .news-card h2 {
+            display: flex;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年3月19日</div>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a>
+    <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">1</span>美联储维持利率不变，通胀担忧引发美股大跌</h2>
+        <p>美联储在3月议息会议上决定维持利率不变，符合市场预期。美联储主席杰罗姆·鲍威尔（Jerome Powell）在会后声明中强调，在通胀明确回落之前不会考虑降息，并暗示今年可能仅有一次降息。当日公布的生产者价格指数（PPI）数据高于预期，进一步加剧了市场对通胀顽固的担忧。</p>
+        <p style="margin-top:10px;">受此影响，美股三大指数全线大跌。道琼斯工业平均指数下跌1.63%（769点），跌至46,225.16点；纳斯达克综合指数下跌1.46%至22,152.42点；标普500指数下跌1.36%至6,624.70点。分析师警告称，持续的能源冲突可能给美国经济增长带来更广泛的风险。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">2</span>伊朗扩大对海湾能源设施攻击，国际油价飙升至112美元</h2>
+        <p>随着中东冲突持续升级，伊朗对海湾地区的能源基础设施发动了广泛的报复性打击。伊朗导弹和无人机袭击了卡塔尔、沙特阿拉伯和阿联酋的多个关键能源设施。卡塔尔确认其拉斯拉凡工业城（全球最大的液化天然气设施）遭到"广泛破坏"，而阿联酋则被迫暂停了哈布尚天然气设施的运营。</p>
+        <p style="margin-top:10px;">受能源供应中断威胁影响，国际油价大幅飙升。布伦特原油价格上涨4.27%，突破每桶112美元；WTI原油也上涨2.73%至近99美元。美国国内汽油价格随之攀升，全国均价达到每加仑3.84美元，创下2023年9月以来的最高水平。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">3</span>以色列打击伊朗关键能源设施并击杀情报部长</h2>
+        <p>以色列国防军（IDF）对伊朗发动了重大空袭，目标直指伊朗最重要的能源基础设施。据报道，以色列打击了南帕尔斯天然气田和阿萨卢耶处理中心，损毁了伊朗约五分之一的天然气处理能力。由于伊朗90%以上的电力依赖天然气发电，此次打击预计将严重影响伊朗的国内电力供应，并导致其对伊拉克的天然气出口完全中断。</p>
+        <p style="margin-top:10px;">在同日的另一项重大行动中，以色列在空袭中击杀了伊朗情报部长伊斯梅尔·哈提卜（Esmail Khatib）。这是继击杀伊朗安全委员会负责人拉里贾尼和巴斯基民兵指挥官苏莱马尼之后，以色列对伊朗高层的又一次"定点清除"。据报道，这一系列斩首行动已导致伊朗安全部队士气严重低落。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">4</span>三星宣布创纪录的730亿美元AI芯片投资计划</h2>
+        <p>韩国科技巨头三星电子宣布，计划在2026年投资超过110万亿韩元（约合733亿美元），以扩大芯片产能和加强研发。这一创纪录的投资额比2025年增加了22%，标志着三星在人工智能芯片领域的全面发力。韩国政府同日宣布了230亿美元的芯片支持计划，以应对美国关税不确定性。</p>
+        <p style="margin-top:10px;">三星的战略目标是从竞争对手SK海力士手中夺回AI内存芯片的领导地位。为此，三星已与AMD扩大了战略合作，共同开发下一代AI内存和计算技术。此外，据韩国媒体报道，三星计划在今年下半年向OpenAI供应多达8亿千兆比特的12层HBM4芯片，进一步巩固其在AI供应链中的地位。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">5</span>英伟达GTC大会：网络业务崛起，描绘AI代理未来</h2>
+        <p>在圣何塞举行的GTC 2026大会上，英伟达CEO黄仁勋不仅展示了其核心的AI加速器芯片，还重点突出了公司迅速崛起的网络业务。据透露，英伟达的网络业务在上个季度已创造了110亿美元的惊人收入，正悄然成为一个足以媲美其芯片业务的数十亿美元巨头。</p>
+        <p style="margin-top:10px;">黄仁勋在主题演讲中描绘了"代理式AI"（Agentic AI）的未来愿景，并发布了Nvidia Agent Toolkit开放平台和BlueField-4 STX存储系统。他预计，凭借领先的AI基础设施，英伟达有望在2027年底前实现1万亿美元的收入目标。特斯拉和SpaceX CEO马斯克也证实将继续大规模订购英伟达芯片。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">6</span>Cloudflare与Coinbase探讨稳定币合作，股价大涨6%</h2>
+        <p>网络基础设施公司Cloudflare的股价在周三飙升超过6%，收于225.48美元。这一涨幅源于市场传言称，加密货币交易所Coinbase和数字资产平台Zerohash正在竞争一项重要合作，计划为Cloudflare发行专用的稳定币"NET Dollar"。</p>
+        <p style="margin-top:10px;">据报道，这一合作旨在为新兴的AI代理交易提供支付基础设施。随着AI代理在互联网上自主执行任务和交易的需求增加，稳定、低延迟的加密支付系统变得至关重要。这一举措标志着Cloudflare正积极布局AI时代的金融基础设施。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">7</span>美国参议院否决限制特朗普伊朗战争权力的决议</h2>
+        <p>美国参议院以53票对47票的表决结果，否决了一项旨在限制总统唐纳德·特朗普在伊朗战争中权力的决议。共和党参议员成功阻止了这项由民主党人提出的战争权力决议，确保了政府在当前冲突中保持行动自由。</p>
+        <p style="margin-top:10px;">同日，包括国家情报总监图尔西·加巴德（Tulsi Gabbard）在内的多位高级情报官员在参议院听证会上作证。加巴德向议员们报告称，经过数周的持续打击，伊朗的常规军事投射能力已"基本被摧毁"。然而，民主党人誓言将继续推动相关立法，以加强国会对战争的监督。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">8</span>伊朗向以色列发射集束弹药导弹，造成平民伤亡</h2>
+        <p>在24小时内，伊朗向以色列发射了至少10轮导弹弹幕，作为对以色列空袭的报复。以色列中部、耶路撒冷和北部地区防空警报频传。据以色列急救服务机构报告，在拉马特甘地区，一枚伊朗集束弹药导弹击中居民区，导致一对70多岁的夫妇不幸丧生。</p>
+        <p style="margin-top:10px;">伊朗伊斯兰革命卫队声称，他们在袭击中使用了包括霍拉姆沙赫尔-4、盖德尔和海巴尔谢坎在内的多种弹道导弹，其中部分配备了集束弹药弹头。特拉维夫的萨维多尔中央火车站也在袭击中受损。自冲突爆发以来，伊朗的导弹袭击已对以色列平民生活造成严重影响。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">9</span>真主党发动"海巴尔1号行动"，黎以边境冲突加剧</h2>
+        <p>黎巴嫩真主党宣布启动"海巴尔1号行动"（Operation Khyber 1），在24小时内声称对以色列北部和黎巴嫩南部的以色列军队发动了57次袭击。真主党表示，他们向以色列海军特种部队"第13舰队"总部和海法海军基地发射了"高质量导弹"。</p>
+        <p style="margin-top:10px;">作为回应，以色列国防军继续在黎巴嫩南部进行空袭和地面行动。以军摧毁了利塔尼河上的两座桥梁以切断真主党补给线，并在贝鲁特的空袭中击杀了伊朗伊玛目侯赛因师的新任指挥官。以军还打击了真主党的金融和社会服务网络，包括"圣善贷款"机构和多家加油站。</p>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-diplomacy">外交</span>
+        <h2><span class="num-badge">10</span>委内瑞拉代理总统进行重大内阁改组，更换国防部长</h2>
+        <p>委内瑞拉代理总统德尔西·罗德里格斯（Delcy Rodriguez）宣布了一项重大的内阁改组，任命古斯塔沃·冈萨雷斯·洛佩斯（Gustavo Gonzalez Lopez）将军为新任国防部长，取代长期担任该职务的弗拉基米尔·帕德里诺（Vladimir Padrino）将军。</p>
+        <p style="margin-top:10px;">帕德里诺曾是前总统尼古拉斯·马杜罗（Nicolas Maduro）的核心盟友和权力支柱，在委内瑞拉军方中拥有举足轻重的影响力。分析人士认为，这是马杜罗被罢免后，新政府巩固权力、重塑军方领导层的关键一步，也标志着委内瑞拉政治转型进入新阶段。</p>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>~$112.00/桶</td>
+                    <td class="up">+4.27%</td>
+                    <td>受海湾能源设施遇袭影响</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油</strong></td>
+                    <td>~$98.95/桶</td>
+                    <td class="up">+2.73%</td>
+                    <td>创近期新高</td>
+                </tr>
+                <tr>
+                    <td><strong>美国汽油均价</strong></td>
+                    <td>$3.84/加仑</td>
+                    <td class="up">持续上涨</td>
+                    <td>2023年9月以来最高</td>
+                </tr>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>46,225.16</td>
+                    <td class="down">-1.63% (-769点)</td>
+                    <td>受美联储通胀警告影响</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>22,152.42</td>
+                    <td class="down">-1.46%</td>
+                    <td>科技股普遍承压</td>
+                </tr>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,624.70</td>
+                    <td class="down">-1.36%</td>
+                    <td>市场担忧经济衰退风险</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币</strong></td>
+                    <td>$69,437.00</td>
+                    <td class="down">-2.9%</td>
+                    <td>加密市场随大盘回调</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, PBS, Fortune, WSJ, BBC, TechCrunch, The Verge等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
