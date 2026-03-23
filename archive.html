@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>历史归档 - 每日全球新闻简报</title>
+    <title>每日全球新闻简报 - 历史归档</title>
     <style>
         :root {
             --primary: #1a1a2e;
@@ -38,18 +38,21 @@
             color: var(--text-muted);
             font-size: 0.95em;
         }
-        .nav-link {
-            display: inline-block;
+        .nav-links {
             margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.95em;
+            font-size: 0.9em;
             border: 1px solid var(--accent);
-            padding: 6px 18px;
+            padding: 5px 16px;
             border-radius: 20px;
+            margin: 0 6px;
             transition: background 0.2s, color 0.2s;
         }
-        .nav-link:hover {
+        .nav-links a:hover {
             background: var(--accent);
             color: white;
         }
@@ -66,27 +69,57 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px 28px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .archive-item:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
         }
-        .archive-item a {
-            color: var(--text);
-            text-decoration: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         .archive-item .date {
             font-size: 1.1em;
             font-weight: bold;
+            color: #fff;
         }
-        .archive-item .arrow {
+        .archive-item .weekday {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-left: 12px;
+        }
+        .archive-item .summary {
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-top: 6px;
+        }
+        .archive-item a {
             color: var(--accent);
-            font-size: 1.3em;
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .archive-item a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .archive-item .left {
+            flex: 1;
+        }
+        .month-header {
+            font-size: 1.2em;
+            color: var(--accent);
+            margin: 30px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        .month-header:first-child {
+            margin-top: 0;
         }
         .footer {
             text-align: center;
@@ -96,11 +129,10 @@
             border-top: 1px solid var(--border);
             margin-top: 30px;
         }
-        .empty-msg {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 60px 20px;
-            font-size: 1.05em;
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .archive-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .container { padding: 16px 12px; }
         }
     </style>
 </head>
@@ -109,42 +141,71 @@
 <div class="header">
     <h1>历史归档</h1>
     <div class="subtitle">每日全球新闻简报 · 往期回顾</div>
-    <a href="index.html" class="nav-link">← 返回最新简报</a>
+    <div class="nav-links">
+        <a href="index.html">返回首页</a>
+    </div>
 </div>
 
 <div class="container">
-    <ul class="archive-list" id="archive-list">
-        <!-- ARCHIVE_ENTRIES -->
+
+    <h3 class="month-header">2026年3月</h3>
+
+    <ul class="archive-list">
         <li class="archive-item">
-            <a href="archive/2026-03-22.html">
+            <div class="left">
+                <span class="date">2026年3月23日</span>
+                <span class="weekday">星期一</span>
+                <div class="summary">特朗普推迟对伊朗打击五天 · 以色列击毙伊朗安全官员拉里贾尼 · ICE特工接管机场安检 · 马斯克250亿Terafab芯片工厂 · 道指暴涨超1000点</div>
+            </div>
+            <a href="archive/2026-03-23.html">查看详情 →</a>
+        </li>
+        <li class="archive-item">
+            <div class="left">
                 <span class="date">2026年3月22日</span>
-                <span class="arrow">→</span>
-            </a>
+                <span class="weekday">星期日</span>
+                <div class="summary">中东冲突持续 · 霍尔木兹海峡封锁 · 全球市场动荡</div>
+            </div>
+            <a href="archive/2026-03-22.html">查看详情 →</a>
         </li>
         <li class="archive-item">
-            <a href="archive/2026-03-20.html">
+            <div class="left">
+                <span class="date">2026年3月21日</span>
+                <span class="weekday">星期六</span>
+                <div class="summary">伊朗与以色列互攻核设施 · 特朗普48小时最后通牒 · 美股连跌四周 · 金价创43年最大周跌幅 · 油价突破$112</div>
+            </div>
+            <a href="archive/2026-03-21.html">查看详情 →</a>
+        </li>
+        <li class="archive-item">
+            <div class="left">
                 <span class="date">2026年3月20日</span>
-                <span class="arrow">→</span>
-            </a>
+                <span class="weekday">星期五</span>
+                <div class="summary">美股重挫 · 中东局势升级</div>
+            </div>
+            <a href="archive/2026-03-20.html">查看详情 →</a>
         </li>
         <li class="archive-item">
-            <a href="archive/2026-03-19.html">
+            <div class="left">
                 <span class="date">2026年3月19日</span>
-                <span class="arrow">→</span>
-            </a>
+                <span class="weekday">星期四</span>
+                <div class="summary">全球市场波动 · 地缘政治风险</div>
+            </div>
+            <a href="archive/2026-03-19.html">查看详情 →</a>
         </li>
         <li class="archive-item">
-            <a href="archive/2026-03-18.html">
+            <div class="left">
                 <span class="date">2026年3月18日</span>
-                <span class="arrow">→</span>
-            </a>
+                <span class="weekday">星期三</span>
+                <div class="summary">中东冲突升级 · 能源市场震荡</div>
+            </div>
+            <a href="archive/2026-03-18.html">查看详情 →</a>
         </li>
-        <!-- /ARCHIVE_ENTRIES -->
     </ul>
+
 </div>
 
 <div class="footer">
-    <p>每日全球新闻简报 · Powered by GitHub Pages</p>
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
 </div>
 
 </body>

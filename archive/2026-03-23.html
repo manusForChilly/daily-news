@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年3月23日 - 每日全球新闻简报</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-right: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge">2026年3月23日</div>
+    <div style="margin-top:14px;">
+        <a href="../index.html" class="nav-link">← 返回最新</a>
+        <a href="../archive.html" class="nav-link">历史归档 →</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-diplomacy">外交</span>
+        <h2><span class="num-badge">1</span>特朗普推迟对伊朗军事打击五天，称双方有"15个主要共识点"</h2>
+        <p>美国总统特朗普周一宣布，已下令美军将对伊朗发电厂和能源基础设施的军事打击推迟五天。特朗普表示，美国和伊朗在过去两天进行了"非常良好和富有成效的对话"，双方在解决中东敌对行动方面有"15个主要共识点"。据透露，美国特使史蒂夫·威特科夫（Steve Witkoff）和贾里德·库什纳（Jared Kushner）周日晚间参与了谈判。特朗普强调，伊朗必须放弃其浓缩铀库存才能达成最终协议，如果协议达成，霍尔木兹海峡将很快重新开放。</p>
+        <p style="margin-top:10px;">这一消息令全球市场松了一口气。受此提振，道琼斯工业平均指数在周一早盘飙升超过1000点，而此前因战争飙升的国际油价则大幅回落超过8%，布伦特原油跌至每桶101美元左右。不过，伊朗外交部否认了与华盛顿进行直接对话的说法，称特朗普此举旨在压低能源价格并为军事部署争取时间。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>特朗普在48小时最后通牒到期前突然"踩刹车"，反映出美国政府对全面战争可能引发的全球经济灾难（特别是油价失控和通胀反弹）的深切担忧。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>五天的缓冲期为外交斡旋打开了关键窗口。如果谈判破裂，冲突将不可避免地扩大化。短期内市场避险情绪将有所降温，但地缘政治溢价仍将支撑油价和金价在相对高位震荡。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">2</span>以色列击毙伊朗最高安全官员拉里贾尼，伊朗导弹袭击迪莫纳核设施附近</h2>
+        <p>以色列军方证实，在最近的空袭中击毙了伊朗最高国家安全委员会秘书阿里·拉里贾尼（Ali Larijani）。这是继2月28日伊朗最高领袖哈梅内伊在空袭中丧生后，伊朗领导层遭受的又一重大打击。新任最高领袖穆杰塔巴·哈梅内伊目前处于"受伤、被隔离且无法联系"的状态。</p>
+        <p style="margin-top:10px;">作为报复，伊朗向以色列南部城镇迪莫纳和阿拉德发射了导弹，迪莫纳是以色列核心核研究中心的所在地。袭击造成近200人受伤，超过1100人流离失所。黎巴嫩真主党在过去24小时内对以色列发动了63次军事行动。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>以色列的"斩首行动"旨在彻底瘫痪伊朗的指挥和控制系统。拉里贾尼的死进一步加剧了伊朗权力真空的危机。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>伊朗领导层的持续折损可能导致强硬派军方完全接管政权，采取更加激进的军事行动。迪莫纳遇袭凸显了核设施在现代战争中的脆弱性。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-policy">政策</span>
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">3</span>美国DHS停摆加剧：ICE特工接管机场安检，TSA员工大量辞职</h2>
+        <p>由于美国国会未能就国土安全部（DHS）的资金法案达成一致，该部门的停摆危机正在急剧恶化。已有超过366名TSA员工辞职，无故缺勤率翻倍，导致主要机场出现长达数小时的安检排队。特朗普总统宣布将ICE特工部署到全国主要机场协助维持秩序。</p>
+        <p style="margin-top:10px;">民主党人对此表示强烈反对，众议院民主党领袖杰弗里斯警告称部署"未经训练的ICE特工"可能会重演悲剧。亿万富翁马斯克表示愿意"出资支付"TSA员工的工资。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>这场危机是美国国内政治极化和移民政策分歧的直接产物。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果停摆持续，美国航空运输业将面临严重的运力瓶颈，进而对国内供应链和旅游经济造成沉重打击。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">4</span>马斯克宣布250亿美元"Terafab"芯片工厂计划，目标超越台积电</h2>
+        <p>马斯克周末宣布了一项名为"Terafab"的宏大计划，由特斯拉、SpaceX以及xAI联合投资200至250亿美元，旨在建造全球最大的半导体制造工厂。该工厂将采用2纳米制程技术，最终目标产能达到每月100万片晶圆——相当于台积电当前全球总产能的70%。</p>
+        <p style="margin-top:10px;">其中80%的算力将用于驱动部署在太空轨道的AI卫星网络。然而，这一计划遭到了行业专家的广泛质疑——特斯拉和SpaceX毫无半导体制造经验。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>马斯克此举意在摆脱对台积电和三星等外部代工厂的依赖，确保其AI和太空战略的底层算力安全。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>半导体制造的极高壁垒意味着Terafab面临巨大的执行风险，但若取得部分成功，将彻底颠覆全球半导体供应链格局。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-policy">政策</span>
+        <h2><span class="num-badge">5</span>白宫发布国家AI政策框架，呼吁联邦统一标准取代各州"拼图"</h2>
+        <p>白宫发布了一份国家AI立法框架，包含七项政策建议，呼吁建立单一的联邦标准以取代各州"繁琐"的AI法律拼图。ACLU严厉批评该框架是在向大型科技公司妥协。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>白宫的AI框架体现了典型的"创新优先"导向。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>缺乏专门的监管机构和强制性验证机制，可能导致AI技术在深度伪造、算法偏见等领域的野蛮生长。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">6</span>麦当劳在上海试点部署人形机器人服务员，餐饮自动化迈出新步伐</h2>
+        <p>麦当劳正在中国上海的一家门店试点部署人形机器人员工，由擎朗智能提供。这些机器人穿着麦当劳标准化员工制服，执行迎接顾客、端送餐盘等任务。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>餐饮业应对全球劳动力短缺和成本压力的必然趋势。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>人形机器人在餐饮场景的成功应用，可能加速其在零售、酒店等更多服务业场景的渗透。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-sports">体育</span>
+        <h2><span class="num-badge">7</span>NCAA"疯狂三月"爆冷：爱荷华绝杀卫冕冠军，圣约翰压哨淘汰堪萨斯</h2>
+        <p>9号种子爱荷华大学以73-72绝杀头号种子、卫冕冠军佛罗里达大学。圣约翰大学凭借压哨绝杀击败堪萨斯大学，自1999年以来首次挺进"甜蜜16强"。十大联盟共有6支球队杀入16强。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>NCAA锦标赛的单败淘汰制是冷门频发的温床。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>卫冕冠军的提前出局让本届赛事的冠军归属变得更加扑朔迷离。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">8</span>资深NHL女记者杰西·皮尔斯及其三名子女在明尼苏达火灾中遇难</h2>
+        <p>明尼苏达狂野队跟队记者杰西·皮尔斯及其三个孩子在周六凌晨的一场房屋火灾中不幸丧生。NHL官方和众多体育界人士纷纷发文悼念。火灾原因仍在调查之中。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>住宅火灾是美国最常见的致命灾害之一。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一事件将引发社会对住宅消防安全和烟雾报警器重要性的再次关注。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">9</span>美股连跌四周后迎来"释然性反弹"，道指周一暴涨超1000点</h2>
+        <p>道琼斯工业平均指数周五下跌443.96点（-0.96%），收于45,577.47点，正式进入"修正"区间。标普500下跌1.51%至6,506.48点，纳斯达克重挫2.01%至21,647.61点。周一特朗普宣布推迟打击后，道指早盘暴涨超过1000点。</p>
+        <p style="margin-top:10px;">国际金价上周暴跌近10%至约4,260美元/盎司，创下15年来最大单周跌幅。布伦特原油从112美元高位回落至101美元附近。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>周五暴跌反映了市场对中东全面战争和通胀失控的极度恐慌。周一暴涨是地缘政治局势突然缓和驱动的"释然性反弹"。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>只要中东冲突的根本矛盾未解，油价和通胀的达摩克利斯之剑就依然悬在头顶。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">10</span>SEC放弃对法拉第未来长达四年的调查，电动车初创企业扫除法律障碍</h2>
+        <p>美国证券交易委员会（SEC）已正式结束对法拉第未来长达四年的调查，尽管工作人员曾建议采取执法行动。这项调查主要涉及法拉第未来在借壳上市过程中的潜在证券违规行为。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>SEC放弃调查可能是基于证据不足或诉讼成本过高。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>SEC调查的结束更多是象征性的利好，难以从根本上改变法拉第未来的困境。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览（3月20日收盘 / 3月23日早盘动态）</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>45,577.47</td>
+                    <td class="down">-0.96% (周五)</td>
+                    <td>周一早盘暴涨超1000点</td>
+                </tr>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,506.48</td>
+                    <td class="down">-1.51% (周五)</td>
+                    <td>连续第四周下跌</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>21,647.61</td>
+                    <td class="down">-2.01% (周五)</td>
+                    <td>科技股承压严重</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>~$101.44/桶</td>
+                    <td class="down">-8.0% (周一)</td>
+                    <td>特朗普推迟打击伊朗后回落</td>
+                </tr>
+                <tr>
+                    <td><strong>黄金</strong></td>
+                    <td>~$4,260/盎司</td>
+                    <td class="down">-10% (上周)</td>
+                    <td>创15年来最大单周跌幅</td>
+                </tr>
+                <tr>
+                    <td><strong>10年期美债收益率</strong></td>
+                    <td>4.39%</td>
+                    <td class="up">显著上升</td>
+                    <td>通胀预期推高加息概率</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
