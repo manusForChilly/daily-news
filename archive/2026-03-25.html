@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报 - 2026年3月25日</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年3月25日</div>
+    <br>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a>
+    <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">1</span>美军82空降师即将部署中东，油价再度反弹</h2>
+        <p>据《华尔街日报》和路透社等多家媒体周二报道，五角大楼正准备向中东地区部署约2000至3000名美国陆军精锐的第82空降师士兵。这一军事调动旨在应对持续升级的伊朗冲突，并试图重新打通自战争爆发以来几乎陷入停滞的关键石油通道——霍尔木兹海峡。</p>
+        <p style="margin-top:10px;">与此同时，美国总统特朗普在白宫向记者表示，美国正在与伊朗方面"正确的人"进行对话，并称对方"非常渴望达成协议"。然而，伊朗军方对此予以嘲讽，称美国是在"自己跟自己谈判"。受美军部署消息影响，国际油价在周一暴跌后迅速反弹，WTI原油重回91美元上方，布伦特原油逼近104美元。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>霍尔木兹海峡的长期封锁对全球能源供应链构成了致命威胁。美国派遣精锐空降部队，表明其在外交斡旋的同时，也在做最坏的军事准备，试图通过武力威慑或实际行动来保障能源通道的安全。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>美军地面部队的直接介入将极大增加中美在中东直接冲突的风险。市场对"和平协议"的乐观情绪被迅速浇灭，油价的剧烈波动将继续主导全球金融市场的走势，通胀压力短期内难以缓解。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-policy">政策</span>
+        <h2><span class="num-badge">2</span>Meta被判赔偿3.75亿美元：社交媒体儿童安全里程碑判决</h2>
+        <p>新墨西哥州的一个陪审团周二做出了一项具有历史意义的裁决，判定科技巨头Meta（原Facebook）违反了该州的消费者保护法，并责令其支付高达3.75亿美元的赔偿金。这是美国历史上首次有陪审团裁定社交媒体公司必须为其平台对儿童造成的伤害承担直接的财务责任。</p>
+        <p style="margin-top:10px;">在为期六周的审判中，新墨西哥州总检察长指控Meta故意误导公众关于其平台的安全性，并纵容了针对未成年人的性剥削和心理健康伤害。尽管Meta辩称其受到《通信规范法》第230条和第一修正案的保护，但陪审团最终站在了原告一边。Meta发言人表示对裁决感到失望，并计划提起上诉。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>随着公众对社交媒体成瘾和青少年心理健康问题的日益关注，监管机构和司法系统对科技巨头的容忍度正在急剧下降。此次判决成功绕过了长期以来保护科技公司的"第230条"避风港原则，直击其商业模式的核心。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一判决将引发多米诺骨牌效应，全美各地针对Meta、TikTok等平台的类似诉讼可能会如雨后春笋般涌现。社交媒体公司将面临前所未有的法律和财务风险，迫使它们从根本上改变算法推荐机制和内容审核标准。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">3</span>Arm发布35年历史上首款自研芯片AGI CPU，Meta成为首个客户</h2>
+        <p>英国芯片设计巨头Arm Holdings周二在旧金山宣布了一项重大战略转型：推出其35年历史上的首款自研数据中心芯片——Arm AGI CPU。这款采用台积电3纳米工艺制造的处理器专为AI数据中心的推理任务而设计，标志着Arm从单纯的架构授权商正式进军实体芯片制造领域。</p>
+        <p style="margin-top:10px;">科技巨头Meta被确认为该芯片的首个主要客户，将把AGI CPU与其自研的AI加速器配合使用。此外，OpenAI、Cerebras和Cloudflare等公司也作为首批合作伙伴亮相。Arm预计这款新产品将为其带来高达150亿美元的年收入。受此消息提振，Arm股价在盘前交易中一度暴涨13%。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>随着AI算力需求的爆炸式增长，传统的CPU+GPU架构正在经历深刻变革。Arm亲自下场造芯，旨在抓住"Agentic AI"（代理型AI）崛起带来的巨大机遇，并试图在数据中心市场从英特尔和AMD手中夺取更多份额。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>Arm的这一举动彻底改变了半导体行业的竞争格局。它不仅将与自己过去的授权客户（如英伟达、亚马逊等）展开直接竞争，还可能引发新一轮的AI芯片军备竞赛。对于Meta等云服务商而言，这提供了摆脱对单一供应商依赖的新选择。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">4</span>OpenAI突然宣布关闭Sora视频生成应用，引发行业震动</h2>
+        <p>人工智能领军企业OpenAI周二出人意料地宣布，将停止运营其备受瞩目的AI视频生成应用Sora。这一决定距离该公司与娱乐巨头迪士尼签署价值10亿美元的内容授权协议仅仅过去了三个月。OpenAI并未在公告中给出具体的关闭原因，仅表示将"重新聚焦核心产品"。</p>
+        <p style="margin-top:10px;">据业内分析人士透露，Sora的夭折可能与多重因素有关。首先，高质量AI视频生成的计算成本极其高昂，导致该项目持续亏损；其次，随着新鲜感褪去，Sora的用户下载量和活跃度在近期出现了显著下滑。此外，围绕深度伪造（Deepfake）和版权侵权的巨大争议，也让OpenAI面临着越来越大的法律和道德压力。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>Sora的关闭凸显了生成式AI在商业化落地过程中面临的严峻挑战。尽管技术令人惊艳，但高昂的推理成本、模糊的盈利模式以及潜在的法律风险，使得"AI视频"目前更像是一个昂贵的玩具，而非成熟的商业产品。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一事件将给狂热的AI视频赛道泼上一盆冷水，投资者对相关初创公司的估值逻辑将变得更加理性。同时，这也表明OpenAI正在进行战略收缩，将有限的算力和资源集中到更具商业价值的企业级大语言模型（LLM）上。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">5</span>Anthropic发布Claude"电脑控制"新功能，SaaS概念股集体暴跌</h2>
+        <p>人工智能初创公司Anthropic周二为其大语言模型Claude推出了一项革命性的新功能：允许AI直接接管并操作用户的电脑桌面，以完成复杂的多步骤任务。这一功能类似于开源的Openclaw AI助手，标志着AI正从"对话框"走向"全能代理"（Agentic AI）时代。</p>
+        <p style="margin-top:10px;">然而，这一技术突破却在华尔街引发了恐慌。投资者担忧，如果AI能够自动操作各种软件，传统的软件即服务（SaaS）商业模式将被彻底颠覆。受此影响，iShares扩展科技软件板块ETF（IGV）大跌3.5%。其中，Palantir重挫5%，Salesforce下跌4%，ServiceNow、Oracle和Snowflake等知名软件股均遭遇显著抛售。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>SaaS公司的核心壁垒在于其复杂的用户界面和工作流。当AI代理能够理解自然语言并自动在不同软件间穿梭操作时，用户将不再需要学习和购买繁杂的SaaS工具，这直接威胁到了软件行业的生存根基。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>"AI杀死SaaS"的叙事正在从科幻走向现实。软件公司将被迫加速自身的AI化转型，或者将其产品重塑为纯粹的API接口供AI代理调用。短期内，软件板块的估值重估仍将继续，市场资金将进一步向AI基础设施和底层模型公司集中。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">6</span>菲律宾因中东战争宣布"国家能源紧急状态"，全球溢出效应显现</h2>
+        <p>菲律宾总统费迪南德·马科斯（Ferdinand Marcos Jr.）周二正式宣布该国进入"国家能源紧急状态"。马科斯在全国电视讲话中表示，由于美国与伊朗在中东的战争导致国际燃油价格持续飙升，菲律宾正面临"迫在眉睫的能源危机"，政府必须采取非常措施来保障基本民生和经济运转。</p>
+        <p style="margin-top:10px;">菲律宾成为首个因本轮中东冲突而宣布国家紧急状态的非交战国。这一举动凸显了现代战争对全球化经济的深远破坏力。不仅是菲律宾，韩国等高度依赖能源进口的亚洲国家目前也都在艰难应对能源价格暴涨带来的输入性通胀压力。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>新兴市场国家通常对能源价格波动最为敏感。霍尔木兹海峡的封锁不仅推高了绝对油价，还引发了全球供应链的连锁反应。菲律宾的紧急状态是脆弱经济体在面对地缘政治黑天鹅时的无奈之举。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果中东战火继续延宕，更多发展中国家可能会效仿菲律宾，采取燃油配给、价格管制甚至资本管制等极端措施。这将严重拖累全球经济复苏步伐，并在脆弱地区引发新的社会动荡和政治危机。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">7</span>BP首席经济学家警告：伊朗战争是"史无前例"的石油冲击</h2>
+        <p>在休斯顿举行的CERAWeek能源大会上，英国石油公司（BP）首席经济学家加雷斯·拉姆齐（Gareth Ramsay）发出严厉警告，称当前的伊朗战争在规模和对能源市场的广泛影响上，是"无法与过去任何石油冲击相比的"。</p>
+        <p style="margin-top:10px;">拉姆齐指出，霍尔木兹海峡的封锁每天切断了约1500万至1600万桶的石油供应，这是"每个分析师最糟糕的噩梦"。他强调，全球市场根本无法迅速找到替代供应。拉姆齐测算，如果油价维持在当前上涨30%至40%的水平，可能会直接削减全球经济增长整整1个百分点，导致"严重的全球经济放缓"。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>与1970年代的石油危机不同，当前的危机不仅涉及原油减产，还叠加了关键基础设施被毁、天然气和化肥供应链中断等多重打击。全球能源系统的冗余度在多年的投资不足后已降至冰点。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>高昂的能源成本将像隐形税收一样吞噬企业利润和消费者购买力。各国央行在面对这种典型的"供给侧冲击"时将陷入两难：加息会加剧经济衰退，降息则会纵容通胀失控。滞胀风险正在急剧上升。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">8</span>雅诗兰黛计划收购西班牙美妆巨头Puig，打造400亿香水帝国</h2>
+        <p>据《华尔街日报》和路透社报道，美国化妆品巨头雅诗兰黛（Estée Lauder）周二证实，正在与拥有Charlotte Tilbury和Paco Rabanne等品牌的西班牙美妆集团Puig进行合并谈判。如果交易达成，将诞生一个合并市值约400亿美元的全球奢侈品美妆巨头。</p>
+        <p style="margin-top:10px;">这一消息刺激Puig在法兰克福上市的股票在盘前大涨8%。分析师指出，合并将使雅诗兰黛在快速增长的高端香水领域获得无可匹敌的优势，并大幅增强其在欧洲市场的渗透率。然而，也有投资者担忧，雅诗兰黛目前正处于自身的业务转型期，此时进行如此大规模的并购可能会带来巨大的整合风险。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在宏观经济不确定性增加的背景下，"口红效应"和"香水效应"依然显著。雅诗兰黛试图通过收购Puig来对冲其在护肤品业务上的疲软，并抵御来自欧莱雅等竞争对手的压力。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这笔交易将重塑全球高端美妆市场的格局。如果合并成功，新公司将拥有极强的定价权和渠道话语权。但反垄断监管机构可能会对该交易进行严格审查，特别是在香水细分市场。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">9</span>美股回吐前日涨幅，科技股领跌，黄金创下罕见"十连跌"</h2>
+        <p>美国股市周二（3月24日）未能延续前一交易日的强劲反弹，三大股指全线收跌。道琼斯工业平均指数下跌84.41点（-0.2%），收于46,124.06点；标普500指数下跌0.4%；以科技股为主的纳斯达克综合指数领跌，下挫0.8%。美军即将部署中东的消息以及SaaS板块的暴跌是拖累大盘的主要原因。</p>
+        <p style="margin-top:10px;">在商品市场，作为传统避险资产的黄金出现了反常走势。金价周二小幅下跌至约4,374美元/盎司，创下了连续第10个交易日下跌的罕见纪录。尽管中东战火纷飞，但油价反弹引发的通胀担忧推高了美国国债收益率（10年期美债收益率升至4.40%），高利率预期成为了压制无息资产黄金的致命武器。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>当前市场的逻辑极度扭曲：地缘政治危机推高油价 -> 油价推高通胀预期 -> 通胀预期推高美债收益率 -> 高收益率打压股市和黄金。这种"股债金三杀"的局面反映了宏观环境的极端复杂性。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>在美伊冲突出现实质性转机之前，市场将继续在"战争恐慌"和"通胀恐慌"之间剧烈摇摆。投资者应高度警惕高利率环境对高估值科技股和高杠杆企业的持续杀伤力。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">10</span>比特币坚守7万美元大关，分析师高呼"底部已现"</h2>
+        <p>在传统金融市场因地缘政治动荡而剧烈波动之际，加密货币市场展现出了惊人的韧性。比特币（BTC）周二上涨约1.5%，价格稳定在70,800美元附近。自中东冲突升级以来，比特币的表现显著优于黄金等传统避险资产。</p>
+        <p style="margin-top:10px;">华尔街投行伯恩斯坦（Bernstein）的分析师周一发布报告称，比特币在经历了从历史高点回落的半年盘整后，"底部已经出现"。报告指出，现货ETF的资金流出已经逆转，且市场结构比以往周期更加成熟。伯恩斯坦重申了其对比特币在2026年底达到15万美元的目标价。此外，MicroStrategy等机构的持续买入也为市场提供了强大的支撑。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>比特币正在逐渐摆脱纯粹的"风险资产"标签，在某些特定场景下展现出"数字黄金"的避险属性。现货ETF的普及引入了大量粘性较强的机构资金，极大地平抑了市场的极端波动。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果比特币能够在中东危机和高利率环境中持续企稳，将进一步巩固其作为独立资产类别的地位。随着减半效应的逐步显现和机构配置的增加，加密市场有望在下半年迎来新一轮的结构性行情。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览（3月24日收盘）</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>46,124.06</td>
+                    <td class="down">-0.2%</td>
+                    <td>回吐前日部分涨幅</td>
+                </tr>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,556.37</td>
+                    <td class="down">-0.4%</td>
+                    <td>受科技股拖累走低</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>21,761.89</td>
+                    <td class="down">-0.8%</td>
+                    <td>SaaS软件板块领跌</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油</strong></td>
+                    <td>~$91.00/桶</td>
+                    <td class="up">+4.0%</td>
+                    <td>受美军部署中东消息刺激反弹</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>~$104.00/桶</td>
+                    <td class="up">+4.0%</td>
+                    <td>霍尔木兹海峡持续封锁</td>
+                </tr>
+                <tr>
+                    <td><strong>黄金</strong></td>
+                    <td>~$4,374/盎司</td>
+                    <td class="down">小幅下跌</td>
+                    <td>创下罕见连续10天下跌纪录</td>
+                </tr>
+                <tr>
+                    <td><strong>10年期美债收益率</strong></td>
+                    <td>4.40%</td>
+                    <td class="up">+7个基点</td>
+                    <td>通胀担忧推高利率预期</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币 (BTC)</strong></td>
+                    <td>~$70,839</td>
+                    <td class="up">+1.5%</td>
+                    <td>表现优于传统避险资产</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, Bloomberg, WSJ, Fortune, Al Jazeera 等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
