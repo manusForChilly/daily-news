@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报 - 2026年3月26日</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年3月26日</div>
+    <br>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a>
+    <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-diplomacy">外交</span>
+        <h2><span class="num-badge">1</span>伊朗拒绝美国15点和平方案，中东战争进入第四周</h2>
+        <p>据多家媒体周三报道，伊朗政府正式拒绝了美国总统特朗普提出的15点和平方案。伊朗国家媒体称该方案“片面且不公”，并提出了自己的停战条件。与此同时，以色列继续对德黑兰及周边地区发动空袭，并宣称击毙了一名负责封锁霍尔木兹海峡的伊朗海军高级指挥官。</p>
+        <p style="margin-top:10px;">随着冲突进入第四周，五角大楼已将约2000名美国陆军第82空降师的精锐伞兵部署至中东地区。尽管白宫方面坚称谈判仍在“间接”进行中，且巴基斯坦外长也确认了其作为中间人的角色，但短期内达成全面停火的希望依然渺茫。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>美国试图通过制裁减免换取伊朗在关键战略利益上的让步，但伊朗强硬派认为这等同于投降。双方在霍尔木兹海峡控制权和核设施安全等核心问题上的分歧难以弥合。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>战争的长期化将继续对全球能源供应链构成严重威胁。美军地面部队的部署增加了直接卷入冲突的风险，中东地缘政治格局正面临数十年来最深刻的重塑。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-policy">政策</span>
+        <h2><span class="num-badge">2</span>Meta和Google在社交媒体成瘾案中被判有责，面临600万美元赔偿</h2>
+        <p>洛杉矶的一个陪审团周三做出历史性裁决，判定科技巨头Meta和Alphabet旗下的Google在设计社交媒体平台时存在过失，对一名年轻用户的心理健康造成了伤害。陪审团裁定两家公司共需支付600万美元的赔偿金，其中Meta承担420万美元，Google承担180万美元。</p>
+        <p style="margin-top:10px;">原告在诉讼中指出，Instagram和YouTube的“无限滚动”等成瘾性设计导致其在未成年时期产生了严重的心理问题。这是美国首批针对社交媒体成瘾的陪审团裁决之一。尽管赔偿金额对这两家市值超万亿的公司而言微不足道，但该判决被原告律师称为“问责时代的到来”。Meta和Google均表示计划提起上诉。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>公众和监管机构对青少年心理健康问题的关注度空前高涨。原告律师巧妙地将诉讼焦点从受《通信规范法》第230条保护的“内容”转移到了不受保护的“产品设计”上，成功突破了科技公司的法律防线。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一判决将作为“风向标”，深刻影响加州乃至全美数以千计的类似未决诉讼。科技公司可能被迫从根本上修改其算法推荐机制和用户界面设计，从而削弱其基于用户注意力的核心商业模式。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">3</span>Arm发布35年历史首款自研芯片AGI CPU，股价暴涨16%</h2>
+        <p>英国芯片设计巨头Arm Holdings周二在旧金山正式发布了其35年历史上的首款自研数据中心芯片——Arm AGI CPU。这款专为AI数据中心推理任务设计的处理器，标志着Arm从单纯的架构授权商向实体芯片制造商的重大战略转型。</p>
+        <p style="margin-top:10px;">科技巨头Meta作为该芯片的首个主要客户和联合开发者，计划将其与自研AI加速器配合使用。此外，OpenAI、Cerebras等公司也作为首批合作伙伴亮相。Arm管理层预计，这款新产品有望为公司带来高达150亿美元的年收入。受此重磅消息提振，Arm股价在周三的交易中暴涨16%。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>随着生成式AI和“代理型AI”（Agentic AI）的爆发，数据中心对高效能推理芯片的需求急剧上升。Arm亲自下场造芯，旨在打破英伟达、英特尔等传统巨头的垄断，获取产业链中更高的附加值。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>Arm的入局将加剧AI芯片市场的竞争白热化。对于云服务提供商而言，这提供了更多元化的硬件选择，有助于降低对单一供应商的依赖。同时，这也可能引发半导体行业新一轮的合纵连横。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">4</span>Meta裁员约700人，扎克伯格全面转向AI战略</h2>
+        <p>在面临社交媒体成瘾案败诉的同一天，Meta证实已开始新一轮裁员，预计将影响约700名员工。这是该公司在2026年进行的第二次规模性裁员，此前在1月份，Meta已经削减了其负责元宇宙业务的Reality Labs部门10%的员工。</p>
+        <p style="margin-top:10px;">据内部人士透露，此次裁员是CEO马克·扎克伯格“效率之年”战略的延续。Meta正加速将其庞大的资源从曾经寄予厚望但持续亏损的元宇宙项目，转移到目前最具商业潜力的生成式人工智能领域。与此同时，公司正在为顶尖的AI研究人员和高管提供极其丰厚的薪酬和奖金，以在激烈的人才争夺战中保持优势。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>面对华尔街对盈利能力的严苛要求和AI领域的军备竞赛，Meta必须进行痛苦的资源重新分配。元宇宙的遥遥无期与AI的立竿见影形成了鲜明对比，促使管理层做出了务实的战略调整。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>Meta的转型反映了整个硅谷的缩影：在非核心业务上无情瘦身，在AI基础设施上不计成本地投入。这种“冰火两重天”的就业环境将在科技行业持续存在，AI人才的溢价将进一步走高。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">5</span>OpenAI战略大转型：关闭Sora、砍掉购物功能、冲刺IPO</h2>
+        <p>人工智能领军企业OpenAI近期动作频频，展现出强烈的战略收缩和商业化导向。继出人意料地宣布关闭备受瞩目的AI视频生成应用Sora后，CEO山姆·奥特曼（Sam Altman）又在周二宣布取消了原计划吸引百万商家的ChatGPT“即时结账”购物功能。</p>
+        <p style="margin-top:10px;">据多方报道，这些举措旨在为OpenAI在今年晚些时候的首次公开募股（IPO）扫清障碍。奥特曼已将公司产品组更名为“AGI部署”（AGI deployment），并卸任了安全团队的直接领导职务，转而将全部精力投入到融资和数据中心建设上。目前，OpenAI的估值已高达8400亿美元，其主要竞争对手Anthropic也传出将在今年IPO的消息。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>运行庞大AI模型的成本极其高昂，OpenAI每月面临约10亿美元的资金缺口。关闭高成本、低收益且面临版权争议的Sora，以及砍掉非核心的电商业务，是为了向华尔街展示一个更加清晰、专注且具备盈利潜力的商业故事。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>OpenAI和Anthropic的潜在IPO将成为2026年全球资本市场最大的盛宴。这也标志着生成式AI行业正从“技术探索期”正式迈入“商业变现期”，企业级服务（B2B）将成为这些AI巨头的主战场。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">6</span>美股三大指数全线上涨，受伊朗和谈希望推动</h2>
+        <p>美国股市周三（3月25日）在震荡中收高，投资者对中东地缘政治局势可能出现转机抱有谨慎乐观态度。道琼斯工业平均指数上涨305.43点（+0.7%），收于46,429.49点；标普500指数上涨0.5%，收于6,591.90点；以科技股为主的纳斯达克综合指数上涨0.8%，收于21,929.83点。</p>
+        <p style="margin-top:10px;">尽管伊朗官方拒绝了美国的停火方案，但市场仍从“间接谈判仍在进行”的消息中寻找到了安慰。油价的回落极大缓解了市场对通胀失控的担忧，推动了亚马逊等消费类股票的上涨。此外，宠物用品零售商Chewy因第四季度财报超预期而暴涨14%，戴尔科技也收涨逾4%。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>当前市场情绪高度敏感，极易受地缘政治新闻的左右。投资者在“战争升级导致滞胀”的恐惧和“和平协议带来复苏”的希望之间反复横跳，导致股指呈现出典型的宽幅震荡特征。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>在美伊冲突彻底尘埃落定之前，美股的波动性将维持在高位。尽管单日出现反弹，但标普500指数年初至今仍下跌近4%，表明宏观经济的不确定性依然是悬在华尔街头顶的达摩克利斯之剑。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">7</span>黄金结束100多年来最长9天连跌，大幅反弹2.38%</h2>
+        <p>在经历了历史性的连续抛售之后，国际金价周三终于迎来了强劲反弹。现货黄金价格大涨2.38%，收于4,545.42美元/盎司。此前，金价创下了连续9个交易日下跌的罕见纪录，这是自一个多世纪以来黄金市场经历的最长连跌周期。</p>
+        <p style="margin-top:10px;">分析师指出，金价的反弹主要得益于国际油价的阶段性回落以及美国国债收益率的走低（10年期美债收益率周三下降6个基点至4.326%）。尽管如此，目前的金价距离今年1月29日创下的5,594.82美元的历史高点仍有约25%的巨大跌幅。与此同时，比特币表现出较强的韧性，周三上涨2.2%，稳定在71,000美元上方。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>前期的黄金暴跌更多是由于高杠杆期货头寸的平仓和动量投机资金的撤离，而非基本面的彻底恶化。当油价下跌缓解了美联储维持高利率的压力时，被极度超卖的黄金自然迎来了技术性修复。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>黄金的剧烈波动凸显了在当前复杂的宏观环境下，传统避险资产的定价逻辑正在发生紊乱。对于长线投资者而言，大幅回调后的黄金可能重新具备了配置价值，尤其是考虑到全球央行去美元化的长期趋势并未改变。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">8</span>Figure AI人形机器人亮相白宫科技峰会</h2>
+        <p>美国第一夫人梅拉尼娅·特朗普（Melania Trump）周三在白宫东厅举办的教育科技峰会上，迎来了一位特殊的嘉宾——由初创公司Figure AI研发的人形机器人“Figure 03”。这是白宫历史上首次在正式官方活动中接待人形机器人。</p>
+        <p style="margin-top:10px;">在众人的注视下，这款闪亮的金属机器人用双腿平稳地走入会场，并用11种不同的语言向来自世界各地的与会者致以问候。梅拉尼娅在随后的讲话中强调了人工智能和机器人技术在未来教育领域的巨大潜力。Figure AI是目前全球最受瞩目的机器人初创公司之一，此前已获得包括OpenAI和微软在内的巨额投资。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>白宫高调展示人形机器人，不仅是对美国本土前沿科技实力的背书，也反映了政府高层对AI技术重塑社会各个领域（包括教育和劳动力市场）的深刻认知和积极拥抱态度。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一标志性事件将进一步点燃资本市场对具身智能（Embodied AI）赛道的热情。随着硬件成本的下降和多模态大模型的成熟，人形机器人走出实验室、进入商业和家庭应用场景的步伐正在显著加快。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">9</span>三人被控向中国走私价值数百万美元AI芯片</h2>
+        <p>美国司法部周三宣布，已对一名中国公民和两名美国公民提起刑事诉讼，指控他们密谋将受严格出口管制的美国人工智能（AI）计算机芯片走私至中国。这一案件再次凸显了中美在尖端科技领域的激烈博弈。</p>
+        <p style="margin-top:10px;">根据起诉书，这三名被告涉嫌通过在泰国设立的空壳公司作为中转站，试图从一家位于加利福尼亚州的计算机硬件公司购买价值数百万美元的高端AI芯片，并最终将其运往中国买家手中。美国司法部官员强调，将不遗余力地打击任何企图规避美国国家安全和外交政策利益的非法技术转移行为。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>AI算力已成为大国竞争的核心战略资源。随着美国不断收紧对华高端芯片的出口限制，黑市交易和复杂的跨国走私网络应运而生，以满足中国市场对算力的巨大渴望。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>此案表明美国政府正在显著加强对出口管制禁令的执法力度。全球半导体供应链的合规审查将变得更加严苛，跨国科技企业在进行国际贸易时将面临更高的法律风险和运营成本。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-diplomacy">外交</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">10</span>欧盟议会有条件批准欧美贸易协议，取消工业品关税</h2>
+        <p>欧洲议会周四以417票赞成、154票反对的压倒性多数，投票批准了推进与美国的双边贸易协议。该协议的核心内容是全面取消欧盟对美国工业产品（包括机械零部件、设备和原材料）的进口关税，标志着跨大西洋贸易关系迈出了重要一步。</p>
+        <p style="margin-top:10px;">这项最初于2025年7月达成的协议在欧洲内部经历了漫长而艰难的政治博弈。为了安抚部分成员国的担忧，欧洲议会在批准协议的同时附加了严格的“保障条款”：如果华盛顿方面采取破坏协议的举动或威胁到欧洲的核心利益，欧盟有权单方面暂停该协议的执行。接下来，该协议还需得到欧盟各成员国政府的最终批准。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在面临中东地缘政治危机和全球经济放缓的双重压力下，美欧双方都有强烈的意愿加强经济纽带。欧盟希望通过降低关税来缓解内部的通胀压力，并为陷入困境的制造业注入活力。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>该协议的推进将显著降低美欧之间的贸易壁垒，有利于跨国企业的供应链整合和成本控制。然而，附加的保障条款也表明，欧洲在面对美国（尤其是特朗普政府）的贸易政策时依然保持着高度的警惕和战略自主诉求。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览（3月25日收盘）</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>46,429.49</td>
+                    <td class="up">+0.7%</td>
+                    <td>受和平谈判希望推动上涨</td>
+                </tr>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,591.90</td>
+                    <td class="up">+0.5%</td>
+                    <td>消费类股票领涨</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>21,929.83</td>
+                    <td class="up">+0.8%</td>
+                    <td>科技股普遍反弹</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油</strong></td>
+                    <td>~$90.32/桶</td>
+                    <td class="down">-2.2%</td>
+                    <td>受停火传闻影响回落</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>~$102.22/桶</td>
+                    <td class="down">-2.2%</td>
+                    <td>仍维持在100美元上方</td>
+                </tr>
+                <tr>
+                    <td><strong>黄金</strong></td>
+                    <td>~$4,545/盎司</td>
+                    <td class="up">+2.38%</td>
+                    <td>结束百年最长9天连跌</td>
+                </tr>
+                <tr>
+                    <td><strong>10年期美债收益率</strong></td>
+                    <td>4.326%</td>
+                    <td class="down">-6个基点</td>
+                    <td>从8个月高点小幅回落</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币 (BTC)</strong></td>
+                    <td>~$71,014</td>
+                    <td class="up">+2.2%</td>
+                    <td>表现出较强避险韧性</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, Bloomberg, WSJ, Fortune, Al Jazeera 等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
