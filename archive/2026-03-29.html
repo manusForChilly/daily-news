@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报 - 2026年3月29日</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年3月29日</div>
+    <br>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a>
+    <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-diplomacy">军事</span>
+        <h2><span class="num-badge">1</span>也门胡塞武装正式加入伊朗战争，向以色列发射导弹</h2>
+        <p>也门胡塞武装周六宣布正式加入伊朗战争，向以色列南部发射了多枚弹道导弹，为这场持续一个月的地区冲突开辟了新战线。胡塞武装发言人叶海亚·萨雷亚表示，袭击针对了“敏感的以色列军事目标”，并警告称，除非停止对伊朗及其盟友的侵略，否则袭击将继续。</p>
+        <p style="margin-top:10px;">以色列军方证实拦截了来自也门的导弹威胁。专家警告称，如果胡塞武装恢复对红海航运的袭击并试图封锁曼德海峡，将对全球供应链和能源价格造成更严重的破坏。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>胡塞武装作为伊朗“抵抗轴心”的重要成员，试图通过开辟新战线来分散以色列和美国的军事压力，同时提升其在地区内的政治影响力。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这标志着中东冲突的进一步外溢。如果红海航运再次受到严重威胁，全球供应链将面临新的冲击，进一步推高通胀压力。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">2</span>美股遭遇重挫，标普500指数创2022年以来最差单月表现</h2>
+        <p>受中东战局升级和油价飙升影响，美国股市在3月遭遇重挫。标普500指数周五收跌1.67%，整个3月累计下跌约6.8%，创下自2022年9月以来的最大单月跌幅。道琼斯工业平均指数大跌793点，纳斯达克综合指数下跌2.15%。</p>
+        <p style="margin-top:10px;">市场分析指出，地缘政治风险导致通胀预期重燃，彻底打破了投资者对美联储在2026年降息的希望。目前期货市场不仅排除了年内降息的可能，甚至开始定价加息风险。科技股成为重灾区，而能源板块则逆势大涨。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>油价飙升引发了市场对“滞胀”（经济增长放缓与通胀高企并存）的深刻担忧，迫使资金从高估值的科技股中撤出，重新评估宏观经济风险。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>美联储的货币政策路径可能被迫发生根本性转变。持续的市场动荡不仅会影响企业融资和消费者信心，还可能对即将到来的美国中期选举产生政治影响。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <span class="tag tag-geopolitics">能源</span>
+        <h2><span class="num-badge">3</span>国际油价飙升，布伦特原油突破112美元，WTI重返100美元大关</h2>
+        <p>全球原油市场周五录得近四年来最剧烈的单日波动。布伦特原油大涨4.22%，收于每桶112.57美元；WTI原油上涨5.46%，收于99.64美元，盘中一度突破100美元的心理关口。整个3月，布伦特原油累计飙升约51%。</p>
+        <p style="margin-top:10px;">油价暴涨的直接原因是伊朗在霍尔木兹海峡强制征收以人民币计价的“过路费”，导致每天约1780万桶的原油运输受阻。这一机制不仅增加了运输成本，还迫使航运公司在短时间内筹集人民币，对美元主导的全球金融体系形成挑战。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>伊朗利用其对霍尔木兹海峡的控制力，将能源供应武器化，以此作为对抗美国和以色列军事压力的经济筹码。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>高企的能源价格将直接传导至全球消费端，加剧各国的通胀压力。同时，强制使用人民币结算可能加速全球能源贸易的“去美元化”进程。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-policy">美国政治</span>
+        <span class="tag tag-humanitarian">社会</span>
+        <h2><span class="num-badge">4</span>全美爆发大规模“No Kings”抗议活动，反对特朗普政府政策</h2>
+        <p>周六，全美各地爆发了数千场名为“No Kings”（不要国王）的大规模抗议活动。成千上万的民众走上街头，抗议总统特朗普的执政政策、不断攀升的生活成本以及美国卷入伊朗战争。</p>
+        <p style="margin-top:10px;">这是自特朗普上任以来举行的第三次全国性“No Kings”示威活动。在费城、达拉斯、西雅图等主要城市，抗议人群挤满了街道和公园。在佛罗里达州西棕榈滩，抗议者甚至与特朗普的支持者发生了短暂冲突。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>民众对国内通胀高企、政府停摆以及海外军事干预的不满情绪日益高涨，促使反对派力量通过大规模街头运动表达诉求。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>持续的抗议活动凸显了美国社会的深度撕裂。这不仅给特朗普政府带来了巨大的国内政治压力，也可能影响其在处理国际危机时的决策空间。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-policy">美国政治</span>
+        <h2><span class="num-badge">5</span>美国国土安全部停摆创历史最长纪录，TSA缺薪引发机场混乱</h2>
+        <p>美国国土安全部（DHS）的资金耗尽危机已进入第44天，打破了美国历史上政府部分停摆的最长纪录。由于国会两党在边境安全和移民执法资金上僵持不下，DHS的全面拨款法案迟迟未能通过。</p>
+        <p style="margin-top:10px;">受此影响，美国运输安全管理局（TSA）的数千名员工在无薪状态下工作，导致周五出现了创纪录的缺勤率（超过12%）。大量员工辞职或请病假，使得全美各大机场的安检队伍排起长龙，旅客面临数小时的延误。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在选举年背景下，两党在边境安全等核心议题上的极度对立，导致常规的预算拨款沦为政治博弈的筹码，双方都不愿轻易妥协。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>长期的政府关门不仅严重影响了联邦员工的生计，也对航空运输、边境贸易等经济活动造成了实质性损害，进一步拖累了受战争和高油价打击的美国经济。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">6</span>马斯克xAI最后两名联合创始人离职，初创团队全员流失</h2>
+        <p>据知情人士透露，埃隆·马斯克旗下人工智能初创公司xAI的最后两名联合创始人Manuel Kroiss和Ross Nordeen已于本周离职。至此，最初协助马斯克创立xAI的11名联合创始人已全部离开公司。</p>
+        <p style="margin-top:10px;">此前，马斯克曾公开承认xAI“第一次没有建好”，目前正在“从头开始重建”。近期，xAI被马斯克旗下的太空探索公司SpaceX收购。核心团队的全面流失凸显了该公司在激烈的人工智能军备竞赛中面临的内部动荡和战略调整。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>马斯克极其严苛的管理风格、频繁的战略转向以及将xAI并入SpaceX的决定，可能是导致核心技术团队集体出走的主要原因。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>初创团队的流失可能会在短期内延缓xAI的技术研发进度。然而，依托SpaceX的庞大资源和算力支持，xAI仍有可能在重组后卷土重来。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">7</span>Anthropic下一代AI大模型“Mythos”遭泄露，引发行业震动</h2>
+        <p>人工智能企业Anthropic的下一代未发布大模型“Mythos”近日意外泄露。据报道，由于一个未加密的数据库被公开访问，包含近3000份内部文件的缓存被曝光，揭示了这款被Anthropic称为“有史以来最强大”的AI模型。</p>
+        <p style="margin-top:10px;">泄露的信息引发了科技界的广泛关注和猜测。传言称，Mythos在早期测试中的性能达到了预期的两倍，可能在架构上取得了重大突破。这一事件不仅暴露了顶级AI公司的安全漏洞，也加剧了行业内对超级AI发展速度的担忧。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>内部数据管理疏忽导致了此次严重的安全事故。这也反映出在激烈的AI军备竞赛中，企业在追求研发速度时可能忽视了信息安全。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>泄露事件可能会迫使Anthropic提前发布该模型，或调整其商业策略。同时，这也将促使整个AI行业重新审视和加强其核心资产的安全防护机制。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">8</span>Bluesky推出AI应用Attie，支持用户通过自然语言构建自定义信息流</h2>
+        <p>去中心化社交平台Bluesky宣布推出一款名为Attie的全新AI应用。该工具允许用户通过简单的自然语言指令，轻松创建个性化的社交媒体信息流，而无需任何编程知识或手动筛选。</p>
+        <p style="margin-top:10px;">Attie的推出标志着Bluesky在对抗传统算法推荐方面迈出了重要一步。通过将控制权交还给用户，Bluesky希望打破大型科技公司对信息分发的垄断，提供更加透明和定制化的社交体验。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>用户对传统社交媒体平台“黑盒”算法的不满日益增加，Bluesky试图通过引入AI技术，降低自定义信息流的门槛，吸引更多追求数字主权的用户。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这可能引领社交媒体平台向“用户主导算法”的新范式转变。如果取得成功，将对依赖中心化算法分发广告的传统社交巨头构成长期挑战。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">9</span>SpaceX或于近期IPO，估值高达1.75万亿美元</h2>
+        <p>市场传言称，埃隆·马斯克旗下的太空探索技术公司SpaceX正考虑在2026年进行首次公开募股（IPO），其目标估值可能高达惊人的1.75万亿美元。如果成行，这将是历史上规模最大的IPO之一。</p>
+        <p style="margin-top:10px;">据报道，SpaceX可能会将其30%的IPO股份分配给散户投资者，这有望引发市场的狂热追捧。分析人士指出，SpaceX的上市不仅将为公司筹集巨额资金以支持其火星计划，还可能吸走原本流向其他科技和AI初创公司的市场资金。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>SpaceX的星链（Starlink）业务已实现强劲盈利，且公司需要海量资金来推进“星舰”（Starship）项目和火星殖民计划，IPO成为最合理的融资途径。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如此庞大体量的IPO将对全球资本市场产生虹吸效应。同时，这也将确立SpaceX在商业航天领域的绝对霸主地位，加速人类太空探索的商业化进程。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-diplomacy">外交</span>
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">10</span>乌克兰总统泽连斯基访问海湾国家，与卡塔尔和阿联酋签署防务协议</h2>
+        <p>在中东战火蔓延之际，乌克兰总统泽连斯基对海湾国家进行了罕见的访问。周六，乌克兰与卡塔尔正式签署了一项为期10年的防务合作协议，重点涵盖应对导弹和无人机威胁的联合技术开发。</p>
+        <p style="margin-top:10px;">此外，乌克兰还与阿拉伯联合酋长国达成了类似的防务合作意向。泽连斯基表示，这些协议将加强乌克兰在防空领域的实力。此举表明，尽管全球焦点转向中东，乌克兰仍在积极寻求国际支持，以应对持续的俄乌冲突。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>面对西方军事援助可能因中东局势而减少的风险，乌克兰迫切需要拓展新的防务合作伙伴，特别是那些在无人机和防空领域有资金和技术需求的国家。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这显示了乌克兰外交战略的灵活性。通过技术共享换取资金和支持，乌克兰不仅能提升自身的防御能力，也为海湾国家提供了实战检验过的防空经验。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览（3月28日收盘）</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>45,166.64</td>
+                    <td class="down">-1.73%</td>
+                    <td>跌入修正区域</td>
+                </tr>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,368.85</td>
+                    <td class="down">-1.67%</td>
+                    <td>创2022年以来最差单月表现</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>20,948.36</td>
+                    <td class="down">-2.15%</td>
+                    <td>科技股遭猛烈抛售</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油</strong></td>
+                    <td>$99.64/桶</td>
+                    <td class="up">+5.46%</td>
+                    <td>重返100美元大关</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>$112.57/桶</td>
+                    <td class="up">+4.22%</td>
+                    <td>单月飙升约51%</td>
+                </tr>
+                <tr>
+                    <td><strong>黄金</strong></td>
+                    <td>$4,524.30/盎司</td>
+                    <td class="up">+2.62%</td>
+                    <td>避险需求推动反弹</td>
+                </tr>
+                <tr>
+                    <td><strong>10年期美债收益率</strong></td>
+                    <td>4.44%</td>
+                    <td class="up">+0.54%</td>
+                    <td>通胀担忧重燃，创年内新高</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币 (BTC)</strong></td>
+                    <td>$66,408.86</td>
+                    <td class="down">-0.81%</td>
+                    <td>高位回落，跌破6.7万</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, Bloomberg, WSJ, Fortune, Al Jazeera 等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
