@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日全球新闻简报</title>
+    <title>每日全球新闻简报 - 2026年4月11日</title>
     <style>
         :root {
             --primary: #1a1a2e;
@@ -38,10 +38,12 @@
             color: var(--text-muted);
             font-size: 0.95em;
         }
-        .archive-link {
-            display: inline-block;
+        .nav-links {
             margin-top: 14px;
-            margin-left: 12px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 0 6px;
             color: var(--accent);
             text-decoration: none;
             font-size: 0.9em;
@@ -50,7 +52,7 @@
             border-radius: 20px;
             transition: background 0.2s, color 0.2s;
         }
-        .archive-link:hover {
+        .nav-links a:hover {
             background: var(--accent);
             color: white;
         }
@@ -219,11 +221,14 @@
 <div class="header">
     <h1>每日全球新闻简报</h1>
     <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
-    <div class="date-badge" id="report-date">2026年4月11日</div>
-    <a href="archive.html" class="archive-link">历史归档 →</a>
+    <div class="date-badge">2026年4月11日</div>
+    <div class="nav-links">
+        <a href="../index.html">← 返回首页</a>
+        <a href="../archive.html">历史归档</a>
+    </div>
 </div>
 
-<div class="container" id="news-container">
+<div class="container">
 
     <div class="news-card">
         <span class="tag tag-geopolitics">地缘政治</span>
