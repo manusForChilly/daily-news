@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .tag-military { background: #0f3460; color: white; }
+        .tag-energy { background: #e94560; color: white; }
+        .tag-space { background: #00b4d8; color: white; }
+        .tag-medical { background: #2d6a4f; color: white; }
+        .tag-social { background: #e07c24; color: white; }
+        .tag-politics { background: #533483; color: white; }
+        .tag-religion { background: #533483; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="date-badge" id="report-date">2026年4月15日</div>
+    <br>
+    <a href="../index.html" class="archive-link">← 返回最新简报</a>
+    <a href="../archive.html" class="archive-link">历史归档 →</a>
+</div>
+
+<div class="container" id="news-container">
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-energy">能源</span>
+        <h2><span class="num-badge">1</span>霍尔木兹海峡封锁第二天：美伊谈判有望本周恢复</h2>
+        <p>美国中央司令部（CENTCOM）证实，美国对伊朗港口和霍尔木兹海峡的军事封锁进入第二天，目前尚无任何受制裁船只成功突破封锁。军方表示，在封锁首日已有6艘试图进入伊朗港口的船只被美军拦截并迫使掉头。然而，部分不受制裁限制的油轮仍在通过该海峡，表明封锁的执行具有选择性。</p>
+        <p style="margin-top:10px;">与此同时，外交斡旋出现重大转机。美国总统特朗普在周二的采访中透露，美国与伊朗的第二轮直接谈判可能在未来两天内于巴基斯坦恢复。据报道，伊朗方面正在考虑暂停部分石油出口，以避免直接测试美国的封锁底线，从而为即将到来的谈判创造缓和空间。此前，中国外交部已明确警告美国不要阻碍其合法的航行权利。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>封锁的实质性执行与外交谈判的重启同时进行，这是典型的'极限施压'策略。美国试图通过切断伊朗的经济命脉来迫使其在谈判桌上让步，而伊朗则通过克制反应来避免局势彻底失控。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果美伊谈判能够在本周顺利恢复，中东爆发全面战争的风险将大幅降低。然而，只要封锁仍在继续，全球能源供应链的脆弱性就无法消除，任何意外的军事摩擦都可能随时引爆市场恐慌。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <span class="tag tag-energy">能源</span>
+        <h2><span class="num-badge">2</span>国际油价暴跌逾7%：美伊谈判预期大幅降温市场</h2>
+        <p>受美伊可能恢复谈判的乐观预期影响，国际原油市场周二遭遇重挫。美国WTI原油期货暴跌7.87%，收于91.28美元/桶；布伦特原油期货也大跌4.6%，收于94.79美元/桶。此前，受中东冲突升级影响，布伦特原油一度逼近109美元的高位。</p>
+        <p style="margin-top:10px;">国际能源署（IEA）在最新报告中指出，中东能源基础设施遇袭和霍尔木兹海峡的封锁已导致全球石油供应出现创纪录的中断，3月份日均损失高达1010万桶。尽管如此，市场目前更倾向于对外交解决的前景进行定价，认为短期内全球原油供应完全中断的极端风险正在降低。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>原油市场的暴跌反映了投资者对地缘政治风险溢价的快速重估。随着特朗普暗示谈判即将重启，市场资金迅速从避险资产中撤出，导致油价出现'买预期，卖事实'的剧烈回调。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>油价的大幅回落为全球通胀降温提供了宝贵的喘息之机，这也是推动周二美股大涨的重要宏观背景。然而，在达成实质性停火协议之前，油价的波动率仍将维持在历史高位，90美元/桶可能成为新的多空博弈焦点。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">3</span>美股全线大涨：纳指录得十连涨，标普500逼近历史新高</h2>
+        <p>华尔街在周二迎来了强劲的上涨行情，三大股指均录得连续第三个交易日收高。科技股的强势回归推动纳斯达克综合指数大涨1.96%（+455.35点），收于23,639.08点，创下罕见的十连涨纪录。标普500指数上涨1.18%（+81.13点）至6,967.38点，距离历史收盘高点仅一步之遥。道琼斯工业平均指数也上涨0.66%（+317.74点），收于48,535.99点。</p>
+        <p style="margin-top:10px;">市场的乐观情绪主要源于地缘政治紧张局势的边际缓和以及强劲的企业财报预期。衡量市场恐慌情绪的VIX指数下跌近1%至18.42。据估计，周二的上涨为美国股市增加了数千亿美元的市值，显示出投资者对美国经济'软着陆'的信心依然坚定。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>市场正在同时对'地缘政治降温'和'强劲企业盈利'进行定价。油价的暴跌缓解了通胀担忧，而摩根大通等金融巨头的亮眼财报则为第一季度财报季奠定了积极的基调。科技巨头依然是推动大盘上涨的核心引擎。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果接下来的科技股财报能够匹配当前的高估值，标普500指数突破历史新高将是大概率事件。然而，VIX指数仍在18左右徘徊，表明市场底层仍存在一定的不安情绪，任何关于通胀或地缘政治的负面意外都可能引发剧烈回调。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">4</span>华尔街巨头Q1财报亮眼：摩根大通与花旗净利润双双大增</h2>
+        <p>美国银行业巨头周二发布了极其亮眼的第一季度财报。摩根大通（JPMorgan Chase）Q1实现净利润164.9亿美元，同比增长13%；折合每股收益（EPS）为5.94美元，大幅击败分析师预期的5.45美元。其有形普通股回报率（ROTCE）高达23%，交易业务收入创下历史新高。</p>
+        <p style="margin-top:10px;">与此同时，花旗集团（Citigroup）的业绩同样令人瞩目。该行Q1净利润同比飙升42.35%至57.85亿美元，EPS达到3.06美元。总营收增长14%至246亿美元。受强劲财报推动，花旗股价周二收盘上涨1.5%至131.42美元，创下20年来的新高。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>高利率环境虽然增加了资金成本，但也大幅拓宽了大型银行的净息差。同时，随着企业并购、IPO活动以及市场交易量的全面复苏，华尔街投行业务迎来了久违的春天。花旗的业绩飙升还受益于其正在进行的深度重组计划。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>作为美国经济的晴雨表，大型银行的强劲业绩暗示美国宏观经济依然充满韧性。这将进一步强化市场对经济'不着陆'的预期，但也可能使美联储在降息决策上更加谨慎。金融板块有望在短期内继续跑赢大盘。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <span class="tag tag-space">太空</span>
+        <h2><span class="num-badge">5</span>亚马逊115.7亿美元收购Globalstar，全面叫板马斯克Starlink</h2>
+        <p>科技巨头亚马逊（Amazon）周二宣布，已达成最终协议，将以约115.7亿美元的现金收购卫星通信公司Globalstar。根据协议，亚马逊将以每股90美元的价格收购Globalstar的所有流通股，这一价格较其一个月前的股价溢价超过50%。受此消息提振，亚马逊股价周二收盘上涨3.81%。</p>
+        <p style="margin-top:10px;">通过此次收购，亚马逊将获得Globalstar的所有卫星运营、基础设施以及宝贵的频谱许可。此举旨在大幅增强亚马逊旗下的'Amazon Leo'卫星宽带业务，直接向埃隆·马斯克（Elon Musk）即将IPO的Starlink发起挑战。此外，亚马逊还宣布与苹果达成协议，将继续为iPhone提供卫星连接服务。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>随着SpaceX的Starlink业务即将分拆上市，太空互联网的商业价值正在被迅速重估。亚马逊急需通过并购来弥补其在卫星部署进度上的落后，而Globalstar现成的卫星网络和频谱资源正是其最需要的战略资产。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这笔百亿美元级别的收购标志着太空互联网竞赛进入白热化阶段。亚马逊与苹果的间接结盟，将对Starlink形成强大的竞争压力。未来几年，全球消费者有望迎来更便宜、更普及的卫星直连手机（D2D）服务。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">6</span>OpenAI发布GPT-5.4-Cyber，AI网络安全攻防战升级</h2>
+        <p>在竞争对手Anthropic发布引发轰动的Claude Mythos模型仅几天后，OpenAI周二宣布推出GPT-5.4-Cyber。这是其最新旗舰模型GPT-5.4的网络安全特化版本，旨在为高级防御性工作流程提供强大的AI支持。</p>
+        <p style="margin-top:10px;">OpenAI表示，GPT-5.4-Cyber降低了合法网络安全工作的'拒绝边界'（refusal boundary），使其能够更深入地参与漏洞发现、代码审计和威胁情报分析。该模型目前仅通过'网络防御可信访问'（Trusted Access for Cyber Defense）计划向最高级别的企业客户限量开放。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>Anthropic此前展示的AI发现零日漏洞的能力引发了业界的广泛恐慌。OpenAI迅速跟进发布GPT-5.4-Cyber，既是对竞争对手的回应，也是为了抢占企业级网络安全市场的制高点。AI在网络安全领域的应用正从'辅助工具'向'核心武器'演变。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>AI驱动的网络攻防战已经拉开帷幕。一方面，GPT-5.4-Cyber等模型将极大提升企业的防御能力；另一方面，这也引发了关于强大AI模型可能被滥用的深层担忧。网络安全行业将迎来一轮由AI主导的彻底洗牌。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">7</span>Meta与Broadcom达成1GW定制AI芯片协议，广告收入将超Google</h2>
+        <p>Meta Platforms周二宣布与芯片巨头Broadcom达成一项具有里程碑意义的多年期合作协议。根据协议，Meta承诺将部署高达1吉瓦（GW）的联合设计定制AI芯片（MTIA）。作为交易的一部分，Broadcom首席执行官Hock Tan同意辞去Meta董事会职务，以避免潜在的利益冲突。</p>
+        <p style="margin-top:10px;">与此同时，知名市场研究机构eMarketer发布最新预测，Meta的全球数字广告收入预计将在2026年达到2434.6亿美元，占据全球数字广告支出约26.8%的份额，从而首次超越长期霸主Google（预计为2395.4亿美元）。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>Meta在定制AI芯片上的巨额投资，旨在降低对Nvidia的依赖，并提升其AI推荐算法的算力效率。正是这种在AI基础设施上的前瞻性布局，使得Meta能够大幅提升广告转化率，从而在数字广告市场实现对Google的历史性反超。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一里程碑事件标志着数字广告行业进入了'Meta时代'。为了夺回王座，Google必将加速其AI产品在搜索和广告业务中的商业化落地。两大巨头在AI底层硬件和上层应用领域的军备竞赛将进一步升级。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <span class="tag tag-policy">政策</span>
+        <h2><span class="num-badge">8</span>IMF下调2026年全球经济增长预测至3.1%</h2>
+        <p>国际货币基金组织（IMF）周二发布了最新的《世界经济展望》报告。受中东冲突和能源价格飙升的影响，IMF将2026年全球经济增长预测下调了1.4个百分点，至3.1%。同时，全球总体通胀率预计将反弹至4.4%。</p>
+        <p style="margin-top:10px;">IMF警告称，目前的基准预测是基于冲突'短暂'且能源价格温和上涨19%的假设。如果能源供应中断持续到明年，在最严重的情景下，全球经济增长可能暴跌至2%，而通胀率将飙升至6%以上。IMF呼吁各国央行保持警惕，防范通胀预期的脱锚风险。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>霍尔木兹海峡的危机直接冲击了全球能源供应链，导致生产成本上升和消费者购买力下降。IMF的大幅下调反映了地缘政治黑天鹅事件对脆弱的全球经济复苏造成的实质性破坏。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一悲观预测为全球金融市场敲响了警钟。如果中东局势进一步恶化，全球经济可能面临'滞胀'（低增长+高通胀）的严峻挑战。各国政府和央行在制定货币和财政政策时将面临更加艰难的权衡。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-politics">政治</span>
+        <h2><span class="num-badge">9</span>两名美国国会议员因性丑闻同日宣布辞职</h2>
+        <p>华盛顿政坛周二遭遇强震。民主党籍加州联邦众议员Eric Swalwell和共和党籍德州联邦众议员Tony Gonzales在同一天宣布辞去国会职务。两人均面临严重的性行为不当指控。</p>
+        <p style="margin-top:10px;">据报道，Swalwell面临包括性侵在内的多项指控，而Gonzales也卷入了类似的丑闻。两人选择在众议院道德委员会准备正式启动驱逐程序的前夕宣布辞职。这一罕见的跨党派'双辞职'事件在国会山引发了巨大震动。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在当前的政治环境下，两党都无法承受包庇丑闻议员所带来的政治代价。面对确凿的证据和即将到来的中期选举压力，党内高层显然向两人施加了巨大的压力，迫使他们体面退出，以避免更难堪的公开驱逐程序。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这两起辞职事件将触发特别选举，可能对众议院微弱的多数席位平衡产生微妙影响。同时，这也再次引发了公众对华盛顿政治道德标准的广泛质疑，可能进一步拉低选民对国会的信任度。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <span class="tag tag-diplomacy">外交</span>
+        <h2><span class="num-badge">10</span>以色列与黎巴嫩在华盛顿举行罕见直接和谈</h2>
+        <p>在美国的积极斡旋下，以色列和黎巴嫩代表周二在华盛顿美国国务院举行了罕见的面对面直接谈判。美国国务卿马可·鲁比奥（Marco Rubio）主持了这场三方会谈，旨在为两国建立一个持久的和平框架，并最终终结真主党在黎巴嫩南部的影响力。</p>
+        <p style="margin-top:10px;">鲁比奥在会谈前表示，这是一个'过程，而不是一个事件'，暗示谈判将是漫长而艰难的。尽管直接谈判本身具有历史意义，但真主党方面此前已明确拒绝接受任何此类谈判，这为和平协议的最终落实蒙上了浓厚的阴影。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>在中东局势因伊朗问题而高度紧张的背景下，美国急需在黎以边境取得外交突破，以防止冲突演变为全面的地区战争。以色列也希望通过外交手段确保其北部边境的安全，以便集中精力应对伊朗的威胁。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>尽管谈判开启了一个积极的外交窗口，但只要真主党不参与或不认可，任何协议都难以在黎巴嫩南部得到实质性执行。这次谈判更多是美国展示其地区影响力的外交姿态，短期内难以带来实质性的和平红利。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>市场数据概览（截至4月14日收盘）</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>变动</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>标普500指数</strong></td>
+                    <td>6,967.38</td>
+                    <td class="up">+1.18%</td>
+                    <td>逼近历史新高</td>
+                </tr>
+                <tr>
+                    <td><strong>道琼斯指数</strong></td>
+                    <td>48,535.99</td>
+                    <td class="up">+0.66%</td>
+                    <td>连续第三日上涨</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数</strong></td>
+                    <td>23,639.08</td>
+                    <td class="up">+1.96%</td>
+                    <td>录得罕见十连涨</td>
+                </tr>
+                <tr>
+                    <td><strong>VIX恐慌指数</strong></td>
+                    <td>18.42</td>
+                    <td class="down">-0.96%</td>
+                    <td>市场恐慌情绪有所缓和</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油</strong></td>
+                    <td>$91.28/桶</td>
+                    <td class="down">-7.87%</td>
+                    <td>美伊谈判预期降温市场</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油</strong></td>
+                    <td>$94.79/桶</td>
+                    <td class="down">-4.60%</td>
+                    <td>跌破100美元大关</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币 (BTC)</strong></td>
+                    <td>~$74,290</td>
+                    <td class="up">+1.24%</td>
+                    <td>盘中触及$76,000后回落</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, Bloomberg, WSJ, AP News, TechCrunch 等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
