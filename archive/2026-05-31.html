@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日全球新闻简报</title>
+    <title>每日全球新闻简报 - 2026年05月31日</title>
     <style>
         :root {
             --primary: #1a1a2e;
@@ -51,6 +51,24 @@
             transition: background 0.2s, color 0.2s;
         }
         .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .nav-links {
+            margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 0 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
             background: var(--accent);
             color: white;
         }
@@ -220,9 +238,12 @@
 
 <div class="header">
     <h1>每日全球新闻简报</h1>
-    <div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 往期回顾</div>
     <div class="date-badge" id="report-date">2026年05月31日</div>
-    <a href="archive.html" class="archive-link">历史归档 →</a>
+    <div class="nav-links">
+        <a href="../index.html">← 返回最新简报</a>
+        <a href="../archive.html" class="archive-link">历史归档 →</a>
+    </div>
 </div>
 
 <div class="container" id="news-container">
