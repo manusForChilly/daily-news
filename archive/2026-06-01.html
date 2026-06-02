@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日全球新闻简报</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .tag-military { background: #0f3460; color: white; }
+        .tag-energy { background: #e94560; color: white; }
+        .tag-space { background: #00b4d8; color: white; }
+        .tag-medical { background: #2d6a4f; color: white; }
+        .tag-social { background: #e07c24; color: white; }
+        .tag-politics { background: #533483; color: white; }
+        .tag-religion { background: #533483; color: white; }
+        .tag-environment { background: #2d6a4f; color: white; }
+        .tag-business { background: #e94560; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin: 0 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>每日全球新闻简报</h1>
+    <div class="subtitle">财经 · 科技 · 国际 ｜ 往期回顾</div>
+    <div class="date-badge" id="report-date">2026年06月01日</div>
+        <div class="nav-links">
+        <a href="../index.html">← 返回最新简报</a>
+        <a href="../archive.html" class="archive-link">历史归档 →</a>
+    </div>
+</div>
+
+<div class="container" id="news-container">
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">1</span>英伟达在台北电脑展发布 RTX Spark 超级芯片，联合微软重塑 AI PC 生态</h2>
+        <p>在台北国际电脑展（Computex 2026）上，英伟达（NVIDIA）首席执行官黄仁勋发表主题演讲，正式推出了名为“NVIDIA RTX Spark™”的全新个人电脑超级芯片。该芯片集成了定制的 ARM 架构 CPU、基于 Blackwell 架构的 RTX GPU，并配备了高达 128GB 的统一内存，旨在将传统 Windows 个人电脑彻底重塑为能够高效运行本地 AI 智能体（AI Agents）的新一代计算平台。此举标志着英伟达正式向传统 PC 芯片巨头英特尔（Intel）和超微半导体（AMD）发起正面挑战。</p>
+        <p style="margin-top:10px;">英伟达此次与微软展开了深度合作，将 RTX Spark 与 Windows 系统的底层进行深度融合，提供 FP4 精度的第五代 Tensor Core 加速。黄仁勋在演讲中强调，个人电脑的这一轮重新发明，其历史意义不亚于当年智能手机对传统手机的颠覆。受此消息刺激，即将推出搭载该芯片电脑的硬件厂商股价大幅飙升，戴尔科技（Dell）和惠普（HP）股价分别暴涨 11% 和 8.5%，英伟达自身股价也大涨超过 6%。而长期统治 PC 芯片市场的英特尔股价应声下跌 4.5%，高通（Qualcomm）更是重挫近 9%。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>英伟达此举标志着其正式从数据中心算力垄断者向消费级 PC 处理器市场的跨越。通过 RTX Spark，英伟达不仅直接挑战了 x86 架构在 PC 市场的统治地位，更与微软联手在操作系统层面树立了全新的 AI PC 标准，将算力直接部署在用户端，以降低对云端大模型的依赖。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>消费级 PC 市场将迎来新一轮的技术洗牌，ARM 架构在 PC 领域的渗透率将大幅提升。随着各大一线厂商在秋季推出 RTX Spark 笔记本，个人 AI 代理的普及速度将超预期。对于英特尔和 AMD 等传统巨头而言，其面临的转型和竞争压力将进一步加剧。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-tech">科技</span>
+        <h2><span class="num-badge">2</span>AI 巨头 Anthropic 抢跑 OpenAI 提交机密 IPO 申请，估值飙升至 9650 亿美元</h2>
+        <p>美国人工智能前沿实验室 Anthropic 于周一（6月1日）宣布，已向美国证券交易委员会（SEC）机密提交了首次公开募股（IPO）的草案登记声明（Form S-1）。这一举动出乎市场意料，使 Anthropic 在上市进程中领先于其主要竞争对手、ChatGPT 的母公司 OpenAI。就在一周前，Anthropic 刚刚宣布完成了由 Altimeter Capital、Dragoneer、Greenoaks 和红杉资本（Sequoia Capital）领投的 H 轮融资，筹集资金达 65 亿美元，将其估值推高至惊人的 9650 亿美元，超越 OpenAI 成为全美估值最高的前沿 AI 实验室。</p>
+        <p style="margin-top:10px;">在宣布 IPO 计划的同时，Anthropic 还公布了多项重大业务进展，包括将旨在提升网络安全和系统防御的“Glasswing 计划”扩展到 15 个国家的约 150 个新组织，并推出了升级版的 Claude 4.8 Opus 模型。新模型在代码编写、代理任务（agentic tasks）和专业工作方面表现出更强的性能和处理长周期任务的稳定性。尽管具体的发行股数和价格尚未确定，但这一潜在的巨无霸 IPO 已经彻底点燃了华尔街对 AI 概念股的热情，并可能成为科技史上最大规模的上市案之一。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>Anthropic 选择在此节点抢跑 IPO，一方面是为了在资金和声誉上确立对 OpenAI 的竞争优势，另一方面也是为了利用当前资本市场对前沿 AI 技术的极高估值溢价。其 H 轮融资的成功和新模型的发布为其上市提供了强有力的基本面支撑。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果 Anthropic 成功上市，将为整个 AI 行业确立新的估值锚点，并可能引发新一轮的 AI 独角兽上市潮。这也将迫使 OpenAI 重新评估其融资和商业化路径。然而，如此高昂的估值也将面临公开市场对于其盈利能力、商业化闭环以及算力成本支出的严苛审视。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">3</span>美伊冲突和平协议再次搁浅，伊朗宣布暂停谈判并誓言彻底封锁霍尔木兹海峡</h2>
+        <p>美伊冲突在迎来短暂的停火曙光后再次陷入严重僵局。伊朗国家电视台及半官方媒体塔斯尼姆通讯社（Tasnim）于周一（6月1日）报道，伊朗谈判代表已停止通过中间人与美国进行任何形式的信息交换，宣布暂停和平谈判。伊朗外交部长阿巴斯·阿拉格奇（Abbas Araghchi）在社交媒体上明确表示，美伊之间的停火是全方位的，而以色列近期在黎巴嫩针对真主党的军事行动严重违反了停火协议。伊朗坚称，在以色列完全撤出黎巴嫩并停止在加沙和黎巴嫩的所有军事行动之前，绝不恢复对话。</p>
+        <p style="margin-top:10px;">除了暂停谈判，伊朗方面还发出了更严厉的警告，宣布“抵抗之线”和伊朗已决定彻底封锁全球石油运输大动脉——霍尔木兹海峡，并激活包括红海门户巴布·埃尔-曼德海峡（Bab al-Mandeb）在内的其他战线，以惩罚以色列及其支持者。受此消息刺激，国际油价在周一早盘一度暴涨超过 7%。随后，美国总统特朗普在社交媒体上发文，称自己与以色列总理内塔尼亚胡进行了“非常富有成效”的通话，承诺不会派遣美军前往贝鲁特，并称与伊朗的谈判仍在“快速进行”，使得油价涨幅有所收窄。WTI 原油期货最终收涨 5.5% 至每桶 92.16 美元，布伦特原油收涨 4.2% 至每桶 94.98 美元。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>谈判的搁浅反映了美伊双方在核心地缘利益和代理人冲突上的根本矛盾。伊朗通过将黎巴嫩真主党的安全与美伊停火协议强行绑定，试图利用其对霍尔木兹海峡的控制权和全球能源市场的敏感性，向美国和以色列施加最大化压力，逼迫以色列在黎巴嫩退兵。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>霍尔木兹海峡的持续封锁和巴布·埃尔-曼德海峡的重新激活将对全球供应链和能源市场造成深远冲击。如果冲突无法在短期内通过外交途径解决，国际油价可能重回 100 美元上方，从而给正处于高位的美国通胀和美联储的利率政策带来巨大压力。同时，这也让特朗普政府的“极限施压”外交政策面临严峻考验。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-geopolitics">地缘政治</span>
+        <h2><span class="num-badge">4</span>以色列军队攻占黎巴嫩历史要塞博福特城堡，创 26 年来最深地面推进</h2>
+        <p>中东局势持续升级。以色列国防军（IDF）于周一（6月1日）采取了极为罕见的重大地面军事行动，成功攻占了位于黎巴嫩南部的历史著名古迹——博福特城堡（Beaufort Castle）。该城堡是一座具有极高战略价值的中世纪要塞，坐落于利塔尼河（Litani River）以北的悬崖上，可俯瞰整个黎巴嫩南部与以色列北部的边境地带。这一行动标志着自 2000 年以色列军队从黎巴嫩南部撤军以来，对黎巴嫩领土实施的最深一次地面推进，彻底打破了维持多年的地缘战略平衡。</p>
+        <p style="margin-top:10px;">在夺取该战略要塞后，以色列总理内塔尼亚胡随即下令对黎巴嫩首都贝鲁特的南部郊区（真主党控制区）实施了新一轮的猛烈空袭，这是近六周来贝鲁特首次遭到直接轰炸。黎巴嫩真主党则发射了密集的火箭弹和无人机作为报复，袭击了以色列北部多个城镇。尽管美国总统特朗普在社交媒体上宣称，他已促使以色列和真主党同意“停止一切交火”，但战场上的实际冲突并未停止。联合国安理会已宣布将针对黎巴嫩局势召开紧急会议，国际社会对中东爆发全面战争的担忧达到了顶点。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>以色列选择攻占博福特城堡，意在趁美伊冲突陷入僵局、国际注意力分散的混乱时刻，通过占领战略制高点，一举摧毁真主党在利塔尼河以南的防御体系，并为其在黎巴嫩南部建立更深地带的军事缓冲区做准备。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>以色列的深度入侵将导致黎以冲突彻底走向白热化。由于真主党拥有比哈马斯更强大的中远程导弹库，冲突的升级可能导致黎巴嫩和以色列北部出现严重的人道主义灾难。此举也直接导致了美伊和平谈判的破裂，使中东局势滑向不可控的边缘。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">5</span>伯克希尔·哈撒韦斥资 68 亿美元收购 Taylor Morrison，开启后巴菲特时代首笔重大交易</h2>
+        <p>美国著名投资财团伯克希尔·哈撒韦（Berkshire Hathaway）于周日（5月31日）宣布，已达成最终协议，将以约 68 亿美元（企业总价值达 85 亿美元）的现金，全资收购美国知名住宅建筑商 Taylor Morrison Home Corp。根据协议，伯克希尔将以每股 72.50 美元的价格进行收购，这一价格较该股上周五的收盘价溢价约 24%。该交易预计将在 2026 年下半年正式完成。受此消息刺激，Taylor Morrison（TMHC）股价在周一美股交易中暴涨 22% 至 72.30 美元，极大地振奋了美国房地产板块的信心。</p>
+        <p style="margin-top:10px;">这笔巨额交易是自传奇投资家沃伦·巴菲特（Warren Buffett）于去年底卸任、其指定继任者格雷格·阿贝尔（Greg Abel）全面执掌伯克希尔哈撒韦非保险业务和投资决策以来，该集团完成的首笔重大资本运作，因而备受华尔街瞩目。Taylor Morrison 专注于美国中高端住宅的开发建设。在当前美国高通胀、高利率导致成屋销售下滑，但新房建设需求依然坚挺的背景下，其业绩表现出了极强的韧性。此举表明，拥有近 4000 亿美元现金储备的伯克希尔正在重新开启其庞大的“大象捕猎”计划。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>格雷格·阿贝尔主导的这笔收购，完美延续了巴菲特“在市场周期底部寻找具有护城河、现金流稳定且管理优秀的实体企业”的经典价值投资逻辑。在美国成屋供给因业主不愿放弃此前低息贷款而极度紧缺的背景下，新房建设成为房地产市场的唯一增长引擎，Taylor Morrison 恰好切中了这一风口。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这笔交易表明伯克希尔哈撒韦对美国实体经济和住宅市场的长期前景依然投下信任票，将巩固其在建筑材料、住宅建设等房地产上下游产业链的版图。阿贝尔的这一成功出手，也将有效缓解华尔街对其能否顺利承接巴菲特投资衣钵的疑虑，为后巴菲特时代的伯克希尔树立了良好的开端。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">6</span>Barry Diller 旗下 People Inc. 拟 180 亿美元私有化美高梅，赌场板块巨震</h2>
+        <p>美国传媒大亨巴里·迪勒（Barry Diller）旗下的控股公司 People Inc.（前身为 IAC）于周一（6月1日）向美高梅国际酒店集团（MGM Resorts International）提交了一份非约束性私有化要约。People Inc. 提议以每股 48.30 美元的现金，收购其尚未持有的美高梅全部股份。该报价较美高梅上周五的收盘价溢价约 10.6%，对美高梅的整体估值达到 124 亿美元，计入债务后的总企业价值则高达 180 亿美元。People Inc. 目前已持有美高梅约 26.1% 的股份，是其最大股东。</p>
+        <p style="margin-top:10px;">巴里·迪勒在声明中表示，市场严重低估了美高梅资产的威力和持久性，People Inc. 坚信美高梅的管理团队非常出色，并希望通过此次全面收购支持美高梅进入下一个增长阶段，释放其全部潜在价值。受此重磅私有化消息推动，美高梅股价周一收盘暴涨 16% 至 50 美元上方，突破了要约报价。分析人士指出，这表明市场预期可能会出现更高的竞标价格，或者 People Inc. 将不得不提高报价以完成交易。此举也标志着全球博彩和文旅板块迎来近年来最大规模的整合尝试之一。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>People Inc. 此时选择全面私有化美高梅，是看中了其在拉斯维加斯金光大道（Las Vegas Strip）的优质资产、强大的线上博彩业务（BetMGM）以及全球文旅消费复苏的长期趋势。通过将美高梅完全纳入旗下，巴里·迪勒试图在数字媒体、文旅和娱乐博彩之间构建更深层次的生态协同。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>该交易若能达成，将彻底重塑全球博彩和酒店业的竞争格局，并可能引发其他赌场巨头的连锁并购防御。同时，股价突破要约价意味着 People Inc. 面临着与美高梅董事会及其他少数股东的艰苦博弈，交易的最终条款仍存在变数。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">7</span>美股 6 月开门红，三大股指再创历史新高，IBM 追随英伟达暴涨 9%</h2>
+        <p>美股市场在经历了亮眼的 5 月份后，于 6 月首个交易日（6月1日）延续了强劲的上涨势头，三大股指全线收创历史最高纪录。截至周一收盘，科技股比例较高的纳斯达克综合指数上涨 0.4%，标普 500 指数上涨 0.3%，首次收在 7600 点大关之上，道琼斯工业平均指数也微涨 0.1%。尽管中东局势升级导致油价大涨，但投资者对人工智能（AI）板块的狂热追捧以及强劲的宏观经济数据，依然主导了市场情绪。美国供应管理协会（ISM）公布的 5 月制造业 PM I升至 54，创下四年来最快增速，显示实体经济依然极具韧性。</p>
+        <p style="margin-top:10px;">在个股方面，除了英伟达因发布新芯片大涨外，老牌科技巨头国际商业机器公司（IBM）成为市场最大黑马，股价单日暴涨超过 9% 至 325 美元，创下历史新高。巴克莱银行（Barclays）分析师在周一发布的研究报告中，首次给予 IBM“超配”评级，并将目标价定为华尔街最高的 350 美元。分析师指出，IBM 在量子计算领域的生态布局正在“复制英伟达在 AI 领域的成功秘籍”，有望成为下一个爆发的科技巨头。此外，软件板块也迎来集体反弹，Salesforce 和 ServiceNow 等巨头均录得 9% 左右的惊人涨幅。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>美股再创新高，是由“AI 产业红利的持续释放”与“实体经济强劲复苏”双轮驱动的。ISM 制造业指数的超预期扩张，打消了市场对经济陷入滞胀的担忧。而 IBM、Salesforce 等公司的暴涨，表明 AI 投资热潮正在从单纯的硬件算力（英伟达）向软件应用和下一代前沿计算（量子计算）深度扩散。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>短期内，科技股的强势表现将继续吸引全球资本流入美股。然而，债券市场已经开始对潜在的通胀压力做出反应，10 年期美债收益率已攀升至 4.47% 附近。油价的上涨和强劲的经济数据可能会促使美联储在更长时间内维持高利率，甚至重新激发市场对年底加息的担忧，投资者需警惕高位回调风险。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-humanitarian">人道危机</span>
+        <h2><span class="num-badge">8</span>刚果（金）埃博拉疫情确诊病例突破 300 例，无药无苗处境极其严峻</h2>
+        <p>非洲中部国家刚果民主共和国（刚果（金））正面临着新一轮极其严峻的埃博拉疫情袭击。刚果（金）卫生部长罗杰·卡姆巴（Roger Kamba）于周一（6月1日）证实，本轮疫情的确诊病例已达 343 例，其中仅东部伊图里省（Ituri）就集中了 264 例。更令人担忧的是，本轮疫情由罕见的邦迪布焦病毒（Bundibugyo virus）引起，目前全球尚无任何针对该病毒的获批特效药或疫苗。截至目前，疫情已在刚果（金）夺走 42 条生命，并已蔓延至邻国乌干达，导致乌干达出现 9 例确诊病例及 1 例死亡，乌干达政府已紧急关闭了与刚果（金）的边境。</p>
+        <p style="margin-top:10px;">世界卫生组织（WHO）总干事谭德塞于周末亲自前往刚果（金）东部重灾区，主持开设了新的埃博拉治疗中心，并向奋战在一线的医护人员致敬。流行病防范创新联盟（CEPI）于周一宣布，将紧急拨款高达 6200 万美元，以加速由国际艾滋病疫苗倡议组织（IAVI）、莫德纳（Moderna）和牛津大学研发的三款针对邦迪布焦病毒的候选疫苗的临床试验。然而，当地复杂的安全局势给防疫工作带来了极大阻碍。活跃在灾区的反政府武装“民主同盟军”（ADF）及其他地方民兵组织频繁发动袭击，仅在周六就在北基伍省杀害了 16 名平民，导致多国救援人员和医疗物资无法安全抵达受灾村庄。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>本轮埃博拉疫情的快速蔓延，是刚果（金）东部长期战乱、公共卫生系统崩溃以及国际社会对罕见病毒研发投入不足共同导致的恶果。无药无苗的现状使得早期隔离和接触者追踪成为唯一的防疫手段，而当地武装冲突导致的“地理阻隔”和居民对外部医疗人员的不信任，进一步放大了防疫难度。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>如果疫情无法在伊图里和基伍省得到迅速遏制，其在战乱无政府地带的隐秘传播可能会导致更大规模的地区性人道主义灾难，甚至通过跨境人员流动向东非其他国家扩散。国际社会需要立即加大对安全通道的保障力度，并加速疫苗研发的绿色通道，防止疫情失控。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-finance">财经</span>
+        <h2><span class="num-badge">9</span>MicroStrategy 旗下 Strategy 首次打破“只买不卖”信念，出售 32 枚比特币</h2>
+        <p>全球持有比特币数量最多的单一企业实体、前身为 MicroStrategy 的软件公司 Strategy（MSTR）于周一（6月1日）提交的一份监管申报文件中披露，公司在 5 月 26 日至 5 月 31 日期间，以 77,135 美元的均价，出售了 32 枚比特币，净筹集资金约 250 万美元。尽管出售的份额相比其庞大的库存只是九牛一毛，但这是该公司自 2022 年底以来、也是其创始人迈克尔·塞勒（Michael Saylor）确立“比特币国库”战略以来，首次主动打破其宣称的“永远不卖、只买不买（HODL）”的坚定信念，引发了加密货币市场的巨大震动。</p>
+        <p style="margin-top:10px;">受此消息影响，Strategy 股价在周一美股交易中下跌约 4%，比特币价格也从 74,000 美元的高位遇阻回落，至周一傍晚在 71,500 美元附近震荡。尽管迈克尔·塞勒此前曾暗示为了税收或特定运营费用可能会有选择性地进行小额套现，但此次实际行动依然让许多散户投资者感到措手不及。预测市场平台 Polymarket 上关于“Strategy 是否会在 5 月底前出售比特币”的赌约也因此引发了激烈的清算争议。不过，Strategy 强调，其目前依然持有高达 844,000 枚比特币，平均持仓成本为 75,699 美元，公司对加密货币的长期战略并未发生根本性改变。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>Strategy 的首次“破戒”卖出，在心理层面对加密货币市场造成了冲击。在比特币价格过去一年下跌近三分之一、公司持仓均价与当前市价基本持平的背景下，这次微额出售可能是出于优化公司税务结构、支付特定利息或向市场展示其资产流动性的合规需要，而非基本面转向。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一行动在短期内将压制比特币的上涨势头，并可能促使其他重仓加密货币的上市公司重新评估其国库管理政策。然而，由于 Strategy 仍持有超过 84 万枚比特币，其依然是全球加密货币市场的最大单一风向标。如果未来出现更大规模的抛售，将对市场信心造成毁灭性打击。</p>
+        </div>
+    </div>
+
+    <div class="news-card">
+        <span class="tag tag-policy">政策</span>
+        <h2><span class="num-badge">10</span>特朗普政府暂停设立“反武器化”基金，面临法律诉讼与舆论争议</h2>
+        <p>美国司法部于周一（6月1日）宣布，将暂时搁置其原计划设立的、预算高达 18 亿美元的“反武器化基金”（Anti-Weaponization Fund）。该基金是特朗普政府第二任期内的一项标志性政策，旨在向那些声称在过去民主党执政期间遭到政府机构“不公正政治迫害或武器化调查”的个人提供法律援助和资金补偿。然而，这一极具争议的计划在推出后立即遭到了民主党人、法律学者以及民权组织的强烈抵制，并被指控为将国家司法资源“私有化和政治报复化”的工具。</p>
+        <p style="margin-top:10px;">在上周五，一名联邦法官针对一起指控该基金违反美国宪法及联邦预算程序的诉讼做出了裁决，下令暂时冻结该基金的启动。司法部在周一的声明中表示，在法律诉讼程序结束之前，将暂停该基金的所有筹备工作。白宫官员也试图在舆论上进行降温。在接受媒体采访时，总统特朗普并未对基金的暂停表示强烈愤怒，而是将注意力转移到了美伊谈判等外交事务上。分析人士指出，司法部的这一妥协表明，特朗普政府在推行其激进的司法改革和政治清算计划时，正面临着来自美国建制派法律体系和地方州政府的强大司法阻力。</p>
+        <div class="analysis-box">
+            <div class="analysis-title">Manus 深度点评</div>
+            <p class="analysis-text"><span class="analysis-label">原因分析：</span>“反武器化基金”的暂停，是美国三权分立体制下司法分支对行政权力扩张实施的一次典型制衡。该基金本质上具有极强的党派色彩，试图通过财政手段重塑对过去司法调查的定义，因此必然会遭遇法律程序上的合规性挑战和建制派力量的联合绞杀。</p>
+            <p class="analysis-text"><span class="analysis-label">影响预判：</span>这一政策的搁浅是特朗普政府近期面临的一大政治挫折，表明其在推行争议性议程时无法完全绕过现有的法律框架。随着即将到来的中期选举，两党围绕“司法武器化”和政府公信力的舆论战将更加白热化。该基金最终能否解冻，将取决于上诉法院的裁决以及两党在国会的博弈结果。</p>
+        </div>
+    </div>
+
+    <div class="market-section">
+        <h3>📊 市场数据概览 (2026年06月01日收盘)</h3>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>最新数值</th>
+                    <th>涨跌幅</th>
+                    <th>市场状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>标普500指数 (S&P 500)</strong></td>
+                    <td>7,604.00</td>
+                    <td class="up">+0.30%</td>
+                    <td>收创历史新高，突破7,600点大关</td>
+                </tr>
+                <tr>
+                    <td><strong>道琼斯指数 (Dow Jones)</strong></td>
+                    <td>51,080.00</td>
+                    <td class="up">+0.10%</td>
+                    <td>微幅收涨，维持在51,000点上方</td>
+                </tr>
+                <tr>
+                    <td><strong>纳斯达克指数 (Nasdaq)</strong></td>
+                    <td>24,986.00</td>
+                    <td class="up">+0.40%</td>
+                    <td>受 Computex 大会及 RTX Spark 芯片提振创历史新高</td>
+                </tr>
+                <tr>
+                    <td><strong>WTI原油期货 (WTI Crude)</strong></td>
+                    <td>$92.16/桶</td>
+                    <td class="up">+5.50%</td>
+                    <td>伊朗威胁封锁霍尔木兹海峡，油价暴涨，后因特朗普表态回落</td>
+                </tr>
+                <tr>
+                    <td><strong>布伦特原油 (Brent Crude)</strong></td>
+                    <td>$94.98/桶</td>
+                    <td class="up">+4.20%</td>
+                    <td>伊朗暂停美伊和平谈判，国际基准油价单日大幅反弹</td>
+                </tr>
+                <tr>
+                    <td><strong>黄金现货 (Gold XAU)</strong></td>
+                    <td>$4,515.00/盎司</td>
+                    <td class="down">-1.70%</td>
+                    <td>避险情绪分化及美债收益率上升，金价承压回调</td>
+                </tr>
+                <tr>
+                    <td><strong>比特币 (Bitcoin BTC)</strong></td>
+                    <td>~$71,500</td>
+                    <td class="down">-3.30%</td>
+                    <td>Strategy (MicroStrategy) 首次出售比特币打破信念，币价高位遇阻</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="footer">
+    <p>本报告由 Manus AI 自动搜集整理全球主流媒体（Reuters, Bloomberg, WSJ, AP News, TechCrunch 等）报道生成</p>
+    <p style="margin-top:6px;">每日早上 9:00 自动更新 · Powered by GitHub Pages</p>
+</div>
+
+</body>
+</html>
