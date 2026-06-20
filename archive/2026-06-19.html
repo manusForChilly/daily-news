@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .tag-military { background: #0f3460; color: white; }
+        .tag-energy { background: #e94560; color: white; }
+        .tag-space { background: #00b4d8; color: white; }
+        .tag-medical { background: #2d6a4f; color: white; }
+        .tag-social { background: #e07c24; color: white; }
+        .tag-politics { background: #533483; color: white; }
+        .tag-religion { background: #533483; color: white; }
+        .tag-environment { background: #2d6a4f; color: white; }
+        .tag-business { background: #e94560; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin: 0 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年6月19日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a>
+<a class="archive-link" href="../index.html" style="margin-left:12px; margin-top:0;">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-diplomacy">外交</span>
+<h2><span class="num-badge">1</span>以色列与真主党达成停火协议，美伊日内瓦谈判推迟</h2>
+<p>在经历了导致黎巴嫩数十人死亡的激烈轰炸后，以色列和黎巴嫩真主党终于达成停火协议。这一停火协议差点破坏了正在进行的美伊谈判进程。伊朗试图将美国迫使以色列停止对真主党的军事行动作为推进美伊核谈判的前提条件。<br><br>受此局势影响，原定于6月19日在瑞士日内瓦举行的美伊谈判被推迟。美国特使Steve Witkoff将于6月20日前往瑞士。此前，美伊双方已于6月15日签署了一份包含14点的谅解备忘录（MOU），内容涉及60天停火、开放霍尔木兹海峡，并为未来关于伊朗核计划、美国制裁和释放人质的谈判铺平道路。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>中东地区错综复杂的矛盾再次凸显，各方利益相互牵制。伊朗试图利用其地区影响力（如真主党）作为与美国谈判的筹码，而以色列的军事行动则不断冲击着脆弱的和平进程。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>虽然美伊签署了初步备忘录，但谈判的推迟表明和平之路依然充满变数。中东局势的任何风吹草动都将继续牵动全球能源市场的神经和地缘政治格局。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">2</span>SpaceX IPO创纪录后迎杠杆ETF交易热潮，股价大幅波动</h2>
+<p>太空探索技术公司（SpaceX）于6月12日完成创纪录的750亿美元IPO后，迅速成为华尔街的焦点。在上市后的首个完整交易周内，至少11只追踪SpaceX股票的杠杆ETF相继推出，吸引了大量散户投资者和交易员的参与。这些杠杆ETF在短短四天内的交易量超过100亿美元，显示出市场对这家马斯克旗下公司的狂热追捧。<br><br>然而，这种狂热也带来了剧烈的股价波动。在经历了上市初期的连续上涨、市值一度超越亚马逊后，SpaceX股价在周三和周四分别下跌5%和近4%。分析师警告称，鉴于市场的高度关注和相对较小的公共流通量，SpaceX股票可能面临类似特斯拉的剧烈波动。尽管如此，该股票即将被纳入CRSP和S&P Total Market Index等主要指数，预计将带来被动资金的买入支撑。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>SpaceX在商业航天领域的垄断地位以及马斯克的个人影响力，使其成为资本市场的宠儿。杠杆ETF的迅速推出更是放大了市场的投机情绪，导致股价大起大落。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>SpaceX的成功上市及其引发的市场狂欢，不仅重塑了美国科技巨头的市值排名，也为后续其他AI和硬科技企业的IPO设定了极高的市场预期和标杆。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span><span class="tag tag-social">社会</span>
+<h2><span class="num-badge">3</span>英国Bedford发生严重火车追尾事故，致1死89伤</h2>
+<p>当地时间6月19日下午17时12分，英国Bedford南部的Elstow地区发生了一起严重的火车相撞事故。一列从诺丁汉开往伦敦圣潘克拉斯的East Midlands Railway列车因故障停在快车道上，随后被另一列从Corby开往伦敦的列车从后方追尾。<br><br>事故造成Corby列车的司机不幸当场死亡，另有至少89人受伤。其中11人伤势严重危及生命，32人重伤。截至次日，仍有28人在医院接受治疗，9人情况危急。事故发生后，多架空中救护车和地面救护车赶赴现场救援。该事故导致相关线路的铁路交通严重中断，英国铁路事故调查分局（RAIB）已介入调查。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>初步信息显示，前方列车因故障停滞是引发追尾的直接原因。然而，铁路信号系统为何未能及时向后方列车发出警告，将是后续调查的重点。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>这起悲剧不仅给受害者家庭带来沉重打击，也再次引发了公众对英国铁路系统安全性和基础设施老化问题的担忧。预计将促使相关部门进行全面的安全审查。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-business">商业</span>
+<h2><span class="num-badge">4</span>苹果与英特尔达成芯片合作协议，特朗普亲自宣布</h2>
+<p>美国总统特朗普在Truth Social上宣布，苹果公司已同意与英特尔（Intel）合作，在美国本土设计和制造芯片。这一消息极大提振了市场对美国半导体制造业复苏的信心。受此利好刺激，英特尔股价在周四暴涨11%，并带动美光科技（Micron）和美满电子（Marvell）等芯片股全面上涨。<br><br>据报道，英特尔的18A制程节点将被用于制造iPad Pro和部分入门级设备的芯片。这一合作不仅是苹果供应链多元化战略的重要一步，也是美国政府推动高端制造业回流、减少对亚洲供应链依赖的重大政治和经济胜利。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>在地缘政治紧张局势加剧的背景下，确保半导体供应链的安全已成为美国国家战略的核心。特朗普政府的推动和巨额补贴政策，是促成此次合作的关键外部因素。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>苹果与英特尔的联手将深刻改变全球芯片代工格局，对台积电（TSMC）等现有代工巨头构成潜在挑战。同时，这也标志着英特尔在代工业务转型上迈出了实质性的一步。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-business">商业</span>
+<h2><span class="num-badge">5</span>Nvidia发布RTX Spark超级芯片，重新定义AI PC</h2>
+<p>英伟达（Nvidia）正式推出了面向AI PC市场的RTX Spark平台。与传统的游戏笔记本芯片不同，RTX Spark将20核的Grace Arm架构CPU与强大的Blackwell RTX GPU深度整合，并配备了6144个CUDA核心和第五代Tensor Core。该平台支持高达128GB的LPDDR5X统一内存，功耗控制在45-80W之间。<br><br>英伟达声称，RTX Spark能够提供高达1 petaflop的AI性能，专为处理大规模本地AI模型、复杂3D场景和高级视频编辑而设计。首批搭载该芯片的设备预计将于今年晚些时候由微软Surface、联想、戴尔、华硕等主要制造商推出。这一发布标志着英伟达正试图在高端创作者和本地AI处理领域建立新的硬件标准。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>随着AI模型规模的不断扩大，云端处理的延迟和隐私问题日益凸显。英伟达通过RTX Spark平台，旨在将强大的AI算力下放到本地终端，满足专业用户的需求。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>RTX Spark的推出将加剧AI PC市场的竞争，直接挑战苹果MacBook Pro在高端创作者市场的地位。同时，基于Arm架构的设计也将进一步推动Windows on Arm生态的发展。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-politics">政治</span><span class="tag tag-social">社会</span>
+<h2><span class="num-badge">6</span>特朗普揭幕全新涂装“空军一号”，采用红白蓝配色</h2>
+<p>美国总统特朗普周五在马里兰州安德鲁斯联合基地展示了全新的“空军一号”总统专机。这架由卡塔尔政府赠送的波音747-8客机经过了全面的安全和豪华改装。新飞机放弃了自肯尼迪时代以来的经典知更鸟蛋蓝配色，转而采用了深蓝色机腹、红色条纹和带有巨大美国国旗尾翼的全新设计，更符合特朗普的个人审美。<br><br>特朗普表示，这架飞机已被改造成“前所未见的豪华飞行白宫”。他确认将在下个月乘坐该机前往土耳其参加北约峰会，并在7月4日的国庆庆典上进行飞越展示。美国空军表示，这架卡塔尔赠送的飞机将作为过渡机型，直到波音公司直接交付的新一代VC-25B专机（预计2028年）投入使用。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>特朗普一直对前任政府取消其“空军一号”涂装设计感到不满。重新上任后，他迅速恢复了具有强烈个人色彩和爱国主义元素的涂装方案，以此彰显其政治理念。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>新“空军一号”的亮相不仅是总统出行的交通工具升级，更是特朗普向国内外展示“美国优先”形象的政治符号。其豪华配置和高调展示也可能引发关于政府开支的争议。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span><span class="tag tag-environment">环境</span>
+<h2><span class="num-badge">7</span>佛罗里达大沼泽地爆发严重野火，过火面积近1.6万英亩</h2>
+<p>美国佛罗里达州南部的大沼泽地（Everglades）地区正在遭受大规模野火的肆虐。据报道，火灾总过火面积已接近16,000英亩。其中，被命名为Coptic Fire的火灾面积已达4,793英亩，目前仅有40%得到控制。<br><br>这场持续燃烧的野火产生了大量浓烟，严重影响了迈阿密等周边地区的空气质量，对孕妇、儿童和老年人等敏感人群构成健康威胁。尽管天气模式和急救人员的努力使空气质量有所改善，但佛罗里达州2026年的野火季已被证明异常活跃。当局正密切监控火情，并呼吁居民采取必要的防护措施。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>佛罗里达州异常活跃的野火季可能与气候变化导致的极端干旱和高温天气有关。大沼泽地独特的生态系统在干燥条件下极易引发大规模火灾。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>野火不仅对当地珍贵的生态系统造成破坏，还对周边城市的公共健康和交通运输带来严重影响。这再次凸显了加强气候适应能力和森林火灾防范机制的紧迫性。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-social">社会</span><span class="tag tag-politics">政治</span>
+<h2><span class="num-badge">8</span>奥巴马总统中心在芝加哥正式向公众开放</h2>
+<p>6月19日，恰逢美国庆祝结束奴隶制的“六月节”（Juneteenth），备受期待的奥巴马总统中心（Obama Presidential Center）在芝加哥南区的历史性杰克逊公园正式向公众开放。该中心占地近20英亩，旨在激励人们在自己的社区中推动变革。<br><br>前一日，该中心举行了隆重的奠基仪式，拜登、奥巴马、小布什、克林顿等多位前总统及前第一夫人出席。园区内设施丰富，包括设有白宫椭圆形办公室等比例复制品的博物馆、米歇尔·奥巴马设计的花园、专业级篮球场以及芝加哥公共图书馆的新分馆。预计该中心每年将吸引多达100万名游客，成为芝加哥新的文化和教育地标。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>选择在“六月节”这一具有深厚历史意义的日子开放，彰显了该中心对非裔美国人历史和民权运动的致敬。这也是奥巴马总统政治遗产的重要延续。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>奥巴马总统中心不仅将带动芝加哥南区的经济发展和社区复兴，更将作为一个重要的公共教育平台，持续激励新一代年轻人参与社会公共事务和民主实践。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-sports">体育</span><span class="tag tag-social">社会</span>
+<h2><span class="num-badge">9</span>2026世界杯：美国男足2-0击败澳大利亚提前出线</h2>
+<p>在西雅图举行的2026年FIFA世界杯小组赛中，东道主之一的美国国家男子足球队（USMNT）在缺少受伤球星克里斯蒂安·普利西奇的情况下，依然以2-0的比分战胜了澳大利亚队。这场胜利使美国队在D组中取得两连胜，提前一轮锁定了一个32强淘汰赛的席位。<br><br>比赛中，亚历克斯·弗里曼打入了他的首个世界杯进球，帮助球队确立领先优势。西雅图主场球迷的狂热支持为美国队营造了绝佳的比赛氛围。这场胜利不仅展示了美国队深厚的阵容深度和战术执行力，也进一步点燃了美国国内的足球热情。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>尽管缺少核心球员，美国队依然能够凭借整体实力和主场优势取得胜利，显示出美国足球近年来的长足进步和青训体系的成功。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>作为东道主提前出线，将极大提升本届世界杯在美国本土的关注度和商业价值。这也为美国队在后续淘汰赛中走得更远注入了一剂强心针。</p>
+</div>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-energy">能源</span>
+<h2><span class="num-badge">10</span>美联储加息预期引发市场震荡，美国汽油均价跌破4美元</h2>
+<p>本周金融市场经历了剧烈波动。周三，由于美联储政策制定者暗示可能在今年晚些时候加息以遏制通胀，引发了股票和债券市场的抛售，10年期国债收益率一度升至4.5%。然而，在英特尔等芯片股的强劲带动下，股市在周四（6月18日）大幅反弹，标普500指数收涨1.08%，纳斯达克指数攀升近2%。<br><br>与此同时，受美伊达成初步和平协议、霍尔木兹海峡有望全面重新开放的利好消息影响，国际油价回落。美国全国普通汽油平均价格在周四跌至3.999美元/加仑，这是自今年3月底以来首次跌破4美元大关，为即将到来的夏季出行高峰提供了喘息之机。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">原因分析：</span>市场对美联储货币政策的敏感度依然极高，任何关于利率路径的暗示都会引发剧烈反应。而能源价格的回落则主要归功于地缘政治风险的缓解。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>汽油价格的下降将直接减轻消费者的生活成本压力，有助于支撑美国经济的消费引擎。然而，通胀的顽固性意味着美联储的货币政策仍将是悬在市场头顶的达摩克利斯之剑。</p>
+</div>
+</div>
+
+
+<div class="market-section">
+<h3>市场数据概览 (截至 2026年6月18日 收盘)</h3>
+<table class="market-table">
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>涨跌幅</th>
+</tr>
+<tr>
+<td>道琼斯工业平均指数</td>
+<td>51,564.70</td>
+<td class="up">+0.14%</td>
+</tr>
+<tr>
+<td>标普500指数</td>
+<td>7,500.58</td>
+<td class="up">+1.08%</td>
+</tr>
+<tr>
+<td>纳斯达克综合指数</td>
+<td>收涨</td>
+<td class="up">+2.43%</td>
+</tr>
+<tr>
+<td>SpaceX (SPCX)</td>
+<td>$175.00</td>
+<td class="down">-8.00%</td>
+</tr>
+<tr>
+<td>美国10年期国债收益率</td>
+<td>4.46%</td>
+<td class="down">-4基点</td>
+</tr>
+<tr>
+<td>比特币 (BTC)</td>
+<td>~$63,100</td>
+<td class="down">下跌</td>
+</tr>
+<tr>
+<td>WTI 原油</td>
+<td>$76.36/桶</td>
+<td class="down">-0.31%</td>
+</tr>
+<tr>
+<td>布伦特 原油</td>
+<td>$79.49/桶</td>
+<td class="down">-0.45%</td>
+</tr>
+</table>
+</div>
+
+</div>
+
+<div class="footer">
+<p>© 2026 每日全球新闻简报 | 由 Manus AI 自动聚合与生成</p>
+</div>
+</body>
+</html>
