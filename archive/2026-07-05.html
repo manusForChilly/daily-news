@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .tag-military { background: #0f3460; color: white; }
+        .tag-energy { background: #e94560; color: white; }
+        .tag-space { background: #00b4d8; color: white; }
+        .tag-medical { background: #2d6a4f; color: white; }
+        .tag-social { background: #e07c24; color: white; }
+        .tag-politics { background: #533483; color: white; }
+        .tag-religion { background: #533483; color: white; }
+        .tag-environment { background: #2d6a4f; color: white; }
+        .tag-business { background: #e94560; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin: 0 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月5日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a><br><a class="archive-link" href="../index.html" style="margin-top: 8px;">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">1</span>美国6月非农就业数据远不及预期，失业率降至4.2%</h2>
+<p>美国劳工部报告显示，6月份非农就业人数仅增加5.7万人，远低于预期的11.7万人。同时，4月和5月的就业数据也被向下修正，表明劳动力市场的降温速度比之前认为的要快得多。<br><br>尽管就业增长疲软，失业率却意外降至4.2%。但这主要是由于劳动力参与率下降了0.3个百分点至61.5%，创下自2021年3月以来的最低水平。疲软的就业数据缓解了市场对通胀的担忧，交易员们进一步降低了对美联储近期加息的预期，推动美国三大股指在假期前全线收涨。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>美国劳动力市场正在经历明显的降温，新增就业岗位的减少和劳动力参与率的下降共同描绘出一幅经济增长放缓的图景。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>疲软的就业数据为美联储维持当前利率水平提供了充分的理由。如果未来几个月经济数据继续走弱，市场对美联储降息的预期可能会重新升温，从而对美元汇率和股市产生深远影响。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">2</span>Anthropic发布Claude Sonnet 5及Claude Science</h2>
+<p>人工智能初创公司Anthropic宣布推出Claude Sonnet 5，并将其作为免费和Pro计划的默认模型。据称，该模型在代理能力（如制定计划、使用工具和自主运行）方面表现出色，性能接近旗舰版Opus 4.8，但成本大幅降低。<br><br>同时，Anthropic还推出了专为科学实验室和药物研发优化的Claude Science平台。该平台整合了60多个科学数据库，涵盖基因组学、蛋白质组学等领域，标志着Anthropic正式进军由OpenAI和谷歌DeepMind主导的AI科学研究市场。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>Anthropic通过推出更具性价比的Sonnet 5和垂直领域的Claude Science，正在多维度扩展其AI模型的商业应用场景。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>随着代理能力成为行业标配，AI模型的竞争焦点正在向成本效益和特定领域的专业能力（如药物研发）转移，这将加速AI在科研和企业级的落地。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">geopolitics</span>
+<h2><span class="num-badge">3</span>北约峰会即将在土耳其安卡拉举行，聚焦防务支出与乌克兰支持</h2>
+<p>北约领导人将于7月7日至8日齐聚土耳其首都安卡拉举行年度峰会。在特朗普总统频繁要求欧洲增加防务支出的压力下，此次峰会将重点讨论如何落实“责任转移”以及提升国防工业产能。<br><br>预计北约成员国将重申对乌克兰的支持，并承诺在2026年为乌克兰提供700亿欧元的军事装备、援助和培训。此外，作为东道主，土耳其总统埃尔多安计划在峰会期间推动解除北约内部的国防贸易限制，并寻求与盟国在导弹防御系统等领域的合作。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>在特朗普重返白宫并施加压力的背景下，北约正试图通过增加欧洲的防务承诺来维持联盟的团结和运作。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>欧洲国家被迫承担更多防务责任，将推动欧洲国防工业的扩张。同时，对乌克兰的持续军援表明北约在应对俄罗斯威胁上的立场依然坚定。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-diplomacy">diplomacy</span>
+<h2><span class="num-badge">4</span>伊朗为遇刺最高领袖哈梅内伊举行盛大葬礼</h2>
+<p>数以万计的伊朗民众周日涌上德黑兰街头，参加为遇刺身亡的最高领袖阿亚图拉·阿里·哈梅内伊举行的为期六天的盛大葬礼。哈梅内伊在2月28日的美以空袭中丧生，此次葬礼旨在向国内外展示伊朗伊斯兰共和国的体制依然稳固。<br><br>然而，备受关注的新任最高领袖穆杰塔巴·哈梅内伊（哈梅内伊之子）并未在葬礼上公开露面。据报道，他在之前的袭击中受重伤。他的缺席不仅引发了外界对其健康状况的猜测，也反映出伊朗领导层在安全和权力过渡方面面临的严峻挑战。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>伊朗试图通过历史规模的葬礼来凝聚国内共识并展示国家韧性，但新任最高领袖的缺席暴露出政权内部的脆弱性。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>在与美国和以色列的冲突背景下，伊朗的权力交接充满不确定性。这不仅影响中东地区的稳定，也可能为目前脆弱的停火协议和间接谈判带来变数。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">5</span>特斯拉Robotaxi在迈阿密上线，未配备安全员</h2>
+<p>特斯拉宣布其Robotaxi（无人驾驶出租车）服务已在佛罗里达州迈阿密的部分地区上线。这是继奥斯汀、休斯顿、达拉斯和凤凰城之后，特斯拉Robotaxi进驻的第五个美国城市。<br><br>值得注意的是，特斯拉在迈阿密的运营并未在车内配备安全员，这是其首次在没有经过监督期的情况下直接推出完全无监督的自动驾驶服务。这一激进的扩张策略虽然彰显了特斯拉对其全自动驾驶（FSD）技术的信心，但也引发了监管机构和消费者倡导组织对安全风险的担忧。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>特斯拉正在加速推进其自动驾驶商业化进程，试图通过规模化部署来验证其无监督FSD技术的可靠性。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>这种激进的策略如果成功，将极大巩固特斯拉在自动驾驶领域的领先地位；但一旦发生严重安全事故，不仅会重创特斯拉，还可能引发针对整个行业的严格监管。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">business</span>
+<h2><span class="num-badge">6</span>三星电子预计第二季度营业利润将飙升18倍</h2>
+<p>受人工智能热潮推动的存储芯片需求激增影响，全球最大的存储芯片制造商三星电子预计将公布创纪录的第二季度业绩。据分析师估计，三星该季度的营业利润可能达到86万亿韩元（约合563.5亿美元），同比飙升18倍。<br><br>与此同时，另一家韩国芯片巨头SK海力士正计划在美国上市，以筹集约280亿美元的资金。数据显示，第二季度DRAM价格环比上涨了44%，NAND闪存价格上涨了53%，标志着存储芯片行业正迎来一个由AI需求驱动的超级周期。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>AI基础设施建设对高带宽内存（HBM）的巨大需求，彻底扭转了存储芯片行业的周期，使其成为盈利引擎。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>三星和SK海力士的强劲表现和扩张计划，反映出科技巨头在AI领域的资本支出依然强劲，这也将继续支撑相关半导体股票的估值。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">7</span>OpenAI预览GPT-5.6系列模型，引发行业关注</h2>
+<p>OpenAI向部分经过政府审查的合作伙伴预览了其下一代模型系列GPT-5.6，包括主打推理的Sol、均衡型的Terra以及低成本生产型的Luna。这标志着OpenAI从单一旗舰模型向多层级产品战略的转变。<br><br>然而，在一项名为GeneBench-Pro的计算生物学基准测试中，即使是最强大的GPT-5.6 Sol Pro，其得分也仅为31.5%。这表明，尽管前沿AI模型在编程和通用推理方面取得了巨大进步，但在解决博士级别的专业科学问题时仍存在显著局限。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>OpenAI的新一代模型展示了其在通用AI领域的持续进化，但在高度专业化的科学领域，通用大模型仍难以直接替代人类专家。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>这预示着未来AI的发展将更加细分，通用大模型需要与特定领域的数据库和专业工具深度结合，才能在科研和工业应用中发挥真正价值。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">8</span>金价因美国疲软就业数据迎来反弹，创下首个周涨幅</h2>
+<p>在连续四周下跌后，国际金价在截至7月5日的一周内迎来反弹，涨幅约2.5%，至每盎司4,175美元附近。此次反弹主要受美国6月非农就业数据意外疲软的推动。<br><br>疲软的就业报告促使市场降低了对美联储近期加息的押注，美元随之走弱，创下自4月以来的最大单周跌幅。此外，随着美伊在多哈的间接谈判取得进展，霍尔木兹海峡航运恢复，国际油价有所回落，布伦特原油跌至约72美元/桶。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>金价的走势高度依赖于市场对美联储货币政策的预期，疲软的经济数据成为推动金价反弹的直接催化剂。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>如果美国经济数据继续显示降温迹象，美联储的加息周期可能正式终结，这将为金价提供进一步的支撑，同时对美元构成下行压力。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-sports">sports</span>
+<h2><span class="num-badge">9</span>特朗普干预世界杯判罚，国际足联撤销美国球员红牌</h2>
+<p>国际足联（FIFA）周日宣布，撤销美国队前锋弗拉林·巴洛贡（Folarin Balogun）在世界杯1/16决赛中获得的红牌停赛处罚。这一决定引发了广泛争议，因为据报道，美国总统特朗普在此之前亲自致电国际足联主席詹尼·因凡蒂诺，要求其审查该判罚。<br><br>特朗普在社交媒体上对国际足联的决定表示感谢，称其“纠正了巨大的不公”。然而，美国队在1/8决赛的对手比利时队对此表示“震惊”和愤怒，比利时主教练嘲讽称“不知道在FIFA办公室里，7月5日是不是欧洲的愚人节”。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>政治力量对国际体育赛事的直接干预，打破了体育与政治分离的传统界限，引发了关于公平竞赛的激烈讨论。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>这一史无前例的决定可能会严重损害国际足联的公信力，并为未来的国际体育赛事开创一个危险的先例，导致更多国家利用政治影响力干预比赛结果。</p>
+</div>
+</div>
+<div class="news-card">
+<span class="tag tag-sports">sports</span>
+<h2><span class="num-badge">10</span>挪威队2-1爆冷击败巴西队，历史性晋级世界杯八强</h2>
+<p>在2026年FIFA世界杯的一场1/8决赛中，挪威队凭借超级巨星埃尔林·哈兰德（Erling Haaland）的出色发挥，以2-1的比分爆冷击败了五星巴西队，历史性地挺进世界杯八强。<br><br>哈兰德在比赛中梅开二度，成为挪威队获胜的最大功臣。这场比赛在新泽西州的大都会人寿体育场举行，吸引了众多球迷和名流观战。挪威队的胜利引发了国内的狂欢，同时也延续了他们在国际A级赛事中对阵巴西队的不败纪录。</p>
+<div class="analysis-box">
+<div class="analysis-title">Manus 深度点评</div>
+<p class="analysis-text"><span class="analysis-label">核心信息：</span>挪威队的胜利证明了在现代足球中，拥有顶级巨星和出色的战术执行力，足以挑战传统的足球强国。</p>
+<p class="analysis-text"><span class="analysis-label">影响预判：</span>巴西队的提前出局将引发国内足球界的深刻反思，而挪威队作为本届世界杯的最大黑马，将吸引全球球迷的更多关注，极大地提升了该国在国际足坛的地位。</p>
+</div>
+</div>
+
+<div class="market-section">
+<h3>全球市场概览 (截至7月5日)</h3>
+<table class="market-table">
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>变动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>道琼斯工业平均指数</td>
+<td>52,900.07</td>
+<td class="up">+1.1% (创历史新高)</td>
+</tr>
+<tr>
+<td>纳斯达克综合指数</td>
+<td>25,832.67</td>
+<td class="down">-0.8%</td>
+</tr>
+<tr>
+<td>S&P 500</td>
+<td>7,483.24</td>
+<td class="up">+0.01</td>
+</tr>
+<tr>
+<td>WTI 原油</td>
+<td>$68.79/桶</td>
+<td class="up">+0.15%</td>
+</tr>
+<tr>
+<td>现货黄金</td>
+<td>$4,175.01/盎司</td>
+<td class="up">+2.5% (周涨幅)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer">
+        © 2026 Manus AI 每日新闻简报 | 数据截至 2026年7月5日
+    </div>
+</body>
+</html>
