@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-policy { background: #533483; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .tag-military { background: #0f3460; color: white; }
+        .tag-energy { background: #e94560; color: white; }
+        .tag-space { background: #00b4d8; color: white; }
+        .tag-medical { background: #2d6a4f; color: white; }
+        .tag-social { background: #e07c24; color: white; }
+        .tag-politics { background: #533483; color: white; }
+        .tag-religion { background: #533483; color: white; }
+        .tag-environment { background: #2d6a4f; color: white; }
+        .tag-business { background: #e94560; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .analysis-box {
+            margin-top: 18px;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.4), rgba(26, 26, 46, 0.6));
+            border-left: 3px solid #f0a500;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 22px;
+        }
+        .analysis-box .analysis-title {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .analysis-box .analysis-title::before {
+            content: "\1F4A1";
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .analysis-box .analysis-label {
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.88em;
+        }
+        .analysis-box .analysis-text {
+            color: #bbc;
+            font-size: 0.88em;
+            line-height: 1.85;
+            margin-bottom: 8px;
+        }
+        .analysis-box .analysis-text:last-child {
+            margin-bottom: 0;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            margin-top: 14px;
+        }
+        .nav-links a {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin: 0 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            background: var(--accent);
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+            .analysis-box { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月6日</div>
+<a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">1</span>道琼斯指数首次突破53,000点大关</h2>
+<p>受人工智能芯片股强劲反弹的推动，美国股市在独立日假期后迎来强劲表现。道琼斯工业平均指数在7月6日收盘上涨0.29%，收于53,055.91点，这是该指数历史上首次突破53,000点大关。这也是道指今年第21次创下历史新高。<br><br>同时，标准普尔500指数上涨0.72%至7,537.43点，纳斯达克综合指数攀升1.12%。市场分析认为，尽管部分科技股估值偏高，但投资者对人工智能基础设施投资的持续热情依然支撑着整体大盘的走势。能源价格的回落也为股市上涨提供了部分助力。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">2</span>三星电子二季度营业利润飙升19倍，但股价意外下滑</h2>
+<p>全球最大的存储芯片制造商三星电子发布了惊人的第二季度业绩指引，预计其营业利润将达到89.4万亿韩元（约合584.4亿美元），同比激增19倍。这标志着该公司连续第三个季度创下营业利润新高，主要得益于全球人工智能数据中心对高带宽内存（HBM）芯片的爆炸性需求。<br><br>然而，这一亮眼的业绩并未能提振其股价。在韩国股市，三星电子的股票遭遇抛售，拖累韩国KOSPI指数大跌4.1%。分析师指出，三星今年以来近150%的涨幅已经透支了利好预期，投资者开始担忧AI驱动的芯片反弹是否已见顶，纷纷选择获利了结。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">3</span>微软宣布裁员4,800人，占全球员工总数2.1%</h2>
+<p>科技巨头微软周一宣布将裁减约4,800个工作岗位，约占其全球员工总数的2.1%。此次裁员主要集中在微软的商业部门（Commercial）和Xbox游戏部门。微软首席人力资源官Amy Coleman在内部信中强调，此次裁员并非因为“AI替代人类”，而是为了将资源和投资集中在公司的核心优先事项上。<br><br>微软表示，过去一年中已将4,000多名员工重新部署到新岗位，并有超过30%的符合条件的员工选择了自愿退休计划。此外，四个游戏工作室将过渡到新的管理层，以保护现有的知识产权和项目。这一举措反映了科技行业在AI时代快速转型过程中的阵痛与结构调整。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">4</span>SpaceX即将纳入纳斯达克100指数，引发华尔街高度关注</h2>
+<p>埃隆·马斯克旗下的太空探索技术公司（SpaceX）定于7月7日正式被纳入纳斯达克100指数（Nasdaq-100）。这距离该公司在公开市场挂牌交易仅过去了15天，成为该指数历史上最快被纳入的公司之一。SpaceX的股票代码为SPCX。<br><br>华尔街分析师预计，SpaceX的纳入将触发超过40亿美元的被动ETF资金流入。尽管其股价在周二盘前交易中小幅下跌0.5%，但多家券商已开始对其进行首次覆盖。这一里程碑事件标志着商业航天企业正式跻身全球最具影响力的科技巨头行列。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-politics">politics</span>
+<h2><span class="num-badge">5</span>特朗普在椭圆形办公室敲响开市钟，庆祝“特朗普账户”启动</h2>
+<p>美国总统特朗普周一在白宫椭圆形办公室敲响了纽约证券交易所的开市钟，以庆祝其政府推出的儿童投资储蓄计划“特朗普账户”（Trump Accounts）正式启动。该计划旨在为符合条件的美国儿童提供一个类似退休账户的投资工具。<br><br>据报道，在7月4日独立日当天，政府已向超过50万名符合条件的美国儿童的“特朗普账户”中注入了每人1,000美元的初始种子资金。此外，该账户每年还可接受来自家庭成员和朋友最高5,000美元的额外供款。特朗普在讲话中预测，这将使未来的美国儿童变得“非常富有”。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-geopolitics">geopolitics</span>
+<h2><span class="num-badge">6</span>伊朗为遇刺最高领袖哈梅内伊举行盛大葬礼，新领袖未露面</h2>
+<p>在伊朗首都德黑兰进行了为期三天的游行后，已故最高领袖阿亚图拉·阿里·哈梅内伊的遗体已运抵圣城库姆。哈梅内伊在2月28日的美以空袭中丧生。据伊朗国家电视台报道，数百万民众身着黑衣走上街头，参与了这场规模堪比1989年霍梅尼葬礼的盛大仪式。<br><br>值得注意的是，哈梅内伊的继任者、其子穆杰塔巴·哈梅内伊并未在葬礼上公开露面。据分析，由于目前伊朗与美国和以色列之间仅维持着脆弱的停火协议，出于安全考虑，新任最高领袖暂时无法公开现身。分析人士指出，这场战争在一定程度上转移了伊朗国内的矛盾，反而可能巩固了现政权的统治基础。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-sports">sports</span>
+<h2><span class="num-badge">7</span>特朗普干预世界杯判罚引争议，比利时4-1淘汰美国队</h2>
+<p>国际足联（FIFA）撤销美国球员弗拉林·巴洛贡红牌停赛的决定引发了巨大的政治与体育争议。据报道，这一决定是在美国总统特朗普亲自致电国际足联主席詹尼·因凡蒂诺后做出的。多方批评此举严重破坏了体育赛事的独立性和公平性。<br><br>尽管巴洛贡得以在1/8决赛中出场，但美国队依然未能抵挡住比利时队的强大攻势。在西雅图举行的比赛中，比利时队凭借查尔斯·德·凯特拉雷的梅开二度和罗梅卢·卢卡库的进球，以4-1的比分将东道主美国队淘汰出局。同日，西班牙队1-0击败葡萄牙队，克里斯蒂亚诺·罗纳尔多的世界杯生涯遗憾落幕。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-diplomacy">diplomacy</span>
+<h2><span class="num-badge">8</span>特朗普政府提议对巴西征收25%关税，引发外交摩擦</h2>
+<p>特朗普政府于6月份提议对巴西商品征收25%的关税，理由是巴西存在非法砍伐森林和不公平的电子支付做法。这一决定令巴西政府措手不及。巴西前总统之子、现任参议员弗拉维奥·博索纳罗已向美国贸易代表办公室提出请求，希望将关税决定推迟至巴西10月大选之后。<br><br>巴西现任总统卢拉指责博索纳罗家族在幕后游说华盛顿实施这些关税。华盛顿必须在7月15日前决定是否正式实施这些关税。目前，美国22个州的民主党籍总检察长已明确表示反对这一关税计划，认为其将增加美国消费者的负担。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-military">military</span>
+<h2><span class="num-badge">9</span>北约峰会即将在土耳其安卡拉举行，聚焦防务支出</h2>
+<p>北约32个成员国的领导人即将齐聚土耳其首都安卡拉，举行年度峰会。美国总统特朗普预计将出席此次会议。在当前复杂的国际安全局势下，此次峰会将重点讨论成员国的防务支出承诺和国防工业产能的提升。<br><br>作为东道主，土耳其不仅强调其拥有北约第二大常备军的贡献，还可能在峰会上提出关于国防装备采购和地区安全合作的新倡议。此外，北约如何应对来自俄罗斯的持续威胁以及如何协调对乌克兰的长期支持，也将是本次峰会的核心议题。</p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">10</span>国际金价微跌，原油价格因中东局势小幅上涨</h2>
+<p>在商品市场方面，国际金价在7月6日下跌0.49%，至每盎司4,143.59美元。白银价格也下跌近1%至61.47美元/盎司，铜价微跌至13,375美元/吨。贵金属价格的回落部分反映了市场风险偏好的回升和股市的强劲表现。<br><br>与此同时，国际油价小幅上涨。美国WTI原油上涨0.54%至68.92美元/桶，布伦特原油上涨0.49%至72.34美元/桶。尽管霍尔木兹海峡附近再次传出船只遇袭的报告，但由于市场关注点转向供应增加和需求前景，油价涨幅受到了一定限制。</p>
+</div>
+
+<div class="market-section">
+<h3>全球市场概览 (截至2026年7月6日)</h3>
+<table class="market-table">
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>变动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>道琼斯工业平均指数</td>
+<td>53,055.91</td>
+<td class="up">+0.29% (创历史新高)</td>
+</tr>
+<tr>
+<td>纳斯达克综合指数</td>
+<td>26,121.82</td>
+<td class="up">+1.12%</td>
+</tr>
+<tr>
+<td>S&P 500</td>
+<td>7,537.43</td>
+<td class="up">+0.72%</td>
+</tr>
+<tr>
+<td>WTI 原油</td>
+<td>$68.92/桶</td>
+<td class="up">+0.54%</td>
+</tr>
+<tr>
+<td>布伦特原油</td>
+<td>$72.34/桶</td>
+<td class="up">+0.49%</td>
+</tr>
+<tr>
+<td>现货黄金</td>
+<td>$4,143.59/盎司</td>
+<td class="down">-0.49%</td>
+</tr>
+<tr>
+<td>美元兑日元 (USD/JPY)</td>
+<td>162.00</td>
+<td class="up">日元触及40年低点</td>
+</tr>
+<tr>
+<td>美国10年期国债收益率</td>
+<td>4.483%</td>
+<td class="up">+0.42 基点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer">
+        © 2026 Manus AI 每日新闻简报 | 数据截至 2026年7月6日
+    </div>
+</body>
+</html>
