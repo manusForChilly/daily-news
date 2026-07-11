@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+    
+        .source-line { color: #8291a8; font-size: 0.86em; }
+        .source-line a { color: #72c7ff; text-decoration: none; }
+        .source-line a:hover { text-decoration: underline; }
+        
+</style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月10日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a><a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-geopolitics">geopolitics</span>
+<h2><span class="num-badge">1</span>美伊同意继续接触，但停火前景与霍尔木兹通航仍充满变数</h2>
+<p>美国总统特朗普7月10日表示，伊朗要求继续谈判，美方已经同意，但6月达成的停火安排“已经结束”。伊朗方面否认主动请求与美国谈判，只确认接待了卡塔尔调停代表。双方当天没有报告新一轮直接攻击，但此前两天的交火已经造成伤亡，并使停火机制的可信度受到严重质疑。<br><br>美国要求伊朗公开承诺停止袭击霍尔木兹海峡船只、开放全部航道且不得收费；伊朗外长则计划赴阿曼讨论海峡安全通行。该海峡在战前承载约全球五分之一的石油和液化天然气运输，因此谈判能否形成可执行的航运安排，将直接影响能源价格、保险成本和海湾地区军事风险。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/iran-has-asked-continue-talks-us-agreed-trump-says-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：美伊继续接触</a>；<a href="https://www.reuters.com/world/middle-east/us-insists-iran-commit-stopping-attacks-hormuz-strait-say-us-officials-2026-07-10/" rel="noopener noreferrer" target="_blank">[2] Reuters：霍尔木兹航运条件</a>；<a href="https://www.reuters.com/business/energy/tanker-traffic-slows-strait-hormuz-after-us-iran-clashes-2026-07-10/" rel="noopener noreferrer" target="_blank">[3] Reuters：油轮通行放缓</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">2</span>华尔街收高，科技股把标普500推近纪录高位</h2>
+<p>美国三大股指周五全部收高：标普500上涨0.42%至7,575.39点，纳斯达克综合指数上涨0.29%至26,281.61点，道琼斯工业指数上涨0.29%至52,637.01点。科技板块上涨1.65%，可选消费板块上涨1.46%；Meta上涨约6%，英伟达上涨约4%，显示投资者仍在集中配置AI基础设施与高成长科技公司。<br><br>周线方面，标普500上涨1.2%，纳指上涨1.7%，道指下跌0.5%。市场焦点已转向密集财报季和宏观数据：LSEG预计标普500成分股第二季度利润同比增长约24%，主要由科技企业推动；投资者还将迎来美国CPI、PPI、零售销售以及美联储主席国会证词，利率与盈利预期可能重新决定估值方向。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/media-telecom/sp-500-nasdaq-futures-slip-investors-eye-sk-hynix-listing-middle-east-risks-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：华尔街收盘</a>；<a href="https://www.reuters.com/markets/europe/wall-st-week-ahead-investors-grapple-with-packed-week-earnings-cpi-iran-2026-07-10/" rel="noopener noreferrer" target="_blank">[2] Reuters：下周市场前瞻</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">3</span>油价日内回落但周线大涨，市场在谈判希望与供应风险间摇摆</h2>
+<p>布伦特原油周五收于每桶76.01美元，下跌0.38%；美国WTI原油收于71.41美元，下跌0.93%。由于美伊双方重启接触、市场期待霍尔木兹海峡航运逐步改善，部分地缘政治风险溢价在收盘前回吐。<br><br>不过，布伦特原油全周仍上涨约5.5%，WTI近涨4%，说明交易者尚未相信供应风险已经解除。海峡运输仍明显低于正常水平，船舶保险、港口调度和安全承诺也未完全恢复；一旦谈判失败或军事行动升级，油价与成品油裂解价差仍可能迅速反弹。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/oil-edges-lower-heads-weekly-gain-middle-east-supply-risks-persist-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：油价收盘与周线表现</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">4</span>SK海力士纳斯达克首秀上涨约13%，AI存储热潮迎来大型资本市场考验</h2>
+<p>韩国存储芯片巨头SK海力士的美国存托股以149美元发行，开盘报170美元，收盘较发行价高约13%。此次美国上市筹资约265亿美元，认购需求超过发行规模七倍，是美国市场规模最大的外国公司二次上市交易之一，也成为投资者对AI硬件需求的一次重要压力测试。<br><br>SK海力士是全球最大的高带宽内存（HBM）生产商，HBM是训练和运行大型AI模型的关键组件。公司计划在韩国以外建设约5吉瓦的AI数据中心容量，并考虑扩大在美国的投资。强劲首秀强化了“算力扩张将长期拉动存储需求”的市场判断，但高估值也意味着后续业绩、供给扩张和竞争格局将受到更严格检验。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/asia-pacific/sk-hynix-set-marquee-us-debut-test-ai-appetite-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：SK海力士美国首秀</a>；<a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-10-2026" rel="noopener noreferrer" target="_blank">[2] WSJ：7月10日市场直播</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-tech">tech</span>
+<h2><span class="num-badge">5</span>美国放宽对阿联酋AI芯片与军民两用设备出口限制</h2>
+<p>美国商务部将阿联酋调整至可获得更多许可证例外的国家组别，使阿联酋政府和获批企业更容易取得英伟达AI芯片、先进服务器、部分军事和军民两用设备、商业卫星、航天器以及油气和民用核能相关产品。G42、Core42以及在阿联酋运营的Amazon、Apple、Google、Meta、Microsoft、OpenAI、Oracle和xAI等公司均在受益范围内。<br><br>这项调整被视为美阿战略关系深化的标志，也为美国科技企业打开更大的海湾算力市场。与此同时，阿联酋是该优惠组别中唯一未加入多边出口管制机制的国家，反对者担心敏感技术可能被转移给中国等第三方。新规因此不仅是商业政策，也是美国在中东安全、对伊战略和全球AI供应链之间作出的地缘政治选择。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/us-makes-it-easier-export-certain-military-items-ai-chips-commercial-satellites-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：美国放宽对阿联酋出口管制</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">6</span>IEA警告美伊冲突升级可能推翻2027年石油过剩预测</h2>
+<p>国际能源署（IEA）表示，霍尔木兹海峡恢复部分通行后，6月全球石油供应环比增加410万桶/日，但仍比战前低940万桶/日。危机高峰时，海峡实际关闭曾使多达1,400万桶/日的原油流量退出市场，构成该机构所称的历史上最大石油供应危机。<br><br>在通航持续改善的前提下，IEA预计全球市场将从2026年日均约86万桶的供应缺口，转为2027年日均462万桶的过剩；但7月7日至8日的冲突升级可能使这一预测落空。原油供应恢复也快于炼油和成品油运输，汽柴油偏紧已把炼油利润率推至四年高位，显示“原油充足”并不等于终端燃料市场已经正常化。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/us-iran-escalation-could-threaten-2027-oil-market-surplus-iea-says-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：IEA月度石油市场评估</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-geopolitics">geopolitics</span>
+<h2><span class="num-badge">7</span>乌克兰袭击重创俄罗斯炼油系统，汽油产量仅覆盖约65%的旺季需求</h2>
+<p>乌克兰无人机袭击迫使NORSI、鄂木斯克和萨拉托夫等大型炼油厂停产。行业消息人士和路透测算显示，俄罗斯汽油日产量比夏季需求少约4万至4.5万吨，相当于只能满足约65%的季节性消费；部分地区加油站出现长队，地方甚至安排人员维持秩序。<br><br>俄罗斯已采取汽油、柴油和航空燃油出口限制，并从白俄罗斯等地扩大进口以优先满足国内需求。IEA因此把俄罗斯2026年石油产量预测下调至890万桶/日，较2025年下降约3%，并预计2027年进一步降至880万桶/日。事件显示乌克兰正通过攻击能源基础设施，把军事压力传导至俄罗斯国内燃料供应、出口收入和全球柴油市场。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/russias-gasoline-output-covers-65-demand-after-ukrainian-strikes-sources-say-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：俄罗斯汽油缺口</a>；<a href="https://www.reuters.com/business/energy/ieas-russian-oil-output-forecasts-cut-after-ukraine-attacks-2026-07-10/" rel="noopener noreferrer" target="_blank">[2] Reuters：IEA下调俄油产量预测</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-humanitarian">humanitarian</span>
+<h2><span class="num-badge">8</span>古巴一周内第二次全国停电，能源短缺加剧民生与社会压力</h2>
+<p>古巴全国电网7月10日再次崩溃，这是该国一周内第二次、2026年以来第四次全国性停电。本周一的故障曾令约1,000万人断电，大部分电网到周二晚才恢复；周五事故发生前，包括圣地亚哥在内的部分地区仍因燃料严重短缺未能重新接入。<br><br>古巴政府把危机归咎于美国石油封锁、长期制裁和发电燃料枯竭，美国则指责古巴国营经济管理不善。频繁断电导致餐饮和零售业食物变质、医疗与家庭生活受阻，并在哈瓦那引发零星敲锅抗议。无论政治归因如何，老旧基础设施与燃料供应中断正在把能源危机迅速转化为广泛的人道和社会稳定问题。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/cubas-power-grid-fails-second-time-this-week-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：古巴本周第二次全国停电</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-finance">finance</span>
+<h2><span class="num-badge">9</span>Circle获准设立美国国家信托银行，稳定币基础设施纳入联邦监管</h2>
+<p>美国货币监理署（OCC）最终批准Circle设立First National Digital Currency Bank, N.A.，并以Circle National Trust名义运营。该机构开业后可为Circle及关联方提供受托数字资产托管，并可根据需求有限度服务银行等机构客户；未来还可能管理USDC储备，但这一能力属于获批业务计划中的后续安排，并非立即实施。<br><br>新牌照使Circle直接接受OCC联邦监管，为稳定币储备、机构托管和区块链结算进一步进入传统金融体系建立监管框架。USDC市值约732亿美元；消息公布后Circle股价盘前一度上涨10%。此次批准既强化了市场对合规稳定币的预期，也意味着Circle将面对与国家信托银行相匹配的治理、透明度和资产保管要求。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/legal/transactional/circle-wins-final-regulatory-approval-establish-us-trust-bank-shares-rise-2026-07-10/" rel="noopener noreferrer" target="_blank">[1] Reuters：Circle获最终批准</a>；<a href="https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank" rel="noopener noreferrer" target="_blank">[2] Circle官方公告</a></span></p>
+</div>
+
+<div class="news-card">
+<span class="tag tag-humanitarian">humanitarian</span>
+<h2><span class="num-badge">10</span>联合国更新委内瑞拉地震灾情，呼吁筹集2.96亿美元</h2>
+<p>联合国人道主义事务协调厅7月10日更新称，委内瑞拉上月地震已造成3,500多人死亡、至少1.6万人受伤，直接财产损失达到370亿美元。灾害对住房、医疗、交通和基础服务造成长期冲击，而余震、失踪人员搜寻和灾民安置仍在增加救援复杂度。<br><br>联合国指出，地震发生前委内瑞拉已经有近800万人需要人道主义援助。紧急救济协调员汤姆·弗莱彻呼吁国际社会筹集2.96亿美元，为未来六个月的救援、安置和早期恢复行动提供资金。由于原有经济与公共服务体系本已承压，资金能否及时到位将直接影响灾区从紧急救援转入恢复阶段的速度。<br><br><span class="source-line">来源：<a href="https://news.un.org/zh/story/2026/07/1142460" rel="noopener noreferrer" target="_blank">[1] 联合国新闻：2026年7月10日世界进行时</a></span></p>
+</div>
+<div class="market-section">
+<h3>全球市场概览（截至2026年7月10日）</h3>
+<table class="market-table">
+<thead><tr><th>指标</th><th>数值</th><th>变动</th></tr></thead>
+<tbody><tr><td>道琼斯工业平均指数</td><td>52,637.01</td><td class="up">+0.29%</td></tr><tr><td>纳斯达克综合指数</td><td>26,281.61</td><td class="up">+0.29%</td></tr><tr><td>S&amp;P 500</td><td>7,575.39</td><td class="up">+0.42%</td></tr><tr><td>布伦特原油</td><td>$76.01/桶</td><td class="down">-0.38%（周涨约5.5%）</td></tr><tr><td>WTI 原油</td><td>$71.41/桶</td><td class="down">-0.93%（周涨近4%）</td></tr><tr><td>黄金期货</td><td>$4,115/盎司</td><td class="down">-0.5%</td></tr><tr><td>比特币</td><td>约$63,800</td><td class="up">盘中一度突破$64,500</td></tr><tr><td>美元指数</td><td>约101</td><td class="up">+0.1%</td></tr><tr><td>10年期美债收益率</td><td>约4.57%</td><td class="up">前值约4.56%</td></tr><tr><td>韩国KOSPI</td><td>—</td><td class="up">+2.5%</td></tr><tr><td>日本日经225</td><td>—</td><td class="up">+1.2%</td></tr><tr><td>中国沪深300</td><td>—</td><td class="down">-1.96%</td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="footer">© 2026 Manus AI 每日新闻简报 | 数据截至 2026年7月10日</div>
+</body>
+</html>
