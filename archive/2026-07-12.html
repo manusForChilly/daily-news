@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报 - 2026年7月12日</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+    
+        .source-line { color: #8291a8; font-size: 0.86em; }
+        .source-line a { color: #72c7ff; text-decoration: none; }
+        .source-line a:hover { text-decoration: underline; }
+        
+</style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月12日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a>
+<a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">1</span>特朗普称霍尔木兹海峡已向商业交通开放，但美伊冲突继续威胁能源航线</h2>
+<p>美国总统特朗普7月12日在NBC《Meet the Press》采访中表示，霍尔木兹海峡已对商业交通开放。不过，路透社同时指出，美国与伊朗仍在相互发动攻击，商船在这条全球最重要能源航道之一的安全风险尚未解除。此前数日的冲突使船舶通行放缓，也令市场重新评估运输中断、保险费率上升和能源供应受阻的可能性。<br><br>政策表态与现场风险之间存在明显落差。路透社7月10日报道，布伦特原油当周累计上涨约5.5%，WTI上涨近4%，反映交易员仍为中东供应风险计入溢价。若通航能够持续恢复，油价风险溢价可能回落；若攻击再次扩大，海峡承担的全球油气运输规模意味着冲击会迅速传导至通胀、航运和央行政策预期。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/trump-says-strait-hormuz-open-commercial-traffic-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：特朗普称霍尔木兹海峡开放</a>；<a href="https://www.reuters.com/business/energy/oil-edges-lower-heads-weekly-gain-middle-east-supply-risks-persist-2026-07-10/" rel="noopener noreferrer" target="_blank">[2] Reuters：原油7月10日收盘与周度表现</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">2</span>美伊再度交火压制海湾股市，沙特与卡塔尔微升、埃及下跌</h2>
+<p>海湾股市7月12日整体表现谨慎。沙特TASI指数与卡塔尔QSI指数均上涨0.1%，沙特阿美上涨0.2%，卡塔尔工业上涨0.6%；埃及EGX30指数下跌0.1%。市场背景是美国与伊朗再次交换导弹和无人机攻击，伊朗宣称重新关闭霍尔木兹海峡，并称一艘未经许可航行的船只被拦截、另一艘船失去行动能力。<br><br>沙特正考虑扩大通往红海西岸的原油管道运能，以降低对霍尔木兹海峡的依赖。这一讨论显示，地区国家开始把短期军事风险转化为长期基础设施配置问题。即使主要股指当日波动不大，能源运输替代能力、保险成本与跨境资本风险偏好仍将成为海湾资产估值的重要变量。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/gulf-bourses-subdued-us-iran-exchange-strikes-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：美伊交火背景下海湾股市表现</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">3</span>TCS拟组建最多8,900名AI现场部署工程师，并评估AI与网络安全收购</h2>
+<p>印度最大软件服务企业塔塔咨询服务公司（TCS）计划组建约5,900至8,900人的AI现场部署工程师团队，约占截至6月底员工总数的1%至1.5%。这些工程师将深入客户环境，帮助企业把AI模型接入现有系统、定制业务工具并管理数据流。公司尚未说明新增岗位将主要通过外部招聘还是内部转训完成。<br><br>TCS同时在评估AI、数据安全和网络安全领域的收购机会，并称每年约投入10亿美元用于人才发展和内部AI普及。不过，公司年化AI收入增速已从上一季度的28%放缓至13%。这表明传统IT外包巨头正试图把AI从“减少人力需求”的威胁，转化为部署、集成与行业知识服务的新收入来源，但增长速度和定价能力仍需验证。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/india/indias-tata-consultancy-services-plans-up-8900-ai-deployment-engineers-seeks-ai-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：TCS计划组建AI部署团队并寻求收购</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">4</span>日本拟推动1.8万亿美元GPIF提高另类资产配置，目标接近5%上限</h2>
+<p>据《日本经济新闻》7月12日报道，日本政府拟推动全球最大养老基金——政府养老投资基金（GPIF）——提高非上市股票、房地产等另类资产配置比例。GPIF资产规模约1.8万亿美元，截至2026年3月，另类资产占比仅1.7%，明显低于现行5%的上限；政府专家组预计将建议逐步把比例提高至接近该上限。<br><br>这一调整意在扩大资产管理范围并分散组合风险，也与日本政府希望增加国内资产投资、稳定日元和国债市场的政策方向相呼应。不过，该信息目前来自媒体报道，未披露具体消息来源，监管GPIF的厚生劳动省在非工作时间无人回应。实施节奏、资产类别选择及对国内市场的实际增量资金规模仍有待正式文件确认。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/asia-pacific/japan-push-its-massive-pension-fund-boost-alternative-investments-nikkei-says-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：日本拟推动GPIF增加另类投资</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">5</span>埃及一季度经常账户赤字扩大至51亿美元，贸易与油品进口压力上升</h2>
+<p>埃及央行数据显示，2026年1至3月经常账户赤字由上年同期的23亿美元扩大至51亿美元，增幅超过一倍；外国直接投资净流入则由38亿美元小幅降至37亿美元。央行将更大范围的7月至3月经常账户恶化主要归因于商品贸易逆差扩大，显示外汇收支仍承受进口与融资压力。<br><br>部分服务与转移收入改善缓冲了赤字：海外侨汇由93亿美元增至128亿美元，旅游收入由38亿美元升至42亿美元，苏伊士运河收入由8亿美元增至10亿美元。与此同时，油品进口由48亿美元增至57亿美元，出口仅由12亿美元升至16亿美元。若中东冲突继续推高能源与航运成本，埃及的外汇、财政和通胀压力可能进一步加大。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/africa/egypts-january-march-current-account-deficit-widens-51-billion-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：埃及经常账户赤字扩大</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-diplomacy">外交</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">6</span>14国在南海仲裁十周年发表联合声明，中国重申裁决无效</h2>
+<p>日本、菲律宾、美国、澳大利亚、英国、加拿大及欧洲多国共14个国家，在2016年南海仲裁裁决十周年之际发表联合声明，称该裁决是重要里程碑，并在中国与菲律宾之间具有最终、法律约束力和决定性。2016年仲裁庭认为，中国在南海的广泛主权主张缺乏国际法依据；近年来，中菲在相关海域多次发生对峙。<br><br>中国外交部重申相关主权与海洋权益主张，称该裁决“非法、无效且没有约束力”，并指责美国等域外力量增加军事部署、加剧地区紧张。北京还召见日本驻华使馆首席公使，抗议日本外相相关表态及联合声明。事件显示，法律与外交阵线将继续与海上执法和军事存在相互叠加。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/china/south-china-sea-joint-statement-says-chinas-maritime-claims-have-no-basis-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：南海仲裁十周年联合声明</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">7</span>德国资助乌克兰采购5万架攻击无人机，合同价值约9,000万欧元</h2>
+<p>德国正在资助乌克兰采购5万架SkyFall生产的Shrike第一人称视角攻击无人机，合同价值约9,000万欧元（约1.03亿美元），是西方政府已知对乌大规模无人机采购之一。无人机配备美国国防科技公司Auterion的软件，可在飞行末段自主跟踪并打击移动目标；部分设备已经交付，其余计划在2026年内发运。<br><br>低成本无人机已成为俄乌战场高频消耗和精确打击的重要工具。Auterion称，其与多家硬件厂商合作，2026年合计帮助向乌克兰供应10万架无人机。德国和乌克兰国防部均以行动安全为由拒绝评论合同细节；这批采购也反映欧洲援乌资源正进一步从传统大型武器转向可快速扩产的软件定义无人系统。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/germany-funds-50000-strike-drones-ukraine-source-says-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：德国资助乌克兰采购5万架无人机</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span><span class="tag tag-diplomacy">外交</span>
+<h2><span class="num-badge">8</span>加沙袭击造成至少6人死亡，停火第二阶段谈判仍无突破</h2>
+<p>巴勒斯坦卫生官员称，以色列7月12日在加沙地带发动的多起袭击造成至少6人死亡，其中包括一名9岁女孩。加沙城Sabra社区一处金属铸造厂遭空袭后4人死亡，汗尤尼斯Mawasi帐篷营地另有至少1人死亡并有儿童受伤。以军称铸造厂是哈马斯武器生产设施，但表示不知悉女孩遇害事件。<br><br>2025年10月停火以来，重大地面战虽已暂停，但零星袭击已造成逾1,000名巴勒斯坦人和4名以军士兵死亡。哈马斯领导人正在开罗就美国支持的和平计划第二阶段继续谈判，议题包括哈马斯解除武装和以军撤离，但有关方面称尚未取得突破。持续伤亡进一步削弱停火安排的可信度和人道恢复空间。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/israeli-attacks-gaza-kill-three-people-including-girl-say-medics-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：加沙袭击与停火谈判</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">9</span>以色列确定10月27日举行全国大选，战时领导与安全责任将受检验</h2>
+<p>以色列执政联盟负责人Ofir Katz表示，全国大选将按法律原定日期于2026年10月27日举行。这将是2023年10月7日哈马斯袭击，以及随后加沙、黎巴嫩和伊朗战争以来的首次全国选举。议会已于5月投票解散，因此外界一度预计投票可能提前，如今执政联盟选择维持原定日期。<br><br>多项民调显示，总理内塔尼亚胡领导的民族主义和宗教政党联盟可能失去优势，但反对派目前也没有清晰的组阁路径。选举将集中检验政府对2023年安全失误、长期战争成本、停火安排及伊朗冲突结果的应对；在以色列政治联盟高度碎片化的背景下，投票结果仍可能带来复杂而漫长的组阁谈判。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/israels-election-will-be-held-october-27-coalition-head-says-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：以色列大选定于10月27日</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span>
+<h2><span class="num-badge">10</span>委内瑞拉双震死亡人数升至4,490人，近1.8万人无家可归</h2>
+<p>委内瑞拉全国代表大会主席豪尔赫·罗德里格斯7月12日表示，6月24日袭击该国的两次地震已造成4,490人死亡。官方公布的受伤人数维持在16,740人，另有6,462人获救；无家可归者达到17,907人。这是灾后死亡规模的一次重大上调，凸显搜救、身份确认和灾情统计仍在持续。<br><br>大规模人员伤亡和住房损毁意味着灾区需求已从紧急搜救转向长期安置、医疗、饮水卫生和基础设施重建。官方短讯尚未提供新增死亡的地区分布、救援能力或国际援助细节，因此后续需要重点关注灾区交通恢复、余震风险、临时住所与公共卫生资源能否跟上。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/americas/death-toll-venezuela-earthquakes-rises-4490-2026-07-12/" rel="noopener noreferrer" target="_blank">[1] Reuters：委内瑞拉双震死亡人数更新</a></span></p>
+</div>
+<div class="market-section">
+<h3>市场数据概览</h3>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 14px;">7月12日为周日，美股、原油、黄金、美元与美债采用7月10日最近一个交易日收盘或盘后口径；海湾股市采用7月12日交易数据。</p>
+<div style="overflow-x:auto;">
+<table class="market-table">
+<thead><tr><th>资产或指数</th><th>最新水平</th><th>变动</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>标普500</td><td>6,996.94</td><td class="up">+0.37%</td><td>7月10日收盘；周涨约1.2%</td></tr>
+<tr><td>道琼斯工业平均指数</td><td>49,977.88</td><td class="up">+0.27%</td><td>7月10日收盘；周跌约0.5%</td></tr>
+<tr><td>纳斯达克综合指数</td><td>23,798.61</td><td class="up">+0.28%</td><td>7月10日收盘；周涨约1.7%</td></tr>
+<tr><td>布伦特原油</td><td>76.01美元/桶</td><td class="down">-0.38%</td><td>周涨约5.5%</td></tr>
+<tr><td>WTI原油</td><td>71.41美元/桶</td><td class="down">-0.93%</td><td>周涨近4%</td></tr>
+<tr><td>黄金期货</td><td>4,115美元/盎司</td><td class="down">-0.5%</td><td>7月10日收盘附近</td></tr>
+<tr><td>美元指数</td><td>101.0</td><td class="up">+0.1%</td><td>7月10日收盘附近</td></tr>
+<tr><td>美国10年期国债收益率</td><td>4.57%</td><td class="up">+1个基点</td><td>前一日约4.56%</td></tr>
+<tr><td>沙特TASI</td><td>—</td><td class="up">+0.1%</td><td>7月12日交易</td></tr>
+<tr><td>卡塔尔QSI</td><td>—</td><td class="up">+0.1%</td><td>7月12日交易</td></tr>
+<tr><td>埃及EGX30</td><td>—</td><td class="down">-0.1%</td><td>7月12日交易</td></tr>
+</tbody>
+</table>
+</div>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-top: 18px;">美股在SK海力士美国上市首日大涨和大型科技股走强带动下收高，标普500与纳斯达克连续第二周上涨。中东风险令原油维持较高周涨幅，美债收益率与美元小幅上行。下一交易周，市场焦点将转向美国CPI、生产者价格、零售销售与大型银行二季度业绩；LSEG IBES数据显示，市场预计标普500企业二季度利润同比增长23.7%。</p>
+<p style="margin-top: 12px;"><span class="source-line">来源：<a href="https://www.investopedia.com/stock-market-today-dow-jones-s-and-p-500-07102026-12015940" rel="noopener noreferrer" target="_blank">[1] Investopedia：2026年7月10日美国市场收盘</a>；<a href="https://www.reuters.com/business/energy/oil-edges-lower-heads-weekly-gain-middle-east-supply-risks-persist-2026-07-10/" rel="noopener noreferrer" target="_blank">[2] Reuters：原油收盘与周度表现</a>；<a href="https://www.reuters.com/world/middle-east/gulf-bourses-subdued-us-iran-exchange-strikes-2026-07-12/" rel="noopener noreferrer" target="_blank">[3] Reuters：海湾股市7月12日表现</a>；<a href="https://www.reuters.com/markets/europe/wall-st-week-ahead-investors-grapple-with-packed-week-earnings-cpi-iran-2026-07-10/" rel="noopener noreferrer" target="_blank">[4] Reuters：美国下周数据与财报展望</a></span></p>
+</div>
+</div>
+<div class="footer">
+<p>本简报依据公开可信来源整理，事实与数字截至2026年7月12日。市场数据可能有延迟，仅供信息参考。</p>
+<p style="margin-top:6px;">© 2026 每日全球新闻简报 · 由 Manus AI 自动生成</p>
+</div>
+</body>
+</html>
