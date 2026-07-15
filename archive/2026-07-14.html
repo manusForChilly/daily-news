@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报 - 2026年7月14日</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15);
+        }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .tag-sports { background: #2d6a4f; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            line-height: 1.9;
+        }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 {
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+    
+        .source-line { color: #8291a8; font-size: 0.86em; }
+        .source-line a { color: #72c7ff; text-decoration: none; }
+        .source-line a:hover { text-decoration: underline; }
+        
+</style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月14日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a>
+<a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">1</span>美伊冲突再度升级，霍尔木兹风险推高全球油价</h2>
+<p>美国重新对伊朗实施海上封锁，并连续第三夜发动袭击；伊朗方面则宣称关闭霍尔木兹海峡，双方在这一全球能源咽喉周边的军事行动持续扩大。特朗普放弃了对海峡护航收取20%费用的方案，转而寻求海湾国家投资协议，但这并未消除航运和供应风险。此前，两艘阿联酋油轮遭伊朗巡航导弹击中，造成一名印度船员死亡、八人受伤。<br><br>冲突迅速传导至能源市场。布伦特原油上涨1.7%至84.73美元，WTI上涨1.5%至79.34美元，双双升至约一个月高位。战前全球约20%的石油供应经由霍尔木兹海峡，任何持续性中断都可能重新推升通胀、压低全球增长，并迫使主要央行重新评估利率路径。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/oil-climbs-one-month-high-us-iran-step-up-attacks-strait-hormuz-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：霍尔木兹冲突推动油价升至一个月高位</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">2</span>美国6月通胀明显降温，但能源反弹令前景仍不稳定</h2>
+<p>美国6月消费者价格指数同比上涨3.5%，低于5月的4.2%和市场预期的3.8%；环比下降0.4%，为2020年4月以来首次下降。能源价格环比下跌5.7%，汽油价格下跌9.7%，是总指数回落的主要原因。剔除食品和能源后，核心CPI环比持平、同比上涨2.6%，也较5月的2.9%进一步放缓。<br><br>数据为美联储7月会议提供了一定缓冲，市场预计联邦基金利率将维持在3.50%至3.75%。然而，交易员仍给出约60%的9月加息概率，因为本次通胀降温发生在此前美伊短暂停火和能源价格回落期间；随着海湾冲突重启、油价和美国汽油价格反弹，7月通胀可能重新加速。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/us-consumer-inflation-slows-more-than-expected-june-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：美国6月消费者通胀降温</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">3</span>美联储启动资产负债表框架评估，沃什承诺改革将充分预告</h2>
+<p>美联储主席凯文·沃什在上任后的首次国会听证中表示，央行将评估与大规模债券持有相联系的“充足准备金”制度，包括其优缺点和可替代框架。美联储资产负债表目前约为6.8万亿美元，虽已较疫情期峰值缩减约2.2万亿美元，但仍远高于2008年金融危机前不足1万亿美元的规模。<br><br>沃什称，美联储不太可能完全恢复到危机前的稀缺准备金体系，任何结构性调整都不会突然实施，而会经过充分讨论、公开说明并为市场预留较长准备时间。他支持在危机期间积极使用资产负债表，但认为危机结束后货币政策应主要依赖利率工具。这项评估将影响银行体系流动性、国债市场和长期融资条件。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/markets/us/warsh-says-markets-get-ample-notice-any-fed-balance-sheet-changes-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：沃什谈美联储资产负债表评估</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">4</span>华尔街银行二季度业绩大幅超预期，投行与交易业务领涨</h2>
+<p>并购、股票发行和高波动市场共同推动美国大型银行二季度盈利。摩根大通录得美国银行业史上最高单季利润，市值超过9200亿美元；花旗利润同比增长45%，季度收入创十年新高；高盛、美国银行和富国银行的利润也均超过市场预期。2026年上半年全球投行业务收入达到614亿美元，同比增长24%。<br><br>银行高管同时提醒，当前繁荣伴随着较高杠杆和估值。摩根大通指出地缘战争、黏性通胀、全球财政赤字和高资产价格可能在未来形成“板块式”冲击；美国银行和富国银行也警告，紧缩货币环境与资本大量涌入风险资产并不可能永久持续。强劲业绩改善了短期盈利预期，却没有消除金融周期反转的风险。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/legal/transactional/wall-street-bank-earnings-surge-lifted-by-trading-investment-banking-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：华尔街银行二季度业绩</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">5</span>IBM暴跌25%，企业AI支出由软件转向数据中心基础设施</h2>
+<p>IBM承认未能跟上企业资本开支从软件向数据中心基础设施快速转移的趋势。客户为提前锁定供应紧张的服务器、芯片、存储和网络设备，并规避预期中的涨价，重新分配了季度预算，导致多个大型软件和主机交易未能按计划完成。IBM预计二季度收入为172亿美元，同比增长仅1%，低于分析师预期的178.6亿美元；调整后每股收益预计为2.93美元，也低于3.02美元的预期。<br><br>IBM股价单日下跌25%，跌幅甚至可能超过1987年“黑色星期一”时期的单日表现，并拖累微软、ServiceNow、Salesforce和Intuit等软件股。事件显示，生成式AI并非平均利好整个科技行业：短期资金正优先流向芯片、服务器、网络和网络安全，而传统企业软件、咨询和主机业务可能面临预算挤压。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/ibm-expects-second-quarter-revenue-below-estimates-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：IBM二季度预警</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">6</span>DeepSeek据报寻求15亿美元新融资，估值或升至710亿美元</h2>
+<p>据TechCrunch转引彭博报道，中国大模型公司DeepSeek正洽谈约15亿美元的新一轮融资，目标估值约710亿美元，并准备最早于2026年底、通常预计在2027年进行首次公开募股。公司一个月前刚以约500亿美元估值完成70亿美元首轮外部融资，若新交易落地，其估值将在短时间内再次显著提升。<br><br>DeepSeek的增长反映中国开放模型生态的持续扩张。Vercel数据显示，2026年6月DeepSeek约占其企业AI网关处理量的23%，接近Anthropic的32%；其云服务运行在华为芯片上。在美国持续限制先进芯片出口的背景下，融资、国产算力和开放模型使用量的同步上升，可能进一步改变全球AI竞争的资本与供应链格局。<br><br><span class="source-line">来源：<a href="https://techcrunch.com/2026/07/14/deepseek-reportedly-in-talks-to-raise-1-5b-then-ipo/" rel="noopener noreferrer" target="_blank">[1] TechCrunch：DeepSeek融资与IPO计划</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-diplomacy">外交</span>
+<h2><span class="num-badge">7</span>联合国全球人工智能治理对话聚焦“智能鸿沟”与环境成本</h2>
+<p>联合国全球人工智能治理对话强调，人工智能机会并未在全球均匀分布，发展中国家在技术获取、技能、数据、算力和融资方面仍面临明显差距。与会者呼吁通过多边合作建设更可负担、更高效并适应不同地区需求的AI系统，使人工智能真正服务于教育、医疗、农业和可持续发展，而非扩大既有不平等。<br><br>会议同时把环境影响纳入治理核心。联合国环境规划署指出，AI全生命周期涉及关键矿产开采、芯片制造、用水、耗电和电子废弃物，并可能产生因使用规模扩大而抵消效率收益的“反弹效应”。与会者主张建立共同测量方法、透明指标和可信证据基础，让算力增长与环境责任同步受到评估。<br><br><span class="source-line">来源：<a href="https://news.un.org/zh/story/2026/07/1142470" rel="noopener noreferrer" target="_blank">[1] 联合国新闻：全球人工智能治理对话</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">8</span>乌克兰扩大亚速海无人机战，俄罗斯四分之一粮食出口航线受扰</h2>
+<p>乌克兰称无人机夜间打击了11艘俄罗斯船只，包括油轮、干散货船和拖船，并称过去九天共击中116艘船。俄罗斯外长拉夫罗夫指责相关行动为“恐怖主义”；乌方则表示只攻击军事目标或增强俄罗斯作战能力的设施，并否认把民用货物作为目标。亚速海商业航运自7月10日起受到限制，部分粮船据报受损起火。<br><br>亚速海连接俄罗斯南部主要农业产区，承担该国约四分之一粮食出口。俄罗斯政府表示将视需要把货运转移至黑海深水港或波罗的海港口，但部分替代港口同样面临无人机威胁。战场向航运和粮食物流延伸，可能增加全球小麦运输成本，并放大乌克兰港口此前受袭带来的供应风险。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/russia-prepares-reroute-grain-exports-sea-azov-after-ukrainian-attacks-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：亚速海航运受乌克兰无人机攻击影响</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-diplomacy">外交</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">9</span>美国参议院新版对俄制裁法案降低第三国关税上限</h2>
+<p>美国跨党派参议员公布新版对俄制裁法案，把针对第三方俄罗斯油气买家的关税设计从原草案的普遍500%下调为：对前五大买家最高征收100%。法案还为俄罗斯天然气进口占比低于15%、且正在显著减少进口的国家设置例外，可能覆盖日本、法国、匈牙利和比利时。中国、印度、斯洛伐克、匈牙利和阿塞拜疆则被列为俄罗斯原油主要买家。<br><br>法案还拟制裁俄罗斯“影子船队”、中央银行等金融机构，以及Yamal LNG和Arctic LNG等大型国有能源项目，同时允许总统基于美国国家利益豁免制裁。新版本降低了对盟友和主要能源进口国的直接冲击，但保留了以二级关税和金融制裁压缩俄罗斯能源收入的核心方向。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/us-russia-sanctions-bill-eases-threat-tariffs-china-india-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：美国新版对俄制裁法案</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span>
+<h2><span class="num-badge">10</span>苏丹面临饥饿危机倒退，援助削减与海湾冲突形成双重冲击</h2>
+<p>世界粮食计划署警告，苏丹可能重新滑向更深的饥饿危机。该国约500万人处于紧急或灾难性饥饿水平，超过10万人仍处于类似饥荒状况，全国约1950万人面临严重急性粮食不安全。苏丹内战已进入第四年，数百万人流离失所，北科尔多凡和达尔富尔的新一轮战斗继续阻断援助通道。<br><br>资金短缺正在削弱救援能力。WFP援助人数已从一年前的500万降至约350万，资金缺口达到6.46亿美元，并在多个地区削减口粮。与此同时，海湾冲突和霍尔木兹航运中断推高柴油价格、压缩化肥供应；苏丹农业高度依赖海湾进口化肥和燃油灌溉泵，因此外部能源冲击可能进一步破坏当前播种季。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/africa/sudan-risks-deeper-hunger-crisis-due-war-aid-cuts-hormuz-disruption-says-wfp-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：苏丹粮食危机风险</a></span></p>
+</div>
+<div class="market-section">
+<h3>市场数据概览</h3>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 14px;">以下为7月14日美国及欧洲市场收盘或报道时点数据。收益率变动为相对前一交易日的基点变化；价格可能因不同数据截点略有差异。</p>
+<div style="overflow-x:auto;">
+<table class="market-table">
+<thead><tr><th>资产或指数</th><th>收盘或水平</th><th>变动</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>道琼斯工业平均指数</td><td>52,508.27</td><td class="up">+0.02%</td><td>银行业绩强劲，地缘与通胀风险限制涨幅</td></tr>
+<tr><td>标普500</td><td>7,543.59</td><td class="up">+0.38%</td><td>通胀低于预期，科技股上涨</td></tr>
+<tr><td>纳斯达克综合指数</td><td>26,107.01</td><td class="up">+0.90%</td><td>大型科技股支撑指数，软件板块分化</td></tr>
+<tr><td>欧洲STOXX 600</td><td>642.10</td><td class="up">+0.20%</td><td>矿业与金融股走强，软件与通信设备股承压</td></tr>
+<tr><td>布伦特原油</td><td>84.73美元/桶</td><td class="up">+1.70%</td><td>美国重新封锁伊朗航运，霍尔木兹风险上升</td></tr>
+<tr><td>WTI原油</td><td>79.34美元/桶</td><td class="up">+1.50%</td><td>海湾供应担忧，油价升至约一个月高位</td></tr>
+<tr><td>现货黄金</td><td>4,051.79美元/盎司</td><td class="up">+1.29%</td><td>美元回落与避险需求</td></tr>
+<tr><td>美元指数</td><td>100.94</td><td class="down">-0.33%</td><td>美国CPI低于预期，美债收益率下行</td></tr>
+<tr><td>美国10年期国债收益率</td><td>4.589%</td><td class="down">-2.06个基点</td><td>通胀降温缓解短期加息压力</td></tr>
+<tr><td>欧元兑美元</td><td>1.1418</td><td class="up">+0.33%</td><td>美元普遍走弱</td></tr>
+</tbody>
+</table>
+</div>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-top: 18px;">美国通胀低于预期推动美元和中短期美债收益率回落，美股主要指数收高；但美伊冲突与霍尔木兹航运风险继续推升油价。资产价格反映市场正在同时消化通胀降温与能源供应再度收紧这两股相反力量。</p>
+<p style="margin-top: 12px;"><span class="source-line">来源：<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-14/" rel="noopener noreferrer" target="_blank">[1] Reuters：7月14日全球市场收盘</a>；<a href="https://www.reuters.com/business/energy/oil-climbs-one-month-high-us-iran-step-up-attacks-strait-hormuz-2026-07-14/" rel="noopener noreferrer" target="_blank">[2] Reuters：霍尔木兹冲突推动油价升至一个月高位</a></span></p>
+</div>
+</div>
+<div class="footer">
+<p>本简报依据公开可信来源整理，事实与数字截至2026年7月14日美国市场收盘。市场数据可能有延迟，仅供信息参考。</p>
+<p style="margin-top:6px;">© 2026 每日全球新闻简报 · 由 Manus AI 自动生成</p>
+</div>
+</body>
+</html>
