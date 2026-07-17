@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报 - 2026年7月16日</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 2px; }
+        .header .subtitle { color: var(--text-muted); font-size: 0.95em; }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover { background: var(--accent); color: white; }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15); }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p { color: var(--text-muted); font-size: 0.95em; line-height: 1.9; }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 { font-size: 1.15em; margin-bottom: 18px; color: var(--accent); }
+        .market-table { width: 100%; border-collapse: collapse; }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .source-line { color: #8291a8; font-size: 0.86em; }
+        .source-line a { color: #72c7ff; text-decoration: none; }
+        .source-line a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月16日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a>
+<a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-finance">财经</span><span class="tag tag-humanitarian">人道危机</span>
+<h2><span class="num-badge">1</span>美伊连续第六夜互袭，霍尔木兹与红海两大能源通道同时承压</h2>
+<p>美国军方称，7月16日连续第六夜打击伊朗，以继续削弱其军事能力。美军当天袭击格什姆岛、阿巴斯港周边等靠近霍尔木兹海峡的目标；伊朗则以导弹和无人机攻击邻国境内的美军基地。持续一周的升级已使6月达成的脆弱停火基本失效，霍尔木兹航运再度近乎停滞。华盛顿和德黑兰一方面争夺海峡控制权，另一方面仍保留外交措辞，显示冲突尚未完全滑向全面战争，但误判风险显著上升。<br><br>能源风险已从霍尔木兹外溢至红海南端。伊朗向胡塞武装发出信号，若美国打击伊朗电力基础设施，可能要求其封锁曼德海峡。霍尔木兹在战前承载约全球五分之一的石油与液化天然气贸易，而曼德海峡6月日均通过约740万桶石油、相当于全球产量约7%。布伦特原油虽在获利回吐下收跌0.9%至84.23美元/桶，WTI收跌0.8%至78.95美元/桶，但两者仍接近一个月高位，航运保险、油轮供给和全球通胀面临持续压力。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/iran-warns-strait-hormuz-is-red-line-will-resist-until-end-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：美伊连续第六夜互袭与霍尔木兹局势</a>；<a href="https://www.reuters.com/business/energy/oil-prices-rise-4th-day-us-strikes-iran-raise-fears-wider-conflict-2026-07-16/" rel="noopener noreferrer" target="_blank">[2] Reuters：油价与红海航运风险</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">2</span>台积电利润大增77%，上调资本支出并再投美国1000亿美元</h2>
+<p>台积电二季度净利润同比增长77%至7,066亿新台币（约220亿美元），高于市场预估的6,326亿新台币，并连续第九个季度实现两位数百分比增长。公司把2026年美元计价营收增速指引从“超过30%”上调至“略高于40%”，预计三季度营收为446亿至458亿美元。管理层称，云服务客户持续给出强劲需求信号，对AI多年趋势的信心依然很高。<br><br>为满足先进逻辑芯片和先进封装需求，台积电把全年资本支出指引从原先520亿至560亿美元区间的高端，大幅上调至600亿至640亿美元，并表示未来三年资本支出将明显高于过去三年。公司还承诺在亚利桑那州追加1,000亿美元投资，使已宣布的美国投资总额增至2,650亿美元，可能新增四座包括先进封装在内的工厂。高额扩产强化了AI供应链景气判断，也提高了未来产能利用率、成本控制和地缘布局的执行门槛。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/asia-pacific/tsmcs-second-quarter-profit-seen-hitting-record-ai-boom-2026-07-15/" rel="noopener noreferrer" target="_blank">[1] Reuters：台积电二季度业绩与美国投资</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">3</span>全球芯片股大幅回调，韩国收紧个股杠杆ETF监管</h2>
+<p>即使台积电交出远超预期的利润，全球芯片股仍遭到抛售，反映市场对AI资本开支与估值的要求已接近“必须完美”。费城半导体指数下跌4.3%，美国科技板块跌1.8%；Sandisk、Western Digital、Seagate和Intel跌幅介于5.8%至12.6%。纳斯达克综合指数因此下跌1.47%，标普500下跌0.51%，而MSCI全球股票指数下跌0.6%。<br><br>亚洲波动更为剧烈，韩国KOSPI指数跌逾6%，日经225指数跌近3%。韩国金融服务委员会随即收紧与三星电子、SK海力士等单一个股挂钩的杠杆ETF规则，把散户最低保证金从1,000万韩元提高至3,000万韩元、最低交易单位从1股增至20股，并要求额外风险教育。监管层还劝阻券商推出新杠杆产品和促销活动，显示AI芯片交易的波动已从估值问题升级为市场稳定议题。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：7月16日全球市场综述</a>；<a href="https://www.reuters.com/world/south-korea-toughens-regulations-single-stock-leveraged-etfs-2026-07-16/" rel="noopener noreferrer" target="_blank">[2] Reuters：韩国收紧个股杠杆ETF监管</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">4</span>美国零售销售维持增长，就业市场稳定令美联储更可能按兵不动</h2>
+<p>美国6月零售销售环比增长0.2%，为五个月最小增幅，但符合市场预期；5月增幅被上修至1.0%。加油站销售因汽油价格下降而减少5.3%，汽车经销商销售增长1.9%，线上及其他非店铺零售商销售也增长1.9%。更贴近GDP消费分项的核心零售销售增长0.5%，促使部分经济学家把二季度GDP年化增速预估上调至最高约2.4%。<br><br>劳动力市场同样保持稳定，7月11日当周初请失业金人数减少8,000人至20.8万，为两个月低点，低于经济学家预期的21.7万。数据说明高收入家庭财富效应、工资增长与税收退款仍在支撑消费，但低储蓄率、油价重新上涨以及较高关税带来的价格压力，可能令三季度支出放缓。市场仍预计美联储7月会议维持利率不变，当日10年期美债收益率升至4.559%。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/us-retail-sales-rise-marginally-june-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：美国6月零售销售与初请失业金</a>；<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-16/" rel="noopener noreferrer" target="_blank">[2] Reuters：7月16日全球市场综述</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-diplomacy">外交</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">5</span>乌克兰撤换改革派防长引发战时罕见抗议，内部指挥分歧公开化</h2>
+<p>乌克兰总统泽连斯基突然撤换以数字化、无人机改革和国防采购整顿闻名的国防部长米哈伊洛·费多罗夫，引发基辅及其他城市的罕见战时抗议。基辅总统办公室外有逾1,000人集会，要求恢复其职务。费多罗夫拒绝担任总统顾问，并公开指责总司令亚历山大·瑟尔斯基阻挠国防部改革；一名主导无人机空战的高级指挥官也以辞职回应人事变动。<br><br>为平息政治危机，泽连斯基提名乌克兰安全局代理局长叶夫亨尼·赫马拉为代理国防部长，并计划交由议会正式批准。赫马拉曾领导安全局“阿尔法”部队，参与对俄罗斯石油基础设施和国防工业的远程打击。此次改组发生在乌军远程打击能力增强、但东部兵力与防空仍吃紧之际，凸显技术化作战路线、传统军队指挥体系与政治控制之间的紧张关系。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/europe/ukraines-parliament-elect-new-government-amid-outcry-over-defence-chief-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：乌克兰撤换防长引发抗议</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-diplomacy">外交</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">6</span>特朗普指控中国干预美国选举，但解密材料未证明投票结果被改变</h2>
+<p>美国总统特朗普在25分钟黄金时段讲话中解密一批文件，声称中国获取约2.2亿份美国选民记录，并借此暴露选举基础设施的“惊人漏洞”。他要求国会推进新的选民身份证明、公民资格核验和限制邮寄投票立法，把选举安全置于11月中期选举前的政治议程中心。中国驻美使馆在讲话前重申，中国从未、也不会干预美国总统选举。<br><br>Reuters核对指出，2021年美国情报评估未发现任何外国行为体改变2020年选民登记、选票、计票或结果等技术环节；部分被中国获取的选民资料并非机密，且不能据此操纵投票。此次公布的材料中，一些内容与美国选举基础设施无关，特朗普也未提供2020年实际选票被更改的证据。该事件可能重新加剧美国内政争议，并给正在企稳的中美经贸关系带来新的外交摩擦。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/legal/government/with-midterms-deck-trump-deliver-primetime-speech-election-security-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：特朗普选举安全讲话与解密材料</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">7</span>Netflix三季度指引低于预期，生成式AI已用于约300部作品</h2>
+<p>Netflix预计三季度收入为128.6亿美元、摊薄每股收益0.82美元，低于LSEG汇总的华尔街预期130亿美元和0.84美元，盘后股价一度下跌约8.6%。二季度收入125.6亿美元、每股收益0.80美元，大致符合预期。公司今年股价已下跌约五分之一，投资者越来越关注在用户增长趋于成熟后，广告、直播活动和游戏能否接棒成为新增长引擎。<br><br>公司重申广告收入将在年底达到30亿美元，并考虑在部分市场提供免费广告版，但近期没有推出计划。Netflix还表示，生成式AI的使用正在快速扩大，已用于约300部作品，主要集中在后期制作；同时，公司将从2027年起把观看时长报告从每年两次降为一次。AI提升制作效率的潜力，与披露减少、增长空间收窄共同构成市场对其估值的新判断框架。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/media-telecom/netflix-third-quarter-earnings-forecast-falls-shy-wall-street-expectations-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：Netflix三季度指引</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">8</span>美光联手高通等锁定汽车AI内存供应，AI需求从数据中心外溢</h2>
+<p>美光科技与高通、哈曼、伟世通、JOYNEXT、电装、Astemo及现代摩比斯等签署长期协议，为AI汽车稳定供应内存和存储组件。相关芯片将服务于高级驾驶辅助系统、数字座舱和软件定义汽车平台，协议旨在为供应商提供更稳定的供货与价格条件，也便于各方规划下一代车型和先进平台投资。<br><br>美光是美国唯一生产英伟达AI处理器所需高带宽内存的厂商。数据中心需求已令美光、SK海力士和三星电子获得更高定价能力，公司预计AI功能还将进一步扩展到智能手机、高端个人电脑、汽车和机器人。此次合作显示，AI芯片周期正从云端训练基础设施向边缘计算和汽车电子渗透，但也会加大汽车产业对先进存储供应、长期产能配置与价格周期的依赖。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/micron-signs-deals-with-qualcomm-others-ai-powered-automobile-chip-components-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：美光汽车AI芯片协议</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-diplomacy">外交</span>
+<h2><span class="num-badge">9</span>英国5月GDP仅增长0.1%，服务业扩张难掩工业与建筑收缩</h2>
+<p>英国5月国内生产总值环比增长0.1%，与Reuters调查预期一致，扭转4月0.1%的下降。服务业产出增长0.3%，但工业生产下降0.5%，建筑业下降0.8%；截至5月的三个月GDP增长0.7%，同比产出增长1.3%，为十个月最大增幅。电脑编程、广告及医药研发成为服务业的重要支撑。<br><br>数据公布之际，英国正经历十年内第七次首相更替。OECD预计英国2026年增长0.9%、2027年增长1.1%，并敦促新政府维持财政纪律、控制养老金支出并应对能源价格。霍尔木兹海峡关闭也已改变英国能源贸易：5月自沙特、科威特和卡塔尔进口的成品油降至零，而来自美国、比利时和荷兰的进口明显增加，显示地缘冲突正在重塑欧洲能源供应链。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/uk/uk-economy-grew-by-01-may-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：英国5月GDP</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-humanitarian">人道危机</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">10</span>胡塞武装威胁沙特石油设施，也门四年停火面临破裂</h2>
+<p>也门胡塞武装领导人阿卜杜勒·马利克·胡塞表示，如果沙特升级介入冲突，沙特全部石油及其他关键设施都将成为导弹和无人机目标。他提出“机场对机场、港口对港口、封锁对封锁”的报复逻辑。此前胡塞武装向沙特发射导弹，指责沙特轰炸其控制的机场，标志着双方持续约四年的停火出现严重裂缝。<br><br>胡塞武装曾在2019年宣称袭击沙特两处关键石油设施，一度削减该国超过一半原油产量，并在2022年再次攻击能源基础设施。当前威胁与美伊冲突、霍尔木兹和曼德海峡风险叠加，可能把也门战场重新嵌入全球能源危机。也门内战已持续十余年，并造成全球最严重的人道危机之一；任何大规模复战都将同时冲击平民援助、红海航运与沙特能源安全。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/houthi-leader-threatens-saudi-oil-facilities-if-riyadh-escalates-yemen-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：胡塞威胁沙特石油设施</a></span></p>
+</div>
+<div class="market-section">
+<h3>市场数据概览</h3>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 14px;">以下为7月16日美国市场收盘或Reuters报道时点数据。收益率变动为相对前一交易日的基点变化；价格可能因不同数据截点略有差异。</p>
+<div style="overflow-x:auto;">
+<table class="market-table">
+<thead><tr><th>资产或指数</th><th>收盘或水平</th><th>变动</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>道琼斯工业平均指数</td><td>52,552.97</td><td class="down">-0.20%</td><td>芯片股拖累，但医疗板块缓冲跌幅</td></tr>
+<tr><td>标普500</td><td>7,533.77</td><td class="down">-0.51%</td><td>科技板块下跌1.8%</td></tr>
+<tr><td>纳斯达克综合指数</td><td>25,881.95</td><td class="down">-1.47%</td><td>费城半导体指数下跌4.3%</td></tr>
+<tr><td>MSCI全球股票指数</td><td>1,121.65</td><td class="down">-0.60%</td><td>全球AI芯片交易同步降温</td></tr>
+<tr><td>欧洲STOXX 600</td><td>—</td><td class="up">+0.16%</td><td>欧洲股市小幅收高</td></tr>
+<tr><td>韩国KOSPI</td><td>—</td><td class="down">跌逾6%</td><td>芯片股与杠杆ETF放大波动</td></tr>
+<tr><td>日经225</td><td>—</td><td class="down">跌近3%</td><td>亚洲科技股普遍承压</td></tr>
+<tr><td>布伦特原油</td><td>84.23美元/桶</td><td class="down">-0.85%</td><td>仍接近一个月高位</td></tr>
+<tr><td>WTI原油</td><td>78.95美元/桶</td><td class="down">-0.80%</td><td>中东供应风险维持溢价</td></tr>
+<tr><td>现货黄金</td><td>3,976.24美元/盎司</td><td class="down">-2.10%</td><td>收益率上行与美元走强施压</td></tr>
+<tr><td>美元指数</td><td>100.74</td><td class="up">+0.30%</td><td>美国经济数据偏稳</td></tr>
+<tr><td>美国10年期国债收益率</td><td>4.559%</td><td class="up">+1.44个基点</td><td>零售与就业数据支撑收益率</td></tr>
+<tr><td>欧元兑美元</td><td>1.1441</td><td class="down">-0.20%</td><td>美元反弹、欧洲能源担忧</td></tr>
+<tr><td>美元兑日元</td><td>162.37</td><td class="up">+0.10%</td><td>维持数十年高位附近</td></tr>
+</tbody>
+</table>
+</div>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-top: 18px;">美国消费与就业数据保持韧性，推动美元和美债收益率回升；但AI交易对高估值与高资本开支的容忍度下降，使芯片股成为全球风险资产的主要拖累。油价虽在获利回吐下收低，霍尔木兹与曼德海峡的双重风险仍令能源通胀预期居高不下，并通过利率渠道压低黄金等非收益资产。</p>
+<p style="margin-top: 12px;"><span class="source-line">来源：<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-16/" rel="noopener noreferrer" target="_blank">[1] Reuters：7月16日全球市场综述</a>；<a href="https://www.reuters.com/business/gold-falls-mideast-escalation-dims-hopes-easing-inflation-2026-07-16/" rel="noopener noreferrer" target="_blank">[2] Reuters：黄金与利率市场</a></span></p>
+</div>
+</div>
+<div class="footer">
+<p>本简报依据公开可信来源整理，事实与数字截至2026年7月16日美国市场收盘。市场数据可能有延迟，仅供信息参考。</p>
+<p style="margin-top:6px;">© 2026 每日全球新闻简报 · 由 Manus AI 自动生成</p>
+</div>
+</body>
+</html>
