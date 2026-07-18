@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>每日全球新闻简报 - 2026年7月17日</title>
+<style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --text: #eee;
+            --text-muted: #aab;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 2px; }
+        .header .subtitle { color: var(--text-muted); font-size: 0.95em; }
+        .archive-link {
+            display: inline-block;
+            margin-top: 14px;
+            margin-left: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+            border: 1px solid var(--accent);
+            padding: 5px 16px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .archive-link:hover { background: var(--accent); color: white; }
+        .header .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(233, 69, 96, 0.15); }
+        .news-card .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+        .tag-finance { background: #e94560; color: white; }
+        .tag-geopolitics { background: #0f3460; color: white; }
+        .tag-diplomacy { background: #533483; color: white; }
+        .tag-humanitarian { background: #e07c24; color: white; }
+        .tag-tech { background: #00b4d8; color: white; }
+        .news-card h2 {
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        .news-card p { color: var(--text-muted); font-size: 0.95em; line-height: 1.9; }
+        .market-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 10px;
+        }
+        .market-section h3 { font-size: 1.15em; margin-bottom: 18px; color: var(--accent); }
+        .market-table { width: 100%; border-collapse: collapse; }
+        .market-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+        .market-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+        .market-table .down { color: #e94560; }
+        .market-table .up { color: #4ecca3; }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .source-line { color: #8291a8; font-size: 0.86em; }
+        .source-line a { color: #72c7ff; text-decoration: none; }
+        .source-line a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5em; }
+            .news-card { padding: 20px; }
+            .container { padding: 16px 12px; }
+        }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>每日全球新闻简报</h1>
+<div class="subtitle">财经 · 科技 · 国际 ｜ 由 Manus AI 自动生成</div>
+<div class="date-badge" id="report-date">2026年7月17日</div>
+<a class="archive-link" href="../archive.html">历史归档 →</a>
+<a class="archive-link" href="../index.html">← 返回最新简报</a>
+</div>
+<div class="container" id="news-container">
+<div class="news-card">
+<span class="tag tag-geopolitics">地缘政治</span><span class="tag tag-diplomacy">外交</span>
+<h2><span class="num-badge">1</span>美伊连续第七夜互袭，海湾基础设施与两大航道风险升级</h2>
+<p>美国军方7月17日连续第七个夜晚打击伊朗，把目标扩大至桥梁、隧道、机场及军事后勤设施。伊朗则以导弹和无人机攻击海湾国家境内的目标，科威特一座发电与海水淡化设施受损起火；德黑兰还宣称袭击巴林和卡塔尔境内的美军设施，但部分战果尚无法独立核实。冲突由军事目标向交通和民用基础设施外溢，地区升级风险进一步上升。<br><br>霍尔木兹海峡航运继续受阻，美军陆战队登上一艘油轮；也门附近另有商船被武装人员控制，使红海南端的曼德海峡风险同步升高。联合国秘书长对民用基础设施遇袭表达关切。美伊虽然仍保留外交措辞，但海上执法、误击和代理人介入都可能迅速扩大冲突范围，并冲击海湾国家的电力、淡水和能源出口安全。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/middle-east/iran-launches-fresh-attacks-after-sixth-day-us-strikes-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：美伊互袭扩大至基础设施与航运</a>；<a href="https://www.cnn.com/2026/07/17/world/live-news/iran-war-trump" rel="noopener noreferrer" target="_blank">[2] CNN：7月17日美伊冲突动态</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">2</span>油价单日大涨逾4%，霍尔木兹与红海供应风险叠加</h2>
+<p>受美伊冲突加剧影响，布伦特原油上涨4.59%至每桶88.10美元，WTI上涨4.48%至82.49美元，均升至一个多月高位；两大基准油价本周涨幅约16%。科威特能源与淡化设施遇袭、霍尔木兹通航量大幅下降，以及红海南端可能出现新的封锁，使交易员重新计入更高的现货供应和航运保险风险。<br><br>战前约20%的全球石油供应经霍尔木兹海峡运输。沙特阿拉伯已把超过70%的常态原油出口改道至红海延布港，近期日均输送约400万桶；如果曼德海峡也受阻，这条替代路线的缓冲作用将明显减弱。能源价格上行不只影响石油进口国，也可能重新推高运输、化工和消费品成本，增加主要央行面对的通胀与增长两难。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/energy/oil-rises-intensifying-us-iran-hostilities-threat-red-sea-closure-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：中东冲突与红海风险推升油价</a>；<a href="https://www.cnbc.com/2026/07/17/oil-price-today-brent-wti.html" rel="noopener noreferrer" target="_blank">[2] CNBC：7月17日布伦特与WTI行情</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">3</span>全球芯片股抛售延续，费城半导体指数进入技术性熊市</h2>
+<p>围绕AI资本开支回报和高估值的疑虑推动芯片股连续第三日下跌。费城半导体指数当日再跌1.6%，较6月22日纪录收盘低约20%，进入技术性熊市，7月累计跌幅已超过18%。道指、标普500和纳指分别下跌0.77%、1.01%和1.40%，MSCI全球股票指数下跌1.17%，显示卖压已由少数高估值科技股扩散至全球风险资产。<br><br>亚洲市场承压更重，日经225下跌4%，亚太地区（日本除外）指数下跌2.7%，欧洲STOXX 600也收低0.34%。Moonshot新模型强化了投资者对低成本中国AI可能压缩美国巨额模型与算力投资回报的担忧，而中东冲突推升油价又加重通胀风险。两种压力叠加，使市场从单纯的AI估值修正转向更广泛的避险交易。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：7月17日全球市场综述</a>；<a href="https://www.reuters.com/business/wall-st-futures-fall-chip-selloff-gathers-pace-netflix-tumbles-2026-07-17/" rel="noopener noreferrer" target="_blank">[2] Reuters：华尔街三大指数日线与周线收跌</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">4</span>Moonshot发布2.8万亿参数Kimi K3，开放权重AI竞赛升温</h2>
+<p>中国AI初创公司Moonshot（月之暗面）发布Kimi K3，称其为全球参数规模最大的开放权重AI系统。模型总参数量为2.8万亿，支持100万token上下文，面向复杂推理、长周期编码和知识工作。第三方评测显示，其在若干任务上的表现已接近或超过部分美国前沿模型，为中国依靠开放权重和较低部署成本扩大国际影响力提供了新的样本。<br><br>消息公布后，智谱和MiniMax港股一度分别下跌27.7%和16.5%，显示市场迅速重估中国大模型公司的竞争格局。Kimi K3的庞大规模也意味着本地部署仍需要昂贵算力，开放并不等同于低成本运行。其真正影响将取决于权重发布、开发者采用、推理成本以及企业场景表现，但短期内已强化全球AI模型价格与能力竞争。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/china/chinas-moonshot-unveils-worlds-largest-open-ai-model-closing-us-rivals-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：Moonshot发布Kimi K3</a>；<a href="https://www.bbc.com/news/articles/cy9w4q8pgp0o" rel="noopener noreferrer" target="_blank">[2] BBC：2.8万亿参数开放权重模型</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-diplomacy">外交</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">5</span>中国在WAIC提出开放AI治理愿景，争取全球南方参与规则制定</h2>
+<p>中国国家主席习近平在上海世界人工智能大会开幕式上提出以开源技术、能力共享和全球南方参与为核心的AI治理愿景，承诺帮助发展中国家建设AI能力，并警告技术获取不平等可能造成“新的历史不公”。中国计划与金砖国家、东盟、拉美及非盟成员建立AI培训和合作中心，把开放模型塑造为全球公共产品。<br><br>由中国发起的世界人工智能合作组织（WAICO）已有29个成员国，与美国推动的35国AI框架形成并行竞争。习近平同时要求AI保持在人类控制之下，建立风险预警与应急机制。此番表态把模型开源、安全标准和技术援助纳入外交平台，显示中美竞争正在从芯片与模型能力延伸至制度、联盟和全球规则制定。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/world/asia-pacific/chinas-xi-promotes-chinas-commitment-ai-access-speech-shanghai-conference-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：中国提出新的全球AI治理愿景</a>；<a href="https://www.aljazeera.com/news/2026/7/17/chinas-xi-jinping-launches-new-ai-alliance-what-is-it" rel="noopener noreferrer" target="_blank">[2] Al Jazeera：WAICO与全球AI治理</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">6</span>苹果市值超越英伟达，时隔一年多重返全球第一</h2>
+<p>苹果7月17日市值约4.88万亿美元，超过英伟达的约4.86万亿美元，自2025年4月以来首次重返全球市值最高公司。英伟达当日股价下跌3.5%，而苹果大致持平。排名变化发生在芯片股普遍回调之际，反映投资者开始重新评估AI产业链不同环节的资本开支强度、盈利持续性和估值风险。<br><br>市场认为，苹果可通过服务收入、生态黏性和硬件更新来变现AI，同时不像模型与芯片供应商那样承担极高的基础设施投入。公司近期推出延迟已久的Siri升级，也改善了外界对其AI执行力的看法。不过，英伟达仍是全球AI算力支出的核心受益者，苹果也面临成本上涨和提价可能压制需求的风险，因此市值榜首仍可能反复易手。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/apple-closes-nvidia-race-worlds-most-valuable-company-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：苹果市值超过英伟达</a>；<a href="https://www.forbes.com/sites/tylerroush/2026/07/17/apple-unseats-nvidia-as-worlds-largest-company/" rel="noopener noreferrer" target="_blank">[2] Forbes：苹果盘中重返市值第一</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">7</span>美国消费者信心升至五个月高位，油价反弹或令改善短暂</h2>
+<p>密歇根大学7月消费者信心指数初值由6月的49.5升至54.4，为五个月高位，明显高于经济学家预期的51.0。改善覆盖不同年龄、收入、财富水平和政治倾向群体。一年期通胀预期由4.6%降至4.2%，五年期预期维持3.3%，与此前美国6月消费通胀放缓的信号相呼应。<br><br>数据仍不能被视为持续复苏的确认：信心指数同比低12%，而超过70%的访问在美伊停火破裂、油价重新上涨之前完成。汽油是美国家庭最直接感受到的价格之一，若能源涨势延续，实际可支配收入和通胀预期都可能再次承压。这将影响消费韧性，也增加美联储判断通胀路径与利率政策时的不确定性。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/markets/europe/us-consumer-sentiment-improves-july-renewed-middle-east-conflict-poses-downside-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：美国7月消费者信心初值</a>；<a href="https://www.bloomberg.com/news/articles/2026-07-17/us-consumer-sentiment-climbs-on-cheaper-gas-topping-forecasts" rel="noopener noreferrer" target="_blank">[2] Bloomberg：美国消费者信心升幅超预期</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-tech">科技</span><span class="tag tag-finance">财经</span>
+<h2><span class="num-badge">8</span>Netflix指引偏弱且减少数据披露，股价重挫逾10%</h2>
+<p>Netflix因下一季度营收与盈利指引低于华尔街预期，7月17日股价一度下跌逾10%，若跌幅维持将蒸发约350亿美元市值。公司还宣布从2027年起把观看时长报告由每年两次减至一次；在此前停止公布订阅用户数后，再次减少关键运营数据披露，使投资者更难判断增长质量。<br><br>该股自2025年6月高点已回落44%，至少18名分析师在业绩后下调目标价。市场担心广告套餐采用速度不够快、内容阵容相对转弱，以及传统媒体与YouTube竞争加剧；此前未能收购华纳兄弟也令外界继续追问下一阶段增长动力。Netflix仍享有高于传统媒体的估值溢价，但透明度下降放大了每次指引不及预期的市场惩罚。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/business/media-telecom/lacks-excitement-netflix-tumbles-9-weak-earnings-forecast-deepens-doubts-over-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：Netflix弱指引引发增长担忧</a>；<a href="https://finance.yahoo.com/markets/stocks/article/netflix-stock-drops-after-q3-revenue-falls-short-co-ceo-says-not-all-views-are-created-equal-201022485.html" rel="noopener noreferrer" target="_blank">[2] Yahoo Finance：Netflix第三季度指引</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-finance">财经</span><span class="tag tag-tech">科技</span>
+<h2><span class="num-badge">9</span>Shein获港交所上市委员会批准，最快8月推进香港IPO</h2>
+<p>据Reuters援引知情人士报道，Shein已获得香港交易所上市委员会批准，向备受关注的香港IPO迈出关键一步。公司计划最快在7月27日当周发布首份公开上市文件，并可能于8月下旬启动发行；Shein已开始安排投资者推介，但最终时间表与发行规模仍取决于市场条件。<br><br>Shein寻求400亿至500亿美元估值，远低于2022年融资时的1000亿美元。公司2025年全球收入超过400亿美元、净利润接近20亿美元，但欧洲小额电商包裹费用和监管审查正压缩增长与利润空间。经历纽约和伦敦上市计划受阻后，香港交易将成为大型消费IPO需求以及跨境电商监管折价的重要测试。<br><br><span class="source-line">来源：<a href="https://www.reuters.com/legal/transactional/shein-secures-nod-hong-kong-listing-committee-ipo-sources-say-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：Shein获港交所上市委员会批准</a>；<a href="https://money.usnews.com/investing/news/articles/2026-07-17/shein-secures-nod-from-hong-kong-listing-committee-for-ipo-sources-say" rel="noopener noreferrer" target="_blank">[2] U.S. News：Shein推进香港IPO</a></span></p>
+</div>
+<div class="news-card">
+<span class="tag tag-humanitarian">人道危机</span><span class="tag tag-geopolitics">地缘政治</span>
+<h2><span class="num-badge">10</span>苏丹奥贝德粮食危机加深，逾10万流离失所者等待援助</h2>
+<p>联合国世界粮食计划署警告，苏丹奥贝德市营地内超过10万名流离失所者急需援助，其中约1.7万名儿童正在接受营养支持。受资金短缺影响，WFP只能发放缩减口粮，受助家庭还必须与没有其他收入来源的邻居分享；城市的食品、水和燃料供应均十分紧张，运输救援物资也因燃料不足而受阻。<br><br>持续三年多的内战已使苏丹超过1400万人流离失所，近2000万人处于严重粮食不安全状态，构成全球规模最大的流离失所危机。WFP表示目前仍可进入奥贝德并预置7月和8月粮食，扩大救援的主要瓶颈是资金。随着城市面临潜在军事攻势和持续无人机威胁，及时融资将决定援助能否覆盖营地之外更多家庭。<br><br><span class="source-line">来源：<a href="https://news.un.org/feed/view/en/story/2026/07/1167967" rel="noopener noreferrer" target="_blank">[1] UN News：奥贝德流离失所家庭饥饿加深</a>；<a href="https://www.wfp.org/news/wfp-warns-el-obeid-becoming-new-epicentre-sudans-displacement-and-hunger-crisis" rel="noopener noreferrer" target="_blank">[2] WFP：奥贝德成为苏丹流离失所与饥饿危机新中心</a></span></p>
+</div>
+<div class="market-section">
+<h3>市场数据概览</h3>
+<p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 14px;">以下为7月17日美国市场收盘或Reuters报道时点数据。收益率变动为相对前一交易日的基点变化；价格可能因不同数据截点略有差异。</p>
+<div style="overflow-x:auto;">
+<table class="market-table">
+<thead><tr><th>资产或指数</th><th>收盘或水平</th><th>变动</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>道琼斯工业指数</td><td>52,146.42</td><td class="down">-0.77%</td><td>金融与周期板块未能抵消科技股压力</td></tr>
+<tr><td>标普500指数</td><td>7,457.69</td><td class="down">-1.01%</td><td>风险偏好降温，日线与周线均收低</td></tr>
+<tr><td>纳斯达克综合指数</td><td>25,520.24</td><td class="down">-1.40%</td><td>AI与芯片相关股票领跌</td></tr>
+<tr><td>费城半导体指数</td><td>较纪录收盘低约20%</td><td class="down">-1.60%</td><td>较6月22日纪录收盘回落约20%</td></tr>
+<tr><td>日经225指数</td><td>—</td><td class="down">-4.00%</td><td>亚洲科技股抛售扩大</td></tr>
+<tr><td>STOXX 600指数</td><td>—</td><td class="down">-0.34%</td><td>欧洲股市小幅收低</td></tr>
+<tr><td>布伦特原油</td><td>88.10美元/桶</td><td class="up">+4.59%</td><td>中东供应与航运风险推升价格</td></tr>
+<tr><td>WTI原油</td><td>82.49美元/桶</td><td class="up">+4.48%</td><td>创一个多月高位</td></tr>
+<tr><td>现货黄金</td><td>4,009.19美元/盎司</td><td class="up">+0.99%</td><td>避险需求回升</td></tr>
+<tr><td>美国10年期国债收益率</td><td>4.554%</td><td class="down">-1.55个基点</td><td>避险买盘推动收益率回落</td></tr>
+<tr><td>美元指数</td><td>100.76</td><td class="up">+0.05%</td><td>美元小幅走强</td></tr>
+</tbody>
+</table>
+<p style="margin-top: 12px;"><span class="source-line">来源：<a href="https://www.reuters.com/world/china/global-markets-global-markets-2026-07-17/" rel="noopener noreferrer" target="_blank">[1] Reuters：7月17日全球市场综述</a></span></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>本简报依据公开可信来源整理，事实与数字截至2026年7月17日美国市场收盘。市场数据可能有延迟，仅供信息参考。</p>
+<p style="margin-top:6px;">© 2026 每日全球新闻简报 · 由 Manus AI 自动生成</p>
+</div>
+</body>
+</html>
